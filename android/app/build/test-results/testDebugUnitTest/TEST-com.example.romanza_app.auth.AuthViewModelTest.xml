@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.romanza_app.auth.AuthViewModelTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-27T23:17:21.976Z" hostname="POTENCIA" time="0.361">
+  <properties/>
+  <testcase name="googleCancellationAndLogoutDoNotRetainAccount" classname="com.example.romanza_app.auth.AuthViewModelTest" time="0.346"/>
+  <testcase name="registrationValidationDoesNotCreateAccount" classname="com.example.romanza_app.auth.AuthViewModelTest" time="0.005"/>
+  <testcase name="profileFailureDoesNotGrantDashboardAccess" classname="com.example.romanza_app.auth.AuthViewModelTest" time="0.005"/>
+  <testcase name="newAccountRequiresUsernameAndCanRetryCollision" classname="com.example.romanza_app.auth.AuthViewModelTest" time="0.004"/>
+  <testcase name="usernameNormalizationAndBoundaries" classname="com.example.romanza_app.auth.AuthViewModelTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

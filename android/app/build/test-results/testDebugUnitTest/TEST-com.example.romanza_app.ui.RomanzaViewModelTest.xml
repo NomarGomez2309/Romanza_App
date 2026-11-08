@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.romanza_app.ui.RomanzaViewModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-27T23:17:22.407Z" hostname="POTENCIA" time="0.028">
+  <properties/>
+  <testcase name="failedSaveKeepsFormOpenAndReportsError" classname="com.example.romanza_app.ui.RomanzaViewModelTest" time="0.01"/>
+  <testcase name="invalidDateDoesNotWriteAndSuccessfulRetryClosesForm" classname="com.example.romanza_app.ui.RomanzaViewModelTest" time="0.007"/>
+  <testcase name="failedReadBlocksWritesUntilRetrySucceeds" classname="com.example.romanza_app.ui.RomanzaViewModelTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

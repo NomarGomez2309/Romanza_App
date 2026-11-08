@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.example.romanza_app.relationship.RelationshipScreenTest" tests="3" failures="0" errors="0" skipped="0" time="19.929" timestamp="2026-09-27T23:11:26" hostname="localhost">
+  <properties>
+    <property name="device" value="Pixel_9(AVD) - 17" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="joiningRequiresExplicitConsent" classname="com.example.romanza_app.relationship.RelationshipScreenTest" time="4.313" />
+  <testcase name="leavingRequiresConfirmationAndCancelDoesNothing" classname="com.example.romanza_app.relationship.RelationshipScreenTest" time="5.695" />
+  <testcase name="createsThreeMemberRelationshipWithForm" classname="com.example.romanza_app.relationship.RelationshipScreenTest" time="8.336" />
+</testsuite>

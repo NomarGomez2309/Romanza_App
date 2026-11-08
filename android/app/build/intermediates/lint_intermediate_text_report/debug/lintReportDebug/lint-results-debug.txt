@@ -1,0 +1,107 @@
+C:\Users\Nomar\romanza_app\android\app\src\main\kotlin\com\example\romanza_app\auth\data\GoogleCredentials.kt:15: Warning: Call to CredentialManager.getCredential without use of NoCredentialException [CredentialManagerMisuse]
+            val result = manager.getCredential(activity,
+                         ^
+
+   Explanation for issues of type "CredentialManagerMisuse":
+   When calling CredentialManager.getCredential or
+   CredentialManager.getCredentialAsync, you should handle
+   NoCredentialException somewhere in your project.
+
+   https://developer.android.com/identity/sign-in/credential-manager#handle-exceptions
+
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:32: Warning: A newer version of com.google.firebase:firebase-bom than 34.2.0 is available: 34.19.0 [GradleDependency]
+    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:37: Warning: A newer version of androidx.credentials:credentials than 1.5.0 is available: 1.6.0 [GradleDependency]
+    implementation("androidx.credentials:credentials:1.5.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:38: Warning: A newer version of androidx.credentials:credentials-play-services-auth than 1.5.0 is available: 1.6.0 [GradleDependency]
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:39: Warning: A newer version of com.google.android.libraries.identity.googleid:googleid than 1.1.1 is available: 1.2.1 [GradleDependency]
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:40: Warning: A newer version of androidx.compose:compose-bom than 2025.08.01 is available: 2026.09.00 [GradleDependency]
+    implementation(platform("androidx.compose:compose-bom:2025.08.01"))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:41: Warning: A newer version of androidx.activity:activity-compose than 1.10.1 is available: 1.13.0 [GradleDependency]
+    implementation("androidx.activity:activity-compose:1.10.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:44: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.9.3 is available: 2.11.0 [GradleDependency]
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:45: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-compose than 2.9.3 is available: 2.11.0 [GradleDependency]
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.3")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:46: Warning: A newer version of androidx.datastore:datastore-preferences than 1.1.7 is available: 1.2.1 [GradleDependency]
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:50: Warning: A newer version of androidx.compose:compose-bom than 2025.08.01 is available: 2026.09.00 [GradleDependency]
+    androidTestImplementation(platform("androidx.compose:compose-bom:2025.08.01"))
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:36: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-play-services than 1.10.2 is available: 1.11.0 [NewerVersionAvailable]
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\Nomar\romanza_app\android\app\build.gradle.kts:49: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-test than 1.10.2 is available: 1.11.0 [NewerVersionAvailable]
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NewerVersionAvailable":
+   This detector checks with a central repository to see if there are newer
+   versions available for the dependencies used by this project. This is
+   similar to the GradleDependency check, which checks for newer versions
+   available in the Android SDK tools and libraries, but this works with any
+   MavenCentral dependency, and connects to the library every time, which
+   makes it more flexible but also much slower.
+
+C:\Users\Nomar\romanza_app\android\app\src\main\res\values\auth_strings.xml:11: Warning: "momento" is a common misspelling; did you mean "memento"? [Typos]
+    <string name="auth_working">Un momento…</string>
+                                   ^
+C:\Users\Nomar\romanza_app\android\app\src\main\res\values\auth_strings.xml:32: Warning: "momento" is a common misspelling; did you mean "memento"? [Typos]
+    <string name="auth_error_rate">Demasiados intentos. Espera un momento antes de volver a intentarlo.</string>
+                                                                  ^
+
+   Explanation for issues of type "Typos":
+   This check looks through the string definitions, and if it finds any words
+   that look like likely misspellings, they are flagged.
+
+C:\Users\Nomar\romanza_app\android\app\src\main\AndroidManifest.xml:4: Warning: The attribute android:dataExtractionRules only applies for Android 12 and higher; since minSdkVersion is API 26 you should also set android:fullBackupContent [DataExtractionRules]
+        android:allowBackup="false" android:dataExtractionRules="@xml/data_extraction_rules"
+                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "DataExtractionRules":
+   Before Android 12, the attributes android:allowBackup and
+   android:fullBackupContent were used to configure all forms of backup,
+   including cloud backups, device-to-device transfers and adb backup.
+
+   In Android 12 and higher, these attributes have been deprecated and will
+   only apply to cloud backups. You should instead use the attribute
+   android:dataExtractionRules, specifying an @xml resource that configures
+   which files to back up, for cloud backups and for device-to-device
+   transfers, separately. If your minSdkVersion supports older versions,
+   you'll still want to specify an android:fullBackupContent resource if the
+   default behavior is not right for your app.
+
+   https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   https://goo.gle/DataExtractionRules
+
+C:\Users\Nomar\romanza_app\android\app\src\main\res\drawable-v21: Warning: This folder configuration (v21) is unnecessary; minSdkVersion is 26. Merge all the resources in this folder into drawable. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+0 errors, 17 warnings

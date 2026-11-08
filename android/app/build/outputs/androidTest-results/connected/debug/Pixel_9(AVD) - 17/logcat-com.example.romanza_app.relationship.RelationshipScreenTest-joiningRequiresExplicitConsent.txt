@@ -1,0 +1,419 @@
+09-27 19:11:05.929 12402 12417 I TestRunner: started: joiningRequiresExplicitConsent(com.example.romanza_app.relationship.RelationshipScreenTest)
+09-27 19:11:06.119 12402 12417 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
+09-27 19:11:06.157 12402 12417 D IdlingRegistry: Registering idling resources: [androidx.compose.ui.test.EspressoLink@5a0292a]
+09-27 19:11:06.182 12402 12417 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+09-27 19:11:06.288   678   696 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@4c8d3cc2 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+09-27 19:11:06.299 10046 10046 D RecentsView: onTaskDisplayChanged: 124, new displayId = 0
+09-27 19:11:06.360   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:06.366 10046 10046 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed|state_window_focused|state_user_active] -[]
+09-27 19:11:06.368   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:06.373   530   628 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0x770828e2b960) with descriptor: '(not cached)'
+09-27 19:11:06.381   933   961 W DisconnectHandler: No disconnect change found in the transition, not handling request.
+09-27 19:11:06.386 10046 10046 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed|state_window_focused] -[state_user_active]
+09-27 19:11:06.390 10046 10046 D BaseActivity: Launcher flags updated: [state_started|state_window_focused] -[state_resumed|state_deferred_resumed]
+09-27 19:11:06.391 10046 10046 W SplitSelectStateCtor: Missing session instanceIds
+09-27 19:11:06.391 10046 10046 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+09-27 19:11:06.436   588   673 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+09-27 19:11:06.442 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:06.488   678  1847 W InputChannel-JNI: Channel already disposed.
+09-27 19:11:06.511 10046 10046 D BaseActivity: Launcher flags updated: [state_started] -[state_window_focused]
+09-27 19:11:06.521   933  1015 I Surface : Creating surface for consumer unnamed-933-13 with slotExpansion=1 for 64 slots
+09-27 19:11:06.522   933  1015 I Surface : Creating surface for consumer VRI[romanza_app]#13(BLAST Consumer)13 with slotExpansion=1 for 64 slots
+09-27 19:11:06.608 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:06.612 10046 10136 D PreloadThumbnailUseCase: Preloading thumbnails for task ids: [[id=74 windowingMode=0 user=0 lastActiveTime=27765] null, [id=124 windowingMode=1 user=0 lastActiveTime=368923] null]
+09-27 19:11:06.642 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:06.675   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:06.676   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:06.716 12402 12402 D DesktopExperienceFlags: Toggle override initialized to: false
+09-27 19:11:06.744 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: PRE_ON_CREATE
+09-27 19:11:06.745 12402 12402 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+09-27 19:11:06.764 12402 12425 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+09-27 19:11:06.765 12402 12425 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+09-27 19:11:06.768 12402 12425 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+09-27 19:11:06.775   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:06.775   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:06.785 12402 12402 D CompatChangeReporter: Compat change id reported: 377864165; UID 10241; state: ENABLED
+09-27 19:11:06.798 12402 12425 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+09-27 19:11:06.840 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: CREATED
+09-27 19:11:06.840 12402 12402 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=androidx.activity.ComponentActivity@7310132
+09-27 19:11:06.842 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: STARTED
+09-27 19:11:06.842 12402 12402 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=androidx.activity.ComponentActivity@7310132
+09-27 19:11:06.850 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: RESUMED
+09-27 19:11:06.850 12402 12402 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=androidx.activity.ComponentActivity@7310132
+09-27 19:11:06.875 12402 12402 W HWUI    : Unknown dataspace 0
+09-27 19:11:06.902   678  1847 W InputChannel-JNI: Channel already disposed.
+09-27 19:11:06.928 12402 12402 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@d4c18a8
+09-27 19:11:06.929 12402 12402 D VRI[ComponentActivity]: WindowInsets changed: 1080x2424 statusBars:[0,142,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,174,0,84]
+09-27 19:11:06.933   530   556 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10241 pid=12402
+09-27 19:11:06.933   530   556 D libbinder.PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10241 => denied (741 us)
+09-27 19:11:06.934   530   556 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10241 pid=12402
+09-27 19:11:06.934   530   556 D libbinder.PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10241 => denied (916 us)
+09-27 19:11:06.935   530   556 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10241 pid=12402
+09-27 19:11:06.935   530   556 D libbinder.PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10241 => denied (759 us)
+09-27 19:11:06.935   530   556 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.READ_FRAME_BUFFER from uid=10241 pid=12402
+09-27 19:11:06.935   530   556 D libbinder.PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=10241 => denied (422 us)
+09-27 19:11:06.949 12402 12402 I Surface : Creating surface for consumer unnamed-12402-0 with slotExpansion=1 for 64 slots
+09-27 19:11:06.950 12402 12402 I Surface : Creating surface for consumer VRI[ComponentActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+09-27 19:11:06.975 12402 12432 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+09-27 19:11:07.015 10046 10046 D VRI[NexusLauncherActivity]: visibilityChanged oldVisibility=true newVisibility=false
+09-27 19:11:07.025   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.025   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.025   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.028 10046 10046 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+09-27 19:11:07.030   933  1211 D WallpaperService: onVisibilityChanged(false): com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine@f3ed9ae
+09-27 19:11:07.104   678  1866 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10241 pid=0
+09-27 19:11:07.104   678  1866 D libbinder.PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10241 => denied (228 us)
+09-27 19:11:07.104   678  1866 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10241 pid=0
+09-27 19:11:07.104   678  1866 D libbinder.PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10241 => denied (93 us)
+09-27 19:11:07.104   678  1866 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10241 pid=0
+09-27 19:11:07.104   678  1866 D libbinder.PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10241 => denied (77 us)
+09-27 19:11:07.104   678  1866 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.READ_FRAME_BUFFER from uid=10241 pid=0
+09-27 19:11:07.105   678  1866 D libbinder.PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=10241 => denied (138 us)
+09-27 19:11:07.125   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.128   678   701 I ActivityTaskManager: Displayed com.example.romanza_app/androidx.activity.ComponentActivity for user 0: +884ms
+09-27 19:11:07.151 10046 10046 D BaseActivity: Launcher flags updated: [] -[state_started]
+09-27 19:11:07.151 10046 10046 D BaseDepthController: setSurface:
+09-27 19:11:07.151 10046 10046 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+09-27 19:11:07.151 10046 10046 D BaseDepthController: 	mBaseSurface: null
+09-27 19:11:07.151 10046 10046 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+09-27 19:11:07.169 10046 10046 D LauncherStateManager: StateManager.goToState: fromState: Normal, toState: Normal, partial trace:
+09-27 19:11:07.169 10046 10046 D LauncherStateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme 4b96215a9d9b4c1494121442fbf9d6e89857c91e1d76ddcc689701971259418a:26)
+09-27 19:11:07.169 10046 10046 D LauncherStateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme 4b96215a9d9b4c1494121442fbf9d6e89857c91e1d76ddcc689701971259418a:35)
+09-27 19:11:07.169 10046 10046 D LauncherStateManager: 	at com.android.launcher3.statemanager.StatefulActivity.onStop(go/retraceme 4b96215a9d9b4c1494121442fbf9d6e89857c91e1d76ddcc689701971259418a:31)
+09-27 19:11:07.169 10046 10046 D LauncherStateManager: StateManager.onRepeatStateSetAborted: state: Normal
+09-27 19:11:07.169 10046 10046 D KeyboardStateManager: hideKeyboard
+09-27 19:11:07.169 10046 10046 D KeyboardStateManager: isImeShown: false
+09-27 19:11:07.169 10046 10046 D StatsLog: LAUNCHER_ONSTOP
+09-27 19:11:07.179 10046 10046 D StatsLog: LAUNCHER_GOOGLE_SEARCH_RESTORE_LIST_SIZE_AFTER_ACTIVITY_RESTART
+09-27 19:11:07.227 10590 10590 I SubtypeOperator: SubtypeOperator$1.onUnbindInput():43
+09-27 19:11:07.231   678  1866 W InputChannel-JNI: Channel already disposed.
+09-27 19:11:07.238 10590 10590 I SubtypeOperator: SubtypeOperator$1.onBindInput():33
+09-27 19:11:07.239 10590 10590 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2361
+09-27 19:11:07.240 10046 10066 W System  : A resource failed to call release.
+09-27 19:11:07.240 10046 10066 W System  : A resource failed to call release.
+09-27 19:11:07.240 10046 10066 W System  : A resource failed to call release.
+09-27 19:11:07.248 10590 12437 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 0, locked = false
+09-27 19:11:07.251   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.251   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.295 10590 10590 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1532 onStartInput(EditorInfo{EditorInfo{packageName=com.example.romanza_app, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+09-27 19:11:07.311 10590 10590 W LatinIMEBase: LatinIMEBase.updateInputViewCoverNavigation():322 Null input view, cannot update padding!
+09-27 19:11:07.313 10590 10747 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatusInternal():119 repeatCheckTimes = 1, locked = false
+09-27 19:11:07.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.377   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.434   588   673 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+09-27 19:11:07.478   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.479   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.628   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.628   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.648 10360 11734 I FontLog : (REDACTED) Received query %s, URI %s
+09-27 19:11:07.648 10360 11734 I FontLog : (REDACTED) Query [%s] resolved to %s
+09-27 19:11:07.696 10360 11734 I FontLog : (REDACTED) Fetch %s end status %s
+09-27 19:11:07.733   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.767 10360 11734 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+09-27 19:11:07.779 12402 12438 I HWUI    : Using FreeType backend (prop=Auto)
+09-27 19:11:07.785   678   832 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+09-27 19:11:07.795 10360 11734 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+09-27 19:11:07.820  1039  1192 D IpClient/wlan0: interfaceLinkStateChanged: ifindex 16 up
+09-27 19:11:07.831   933   941 W System  : A resource failed to call release.
+09-27 19:11:07.831   933   941 W System  : A resource failed to call release.
+09-27 19:11:07.832   933   941 W System  : A resource failed to call release.
+09-27 19:11:07.832   933   941 W System  : A resource failed to call release.
+09-27 19:11:07.835   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:07.836  1039  1192 D IpClient/wlan0: interfaceLinkStateChanged: ifindex 16 up
+09-27 19:11:07.836  1039  1192 D IpClient/wlan0: interfaceLinkStateChanged: ifindex 16 up
+09-27 19:11:07.936   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:08.036 12402 12406 I ple.romanza_app: Compiler allocated 5239KB to compile void android.view.ViewRootImpl.performTraversals(long)
+09-27 19:11:08.225 12402 12402 I ple.romanza_app: hiddenapi: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/compose/ui/platform/AndroidComposeView$Companion; (domain=app, TargetSdkVersion=36) using reflection: allowed
+09-27 19:11:08.565 12402 12402 I Choreographer: Skipped 47 frames!  The application may be doing too much work on its main thread.
+09-27 19:11:08.859   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:08.859 12402 12434 I HWUI    : Davey! duration=1085ms; Flags=0, FrameTimelineVsyncId=21747, IntendedVsync=370269244812, Vsync=371052578114, InputEventId=0, HandleInputStart=371065063600, AnimationStart=371065144900, PerformTraversalsStart=371065173900, DrawStart=371188231400, FrameDeadline=370285911478, FrameStartTime=371063996300, FrameInterval=16666666, WorkloadTarget=16666666, AnimationTime=371052578114, SyncQueued=371198134900, SyncStart=371198186800, IssueDrawCommandsStart=371199364100, SwapBuffers=371305182700, FrameCompleted=371354460600, DequeueBufferDuration=28000, QueueBufferDuration=1802000, GpuCompleted=371354460600, SwapBuffersCompleted=371337275000, DisplayPresentTime=0, CommandSubmissionCompleted=371305182700,
+09-27 19:11:08.963   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:08.986   678  1866 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@4e421561 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+09-27 19:11:08.996 10046 10046 D RecentsView: onTaskDisplayChanged: 125, new displayId = 0
+09-27 19:11:09.003   530   555 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0x770828e287e0) with descriptor: '(not cached)'
+09-27 19:11:09.019   933   961 W DisconnectHandler: No disconnect change found in the transition, not handling request.
+09-27 19:11:09.019   678   704 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@4e421561 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+09-27 19:11:09.020 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: PAUSED
+09-27 19:11:09.020 12402 12402 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=androidx.activity.ComponentActivity@7310132
+09-27 19:11:09.029 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:09.048   588   673 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+09-27 19:11:09.057   678   695 W InputChannel-JNI: Channel already disposed.
+09-27 19:11:09.068   933  1015 I Surface : Creating surface for consumer unnamed-933-14 with slotExpansion=1 for 64 slots
+09-27 19:11:09.068   933  1015 I Surface : Creating surface for consumer VRI[test]#14(BLAST Consumer)14 with slotExpansion=1 for 64 slots
+09-27 19:11:09.105 12442 12442 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10242
+09-27 19:11:09.113   463   463 D Zygote  : Forked child process 12442
+09-27 19:11:09.132 12442 12442 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10242/pid_12442
+09-27 19:11:09.134   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.147 12442 12442 I Zygote  : Process 12442 created for com.example.romanza_app.test
+09-27 19:11:09.149 12442 12442 I omanza_app.test: Late-enabling -Xcheck:jni
+09-27 19:11:09.181 12442 12442 I omanza_app.test: Using generational CollectorTypeCMC GC.
+09-27 19:11:09.183   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.189 12442 12442 W omanza_app.test: Unexpected CPU variant for x86: x86_64.
+09-27 19:11:09.189 12442 12442 W omanza_app.test: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, pantherlake, default
+09-27 19:11:09.201 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:09.206 10046 10136 D PreloadThumbnailUseCase: Preloading thumbnails for task ids: [[id=74 windowingMode=0 user=0 lastActiveTime=27765] null, [id=124 windowingMode=1 user=0 lastActiveTime=371510] null, [id=125 windowingMode=1 user=0 lastActiveTime=371510] null]
+09-27 19:11:09.207 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:09.228   490   490 I RanchuHwc: logCompositionFallbackIfChanged: layer 71 CompositionType fallback from 3 to 1
+09-27 19:11:09.230   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.230   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.230   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.230   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.230   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.241   537   563 I adbd    : jdwp connection from 12442
+09-27 19:11:09.256   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.256   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.256   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.256   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.256   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.267   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.274   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.274   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.274   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.274   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.274   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.274   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.275 12442 12442 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+09-27 19:11:09.291   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.291   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.291   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.291   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.291   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.291   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.306   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.306   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.306   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.306   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.307   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.307   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.324   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.324   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.324   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.324   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.324   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.324   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.340   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.340   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.340   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.340   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.340   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.340   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.359   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.360   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.360   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.360   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.360   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.360   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.375   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.376   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.391   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.391   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.391   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.391   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.391   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.391   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.408   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.408   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.408   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.408   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.408   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.408   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.427   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.427   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.427   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.427   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.427   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.427   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.440   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.440 12442 12442 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+09-27 19:11:09.440   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.440   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.440   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.440   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.440   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.458   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.459   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.459   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.459   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.459   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.459   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.463 12442 12442 D nativeloader: Configuring clns-9 for other apk /system/framework/android.test.mock.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~-FlqEu_QK_-rV2NWMTZ9xA==/com.example.romanza_app.test-Y4eUVyU9VVSesW5M-sp0gQ==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.romanza_app.test
+09-27 19:11:09.467 12442 12442 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+09-27 19:11:09.473   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.474   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.474   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.474   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.474   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.474   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.483   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.491 12442 12442 D nativeloader: Configuring clns-10 for other apk /system/framework/android.test.runner.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~-FlqEu_QK_-rV2NWMTZ9xA==/com.example.romanza_app.test-Y4eUVyU9VVSesW5M-sp0gQ==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.romanza_app.test
+09-27 19:11:09.492   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.492   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.492   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.492   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.492   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.507   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.507   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.507   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.507   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.508   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.523   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.523   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.523   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.523   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.523   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.535 12442 12442 D nativeloader: Configuring clns-11 for other apk /data/app/~~-FlqEu_QK_-rV2NWMTZ9xA==/com.example.romanza_app.test-Y4eUVyU9VVSesW5M-sp0gQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~-FlqEu_QK_-rV2NWMTZ9xA==/com.example.romanza_app.test-Y4eUVyU9VVSesW5M-sp0gQ==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.romanza_app.test
+09-27 19:11:09.541   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.541   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.541   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.541   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.541   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.557   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.557   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.557   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.557   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.557   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.574   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.575   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.575   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.575   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.575   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.584   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.591   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.591   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.591   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.591   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.591   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.607   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.607   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.608   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.608   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.608 12442 12442 V GraphicsEnvironment: Currently set values for:
+09-27 19:11:09.608   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.610 12442 12442 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+09-27 19:11:09.610 12442 12442 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+09-27 19:11:09.610 12442 12442 V GraphicsEnvironment: com.example.romanza_app.test is not listed in per-application setting
+09-27 19:11:09.613 12442 12442 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+09-27 19:11:09.616 12442 12442 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+09-27 19:11:09.624   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.624   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.624   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.624   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.624   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.641   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.641   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.641   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.641   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.641   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.657   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.658   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.658   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.658   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.658   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.673   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.673   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.673   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.673   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.673   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.688   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.690   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.690   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.690   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.690   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.690   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.707   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.707   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.707   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.707   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.707   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.724   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.724   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.724   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.724   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.724   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.752 12442 12442 D CompatChangeReporter: Compat change id reported: 377864165; UID 10242; state: ENABLED
+09-27 19:11:09.753 12402 12402 D VRI[ComponentActivity]: visibilityChanged oldVisibility=true newVisibility=false
+09-27 19:11:09.773   678   910 I Surface : Creating surface for consumer unnamed-678-6 with slotExpansion=1 for 64 slots
+09-27 19:11:09.773   678   910 I Surface : Creating surface for consumer ImageReader-864x1939f1m1-678-6 with slotExpansion=1 for 64 slots
+09-27 19:11:09.773   678   910 W ImageReader_JNI: Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+09-27 19:11:09.813 12442 12455 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+09-27 19:11:09.814 12442 12455 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+09-27 19:11:09.816 12442 12455 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+09-27 19:11:09.830 12442 12442 W HWUI    : Unknown dataspace 0
+09-27 19:11:09.839 12442 12455 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+09-27 19:11:09.848 12442 12459 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+09-27 19:11:09.865   678   910 E ConsumerBase: [ImageReader-864x1939f1m1-678-6] abandonLocked: ConsumerBase is abandoned!
+09-27 19:11:09.867   678   696 W InputChannel-JNI: Channel already disposed.
+09-27 19:11:09.884   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:09.901   933   961 W DisconnectHandler: No disconnect change found in the transition, not handling request.
+09-27 19:11:09.904   530   628 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0x770828e2dc70) with descriptor: '(not cached)'
+09-27 19:11:09.909 12442 12442 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7320716
+09-27 19:11:09.911 12442 12442 D VRI[InstrumentationActivityInvoker$EmptyActivity]: WindowInsets changed: 1080x2424 statusBars:[0,142,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,174,0,84]
+09-27 19:11:09.915   530   628 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10242 pid=12442
+09-27 19:11:09.915   530   628 D libbinder.PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10242 => denied (481 us)
+09-27 19:11:09.915   530   628 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10242 pid=12442
+09-27 19:11:09.915   530   628 D libbinder.PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10242 => denied (371 us)
+09-27 19:11:09.916   530   628 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10242 pid=12442
+09-27 19:11:09.916   530   628 D libbinder.PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10242 => denied (711 us)
+09-27 19:11:09.916   530   628 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.READ_FRAME_BUFFER from uid=10242 pid=12442
+09-27 19:11:09.917   530   628 D libbinder.PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=10242 => denied (842 us)
+09-27 19:11:09.926 12442 12442 I Surface : Creating surface for consumer unnamed-12442-0 with slotExpansion=1 for 64 slots
+09-27 19:11:09.928 12442 12442 I Surface : Creating surface for consumer VRI[InstrumentationActivityInvoker$EmptyActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+09-27 19:11:10.013 10870 10870 I DialerDefaultProcessValidator: com.google.apps.tiktok.contrib.work.impl.DefaultProcessValidator.validateAsynchronouslyAndMaybeCrash:66 Validating WorkManager process
+09-27 19:11:10.016 10870 11043 I DialerDefaultProcessValidator: com.google.apps.tiktok.contrib.work.impl.DefaultProcessValidator.validateInternal:91 Processes: NONE, true, com.google.android.dialer, com.google.android.dialer
+09-27 19:11:10.030   678  1847 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10242 pid=0
+09-27 19:11:10.030   678  1847 D libbinder.PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10242 => denied (177 us)
+09-27 19:11:10.031   678  1847 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10242 pid=0
+09-27 19:11:10.031   678  1847 D libbinder.PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10242 => denied (127 us)
+09-27 19:11:10.031   678  1847 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10242 pid=0
+09-27 19:11:10.031   678  1847 D libbinder.PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10242 => denied (72 us)
+09-27 19:11:10.031   678  1847 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.READ_FRAME_BUFFER from uid=10242 pid=0
+09-27 19:11:10.031   678  1847 D libbinder.PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=10242 => denied (157 us)
+09-27 19:11:10.040 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: STOPPED
+09-27 19:11:10.040 12402 12402 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=androidx.activity.ComponentActivity@7310132
+09-27 19:11:10.052 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:10.060 10046 10046 D ViewRootImpl: Skipping stats log for color mode
+09-27 19:11:10.061 10046 10046 D BaseActivity: Launcher flags updated: [state_started] +[state_started]
+09-27 19:11:10.061 10046 10046 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_user_active] +[state_resumed|state_user_active]
+09-27 19:11:10.062 10046 10046 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_user_active] +[]
+09-27 19:11:10.062 10046 10046 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed|state_user_active] +[state_deferred_resumed]
+09-27 19:11:10.063 10046 10046 D StatsLog: LAUNCHER_ONRESUME
+09-27 19:11:10.073 10046 10046 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+09-27 19:11:10.076 10046 10142 D QuickstepModelDelegate: notifyAppTargetEvent action=1 launchLocation=workspace/0/[-1,-1]/[1,1]
+09-27 19:11:10.084 10046 10046 I Surface : Creating surface for consumer unnamed-10046-10 with slotExpansion=1 for 64 slots
+09-27 19:11:10.085 10046 10046 I Surface : Creating surface for consumer VRI[NexusLauncherActivity]#3(BLAST Consumer)3 with slotExpansion=1 for 64 slots
+09-27 19:11:10.090 10046 10046 D BaseDepthController: setSurface:
+09-27 19:11:10.090 10046 10046 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+09-27 19:11:10.090 10046 10046 D BaseDepthController: 	mBaseSurface: Surface(name=VRI-com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#412)/@0x8a3aade
+09-27 19:11:10.092 10046 10046 V BaseDepthController: Applying blur: 0 to Surface(name=VRI-com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#412)/@0x8a3aade applyImmediately: false
+09-27 19:11:10.093 10046 10046 D BaseDepthController: shouldBlurWorkspace: false targetState: Normal currentStableState: Normal mCurrentBlur: 0 mLauncher.getDepthBlurTargets(): [com.android.launcher3.Workspace{17394bf V.ED..... .......D 0,0-1080,2424 #7f0a0486 app:id/workspace}, com.android.launcher3.Hotseat{42b78c V.ED..... .......D 0,1929-1080,2424 #7f0a01f6 app:id/hotseat}]
+09-27 19:11:10.099 12402 12402 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): null
+09-27 19:11:10.099 12402 12402 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@7310132 in: DESTROYED
+09-27 19:11:10.101 12402 12402 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+09-27 19:11:10.112 10458 10690 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+09-27 19:11:10.114 10458 10690 I AiAiEcho: EchoTargets:
+09-27 19:11:10.114 10458 10690 I AiAiEcho: Filtered by AiAi flag check:
+09-27 19:11:10.114 10458 10690 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+09-27 19:11:10.117 10870 10870 D WM-Schedulers: Created SystemJobScheduler and enabled SystemJobService
+09-27 19:11:10.150 10870 11043 D WM-ForceStopRunnable: The default process name was not specified.
+09-27 19:11:10.153 12402 12417 D IdlingRegistry: Unregistering idling resources: [androidx.compose.ui.test.EspressoLink@5a0292a]
+09-27 19:11:10.153 10870 11043 D WM-ForceStopRunnable: Performing cleanup operations.
+09-27 19:11:10.159   933  1211 D WallpaperService: onVisibilityChanged(true): com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine@f3ed9ae
+09-27 19:11:10.170 12402 12402 D ViewRootImpl: Skipping stats log for color mode
+09-27 19:11:10.176 10458 10690 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+09-27 19:11:10.178 10046 10046 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+09-27 19:11:10.183   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:10.183   530   568 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+09-27 19:11:10.184 10458 10690 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+09-27 19:11:10.236 10870 10870 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=42fad103-7fdc-4288-ac17-061d4ac88a37, generation=0)
+09-27 19:11:10.242 10046 10046 D SsBaseTemplateCard: Passed-in item info is null
+09-27 19:11:10.242 10046 10046 D SsBaseTemplateCard: Passed-in item info is null
+09-27 19:11:10.242 10046 10046 D SsBaseTemplateCard: Passed-in item info is null
+09-27 19:11:10.242 10046 10046 D SsBaseTemplateCard: Passed-in item info is null
+09-27 19:11:10.242 10046 10046 I SsBaseTemplateCard: Secondary card pane is null
+09-27 19:11:10.250 10046 10136 D PreloadThumbnailUseCase: Preloading thumbnails for task ids: [[id=74 windowingMode=0 user=0 lastActiveTime=27765] null, [id=124 windowingMode=1 user=0 lastActiveTime=371510] null, [id=125 windowingMode=1 user=0 lastActiveTime=372401] null]
+09-27 19:11:10.252 12402 12417 I TestRunner: finished: joiningRequiresExplicitConsent(com.example.romanza_app.relationship.RelationshipScreenTest)

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="relationship_capacity_value">
+        <item quantity="one">%1$d integrante, incluyéndote</item>
+        <item quantity="other">%1$d integrantes, incluyéndote</item>
+    </plurals>
+    <plurals name="relationship_days">
+        <item quantity="one">%1$d día juntos</item>
+        <item quantity="other">%1$d días juntos</item>
+    </plurals>
+    <string name="app_name">Romanza</string>
+    <string name="auth_account_label">Cuenta: @%1$s</string>
+    <string name="auth_confirm">Confirmar contraseña</string>
+    <string name="auth_continue">Guardar y continuar</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_error_config">El servicio de perfiles no está disponible. Inténtalo más tarde.</string>
+    <string name="auth_error_confirmation">Las contraseñas no coinciden.</string>
+    <string name="auth_error_credentials">No pudimos acceder con esos datos. Comprueba el email, la contraseña o el método con el que creaste tu cuenta.</string>
+    <string name="auth_error_disabled">No se puede acceder a esta cuenta.</string>
+    <string name="auth_error_email">Introduce un email válido.</string>
+    <string name="auth_error_google">No se pudo iniciar sesión con Google. Comprueba que tienes una cuenta de Google disponible e inténtalo de nuevo.</string>
+    <string name="auth_error_network">No hay conexión con el servicio. Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="auth_error_password">Introduce tu contraseña. Para crear una cuenta, usa al menos 8 caracteres y cumple la política de Firebase.</string>
+    <string name="auth_error_rate">Demasiados intentos. Espera un momento antes de volver a intentarlo.</string>
+    <string name="auth_error_taken">Ese nombre ya está ocupado. Prueba otro.</string>
+    <string name="auth_error_unknown">No pudimos completar la operación. Inténtalo de nuevo.</string>
+    <string name="auth_error_username">El nombre debe empezar por una letra y tener de 3 a 20 caracteres: a–z, 0–9 o guion bajo.</string>
+    <string name="auth_forgot">¿Olvidaste tu contraseña?</string>
+    <string name="auth_google">Continuar con Google</string>
+    <string name="auth_has_account">Ya tengo cuenta</string>
+    <string name="auth_hide">Ocultar</string>
+    <string name="auth_intro">Un espacio para guardar lo que compartes.</string>
+    <string name="auth_login">Iniciar sesión</string>
+    <string name="auth_logout">Cerrar sesión</string>
+    <string name="auth_no_account">Crear una cuenta nueva</string>
+    <string name="auth_password">Contraseña</string>
+    <string name="auth_profile_error">No pudimos cargar tu perfil</string>
+    <string name="auth_register">Crear cuenta</string>
+    <string name="auth_reset_sent">Si hay una cuenta compatible con ese email, recibirás instrucciones para restablecer la contraseña.</string>
+    <string name="auth_retry">Reintentar</string>
+    <string name="auth_show">Mostrar</string>
+    <string name="auth_username">Nombre de usuario</string>
+    <string name="auth_username_help">De 3 a 20 caracteres: letras a–z, números y guion bajo. Empieza por una letra. Se guarda en minúsculas.</string>
+    <string name="auth_username_intro">Así te identificarás en Romanza. Puedes elegir un nombre distinto al de tu cuenta de Google.</string>
+    <string name="auth_username_title">Elige tu nombre de usuario</string>
+    <string name="auth_welcome">Tu historia empieza aquí</string>
+    <string name="auth_working">Un momento…</string>
+    <string name="default_web_client_id" translatable="false">1077828578739-0s7658fdievsqmc8or4217mnm63jqjc0.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1077828578739</string>
+    <string name="google_api_key" translatable="false">AIzaSyC4AKdJIU7mzNk5FTG-Zuk34NkpkSPQnks</string>
+    <string name="google_app_id" translatable="false">1:1077828578739:android:886b33895cd75be5722fc6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC4AKdJIU7mzNk5FTG-Zuk34NkpkSPQnks</string>
+    <string name="google_storage_bucket" translatable="false">romanza-app.firebasestorage.app</string>
+    <string name="project_id" translatable="false">romanza-app</string>
+    <string name="relationship_approvals">Aprobaciones: %1$d de %2$d</string>
+    <string name="relationship_approve">Aprobar eliminación</string>
+    <string name="relationship_back">Volver</string>
+    <string name="relationship_cancel">Cancelar</string>
+    <string name="relationship_capacity">Número de integrantes</string>
+    <string name="relationship_check_code">Consultar invitación</string>
+    <string name="relationship_code">Código de invitación</string>
+    <string name="relationship_confirm">Confirmar</string>
+    <string name="relationship_confirm_join">Confirmar y unirme</string>
+    <string name="relationship_copy">Copiar código</string>
+    <string name="relationship_count">Integrantes: %1$d de %2$d</string>
+    <string name="relationship_create">Crear relación</string>
+    <string name="relationship_dashboard_help">Consulta tu grupo, crea una relación o únete con un código.</string>
+    <string name="relationship_date">Fecha de inicio</string>
+    <string name="relationship_date_help">AAAA-MM-DD, desde 1900 hasta hoy.</string>
+    <string name="relationship_delete">Eliminar la relación para todos</string>
+    <string name="relationship_delete_warning">Con la aprobación de todos los integrantes actuales, el grupo se cerrará y comenzará el borrado irreversible de su nombre, fecha y foto. No hay recuperación ni exportación en esta versión. Las cuentas y los datos personales locales permanecen. Si cambia el grupo, las aprobaciones se anulan. La limpieza puede tardar si el servicio falla.</string>
+    <string name="relationship_deletion_pending">Solicitud de eliminación</string>
+    <string name="relationship_empty">Crea una relación o únete con un código.</string>
+    <string name="relationship_error_changed">La relación o la solicitud ha cambiado. Actualiza antes de continuar.</string>
+    <string name="relationship_error_code">El código no es válido, ha vencido o ya no tiene plazas.</string>
+    <string name="relationship_error_date">Introduce una fecha real desde el 1 de enero de 1900 hasta hoy, con formato AAAA-MM-DD.</string>
+    <string name="relationship_error_limit">Has realizado demasiados intentos. Espera diez minutos antes de volver a probar.</string>
+    <string name="relationship_error_member">Ya perteneces a una relación. Actualiza para consultarla.</string>
+    <string name="relationship_error_name">Escribe un nombre de entre 1 y 60 caracteres.</string>
+    <string name="relationship_error_network">No se pudo confirmar la operación. Revisa tu conexión y reintenta; los reintentos no duplican cambios.</string>
+    <string name="relationship_error_photo">No se pudo preparar la foto. Prueba con otra imagen.</string>
+    <string name="relationship_error_unavailable">El servicio de relaciones todavía no está disponible. Inténtalo más tarde.</string>
+    <string name="relationship_expires">Vence: %1$s</string>
+    <string name="relationship_full">Cupo completo</string>
+    <string name="relationship_invite_help">El código dura 24 horas. Se invalida al completar el cupo, regenerarlo o salir alguien del grupo. Si ya no lo tienes, genera uno nuevo.</string>
+    <string name="relationship_invite_title">Invitar a la relación</string>
+    <string name="relationship_join">Unirme con código</string>
+    <string name="relationship_join_notice">Al unirte, los integrantes podrán ver tu username. Comprueba que reconoces esta relación.</string>
+    <string name="relationship_last_leave_warning">Eres el último integrante. Al salir se cerrará el grupo y comenzará el borrado irreversible de su nombre, fecha y foto. Tu cuenta y tus datos personales locales permanecerán.</string>
+    <string name="relationship_leave">Salir de la relación</string>
+    <string name="relationship_leave_warning">Perderás acceso al grupo. Las otras personas conservarán la relación y su foto. Tu cuenta y tus datos personales locales permanecerán. Puedes salir sin aprobación de los demás.</string>
+    <string name="relationship_loading">Consultando tu relación…</string>
+    <string name="relationship_local_notice">Solo los datos de esta relación se comparten. Tus notas, eventos y listas siguen en este dispositivo y no se publican al vincularte.</string>
+    <string name="relationship_local_only">Solo en este dispositivo</string>
+    <string name="relationship_name">Nombre de la relación</string>
+    <string name="relationship_open">Gestionar relación compartida</string>
+    <string name="relationship_photo">Elegir foto opcional</string>
+    <string name="relationship_photo_description">Foto de la relación</string>
+    <string name="relationship_refresh">Actualizar</string>
+    <string name="relationship_reject">Rechazar o cancelar solicitud</string>
+    <string name="relationship_remove_photo">Quitar foto</string>
+    <string name="relationship_retry">Reintentar</string>
+    <string name="relationship_rotate">Generar nuevo código</string>
+    <string name="relationship_rotate_warning">El código anterior dejará de funcionar para todos. Comparte el nuevo solo con quien quieras invitar.</string>
+    <string name="relationship_saving">Guardando…</string>
+    <string name="relationship_share">Compartir código</string>
+    <string name="relationship_share_text">Únete a nuestra relación en Romanza con el código %1$s. Válido durante 24 horas desde su creación, mientras queden plazas.</string>
+    <string name="relationship_since">Fecha de inicio: %1$s</string>
+    <string name="relationship_title">Tu relación</string>
+    <string name="relationship_username">@%1$s</string>
+    <string name="relationship_waiting">Esperando integrantes</string>
+    <style name="LaunchTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">#F2F2F2</item>
+    </style>
+</resources>

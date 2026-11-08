@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.11.1" type="partial_results">
+    <map id="CredentialManagerMisuse">
+            <map id="GET_CREDENTIAL_CALLS">
+                <location id="0"
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*2}/com/example/romanza_app/auth/data/GoogleCredentials.kt"
+                    line="15"
+                    column="26"
+                    startOffset="678"
+                    endLine="16"
+                    endColumn="84"
+                    endOffset="793"/>
+            </map>
+    </map>
+    <map id="CredentialManagerSignInWithGoogle">
+            <map id="OPTION_REFS">
+                <location id="0"
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*2}/com/example/romanza_app/auth/data/GoogleCredentials.kt"
+                    line="14"
+                    column="26"
+                    startOffset="601"
+                    endLine="14"
+                    endColumn="51"
+                    endOffset="626"/>
+            </map>
+        <entry
+            name="SAW_CREATE_FROM"
+            boolean="true"/>
+    </map>
+    <map id="UnsafeIntentLaunch">
+            <map id="unprotected">
+                <entry
+                    name="com.example.romanza_app.MainActivity"
+                    boolean="true"/>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <entry
+            name="model"
+            string="drawable[google_g(U),figma_raw_2(U)],font[mozilla_headline(R)],mipmap[ic_launcher(U)],plurals[relationship_days(U),relationship_capacity_value(U)],string[app_name(U),auth_login(U),auth_register(U),auth_welcome(U),auth_intro(U),auth_email(U),auth_password(U),auth_confirm(U),auth_show(U),auth_hide(U),auth_working(U),auth_google(U),auth_forgot(U),auth_has_account(U),auth_no_account(U),auth_username_title(U),auth_username_intro(U),auth_username(U),auth_username_help(U),auth_continue(U),auth_logout(U),auth_profile_error(U),auth_retry(U),auth_reset_sent(U),auth_error_email(U),auth_error_password(U),auth_error_confirmation(U),auth_error_username(U),auth_error_taken(U),auth_error_credentials(U),auth_error_network(U),auth_error_rate(U),auth_error_disabled(U),auth_error_config(U),auth_error_google(U),auth_error_unknown(U),auth_account_label(U),relationship_back(U),relationship_dashboard_help(U),relationship_local_only(U),relationship_title(U),relationship_open(U),relationship_loading(U),relationship_retry(U),relationship_refresh(U),relationship_create(U),relationship_join(U),relationship_empty(U),relationship_name(U),relationship_date(U),relationship_date_help(U),relationship_capacity(U),relationship_photo(U),relationship_remove_photo(U),relationship_photo_description(U),relationship_local_notice(U),relationship_saving(U),relationship_cancel(U),relationship_confirm(U),relationship_code(U),relationship_check_code(U),relationship_confirm_join(U),relationship_join_notice(U),relationship_count(U),relationship_since(U),relationship_username(U),relationship_full(U),relationship_waiting(U),relationship_invite_title(U),relationship_invite_help(U),relationship_expires(U),relationship_copy(U),relationship_share(U),relationship_share_text(U),relationship_rotate(U),relationship_rotate_warning(U),relationship_deletion_pending(U),relationship_approvals(U),relationship_approve(U),relationship_reject(U),relationship_leave(U),relationship_delete(U),relationship_leave_warning(U),relationship_last_leave_warning(U),relationship_delete_warning(U),relationship_error_name(U),relationship_error_date(U),relationship_error_photo(U),relationship_error_code(U),relationship_error_member(U),relationship_error_changed(U),relationship_error_limit(U),relationship_error_unavailable(U),relationship_error_network(U),default_web_client_id(R)],style[LaunchTheme(U)],xml[data_extraction_rules(U),emulator_network_config(U)];;;;"/>
+    </map>
+
+</incidents>
