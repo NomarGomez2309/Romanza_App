@@ -1,11 +1,14 @@
 # Índice documental
 
 - [Arquitectura](architecture.md)
-- [Plan](roadmap.md)
-- [Base visual](design-system.md)
-- [Módulo de arranque](startup-ui.md)
+- [Plan y reglas de contenido](roadmap.md)
+- [Sistema visual](design-system.md)
+- [Hoy y navegación](modules/today.md)
+- [Preferencias](modules/preferences.md)
+- [Arranque](startup-ui.md)
+- [Plantilla de módulo visual](templates/module-ui.md)
 - [Validación](validation.md)
 
-Índice manual actualizado para esta base. El indexador anterior
-`tools/knowledge.py` no existe en el repositorio actual. Este índice solo enlaza
-documentación; no incorpora configuración Firebase, credenciales ni datos de usuarios.
+Índice manual reconstruido para esta entrega. tools/knowledge.py no existe en
+esta base; no se reconstruye un índice vectorial ni se indexan archivos personales,
+configuración Firebase, conversaciones, credenciales o datos de usuarios.

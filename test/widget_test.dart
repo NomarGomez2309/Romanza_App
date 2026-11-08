@@ -19,12 +19,12 @@ void main() {
       ),
     );
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    expect(find.text('Romanza'), findsNothing);
+    expect(find.text('Hoy, contigo'), findsNothing);
     await tester.pump();
     expect(calls, 1);
     initialization.complete();
     await tester.pumpAndSettle();
-    expect(find.text('Romanza'), findsOneWidget);
+    expect(find.text('Hoy, contigo'), findsOneWidget);
     expect(find.byType(CircularProgressIndicator), findsNothing);
   });
 
@@ -41,10 +41,10 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('Reintentar'), findsOneWidget);
-    expect(find.text('Romanza'), findsNothing);
+    expect(find.text('Hoy, contigo'), findsNothing);
     await tester.tap(find.text('Reintentar'));
     await tester.pumpAndSettle();
     expect(attempts, 2);
-    expect(find.text('Romanza'), findsOneWidget);
+    expect(find.text('Hoy, contigo'), findsOneWidget);
   });
 }

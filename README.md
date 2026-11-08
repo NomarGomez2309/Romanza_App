@@ -15,7 +15,7 @@ flutter test
 ```
 
 `lib/main.dart` conecta Firebase y arranca `RomanzaApp`. La pantalla inicial
-muestra progreso, error con reintento o únicamente Romanza al terminar.
+muestra progreso, error con reintento y después la pantalla Hoy con estados vacíos.
 Inicializar el SDK no verifica acceso remoto, reglas, cuentas ni sincronización.
 
 Dependencias directas: Flutter, Firebase Core, Authentication, Firestore y Google
@@ -32,6 +32,15 @@ No se han modificado servicios remotos ni desplegado reglas.
 
 El prototipo anterior está en `legacy/flutter/`, excluido del análisis y del
 arranque. Sus dependencias originales están en `pubspec.yaml.reference`.
-Los recursos de `assets/` se conservan, pero no se empaquetan mientras no se usen.
+Las fuentes Fredoka/Nunito y sus licencias se empaquetan localmente. Las imágenes históricas se conservan sin empaquetar.
 
 [Índice documental](docs/README.md).
+
+## Entrega visual
+
+Hoy, navegación a Planes/Recuerdos vacíos y Usuario con paletas Default, Forest y Neo.
+La paleta se guarda localmente con shared_preferences; no existe sincronización.
+
+Vista de desarrollo sin Firebase: flutter run -t lib/visual_preview.dart -d chrome.
+Esta entrada utiliza preferencias de sesión y no es el arranque de producción.
+Capturas verificables: flutter test --dart-define=CAPTURE_VISUALS=true (build/visual-review).

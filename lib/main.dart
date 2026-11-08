@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 
 import 'app.dart';
 import 'firebase_options.dart';
+import 'preferences/palette_repository.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(RomanzaApp(initialize: initializeFirebase));
+  runApp(
+    RomanzaApp(
+      initialize: initializeFirebase,
+      paletteRepository: LocalPaletteRepository(),
+    ),
+  );
 }
 
 Future<void> initializeFirebase() async {
