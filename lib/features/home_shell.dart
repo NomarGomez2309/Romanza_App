@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../design_system/components.dart';
 import '../design_system/romanza_theme.dart';
 import '../preferences/palette_controller.dart';
-import '../preferences/preferences_screen.dart';
+import 'settings/settings_sheet.dart';
+import 'camera/camera_screen.dart';
+import 'memories/memories_screen.dart';
 import 'today/today_screen.dart';
 
 class HomeShell extends StatefulWidget {
@@ -15,6 +17,9 @@ class HomeShell extends StatefulWidget {
 class _HomeShellState extends State<HomeShell> {
   int _selected = 0;
   void _select(int index) => setState(() => _selected = index);
+  void _camera() => Navigator.of(
+    context,
+  ).push(MaterialPageRoute<void>(builder: (_) => const InstantCameraScreen()));
   @override
   Widget build(BuildContext context) => Scaffold(
     body: SafeArea(
@@ -23,12 +28,8 @@ class _HomeShellState extends State<HomeShell> {
         index: _selected,
         children: [
           TodayScreen(
-            onProfile: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) =>
-                    PreferencesScreen(controller: widget.paletteController),
-              ),
-            ),
+            onProfile: () => openSettings(context, widget.paletteController),
+            onCamera: _camera,
             onPlans: () => _select(1),
             onMemories: () => _select(2),
           ),
@@ -39,13 +40,7 @@ class _HomeShellState extends State<HomeShell> {
             message:
                 'Todavía no hay planes. Aquí tendrán un lugar para las cosas que quieren hacer juntos.',
           ),
-          const _CollectionPage(
-            title: 'Recuerdos',
-            icon: Icons.photo_library_outlined,
-            emptyTitle: 'Lo que quieren conservar',
-            message:
-                'Todavía no hay recuerdos. Aquí podrán ver lo que cada uno guarde.\n\nTus instantáneas durarán 24 horas; las que guardes aquí permanecerán. Solo tú podrás borrar las fotos y los vídeos que publiques.',
-          ),
+          MemoriesScreen(onCamera: _camera),
         ],
       ),
     ),

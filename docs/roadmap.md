@@ -1,5 +1,18 @@
 # Plan
 
+## Entrega v2 y decisiones confirmadas
+
+Configuración, preferencias con banco Custom y cámara/borrador local implementados
+en Flutter. La publicación compartida queda bloqueada por decisión expresa del
+usuario hasta cuentas y vínculo. Recuerdos mantiene estado vacío real.
+
+Guardar conservará ambas vistas (instantánea hasta24h y Recuerdos permanente).
+Eliminar publicación propia borrará ambas entradas y su archivo con confirmación.
+Recuerdos se ordenará por publicación descendente, fecha en zona del dispositivo.
+No se implementó aún esta transacción remota, autorización ni expiración de servidor.
+
+## Plan de la base visual anterior
+
 1. Entrega visual: tema compartido, fuentes locales, Hoy vacío, navegación,
    preferencias locales y estados vacíos de Planes/Recuerdos implementados.
 2. Validar en Android e iOS reales; revisión con lector de pantalla y recursos

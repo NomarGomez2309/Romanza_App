@@ -145,9 +145,9 @@ class RomanzaColors extends ThemeExtension<RomanzaColors> {
   }
 }
 
-ThemeData romanzaTheme(RomanzaPalette palette) {
-  final c = RomanzaColors.forPalette(palette);
-  final dark = palette == RomanzaPalette.neo;
+ThemeData romanzaTheme(RomanzaPalette palette, {RomanzaColors? custom}) {
+  final c = custom ?? RomanzaColors.forPalette(palette);
+  final dark = c.background.computeLuminance() < .179;
   final scheme =
       ColorScheme.fromSeed(
         seedColor: c.primary,
@@ -174,6 +174,21 @@ ThemeData romanzaTheme(RomanzaPalette palette) {
     ),
     iconTheme: IconThemeData(color: c.ink, size: 26),
     dividerColor: c.border,
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: c.ink,
+        minimumSize: const Size(48, 48),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: c.ink,
+        minimumSize: const Size(48, 48),
+      ),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(minimumSize: const Size(48, 48)),
+    ),
     splashFactory: InkRipple.splashFactory,
     snackBarTheme: SnackBarThemeData(
       backgroundColor: c.ink,

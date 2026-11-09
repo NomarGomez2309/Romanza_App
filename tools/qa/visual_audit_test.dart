@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:romanza/app.dart';
@@ -77,16 +78,17 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.byTooltip('Añadir instantánea'));
+      await tester.ensureVisible(find.text('Te guardé esto'));
+      await tester.tap(find.text('Te guardé esto'));
       await tester.pumpAndSettle();
       final finder = find.widgetWithText(TextButton, 'Entendido');
-      final button = tester.widget<TextButton>(finder);
       final context = tester.element(finder);
-      final style = button
-          .defaultStyleOf(context)
-          .merge(button.themeStyleOf(context))
-          .merge(button.style);
-      final color = style.foregroundColor!.resolve({})!;
+      // Inspect rendered text, not ButtonStyle.merge (which preserves the
+      // receiver's non-null properties and reversed the theme precedence).
+      final paragraph = tester.renderObject<RenderParagraph>(
+        find.text('Entendido'),
+      );
+      final color = paragraph.text.style!.color!;
       final bg = RomanzaColors.of(context).background;
       final a = color.computeLuminance(), b = bg.computeLuminance();
       final ratio = a > b ? (a + .05) / (b + .05) : (b + .05) / (a + .05);

@@ -1,5 +1,19 @@
 # Sistema visual Romanza
 
+## Ampliación v2
+
+ESPECIFICACION.md v2.1 y tokens.json aportados el8noviembre2026 gobiernan los cuatro
+módulos nuevos. Grillas v2 para geometría; mockups solo color/material, sin extraer
+fotografías. Inicio conserva su estructura. Títulos nuevos Fredoka25/32; filas de
+configuración Nunito17/24, min64; cámara radio20 y controles48/74; recuerdos ratio
+175/243 distinto de0.86 de inicio. Panel vidrio radio24, blur18/tinte80% y fallback
+opaco de accesibilidad. Custom añade opciones al banco y reutiliza RomanzaColors;
+roles de texto derivados verificados por contraste, no cambia bases fijas.
+TextButton usa tinta del tema para corregir contraste insuficiente. Localización
+del framework en español. Módulos v2 documentan estados y límites actuales.
+
+## Especificación y estado de la entrega inicial
+
 Fuente: Romanza_Diseno_Recursos_Medidas_v1.docx y grillas Pixel 9/iPhone 14,
 aportados por el usuario. Dirección cálida, suave y juvenil; sin neobrutalismo.
 Este documento distingue la especificación de la entrega y sus límites.

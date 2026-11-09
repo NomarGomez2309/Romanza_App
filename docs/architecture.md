@@ -1,5 +1,19 @@
 # Arquitectura
 
+## Actualización v2 — 8 noviembre 2026
+
+Flutter confirmado por el usuario frente a instrucciones históricas que indicaban
+Kotlin. Sin migración. Configuración → Preferencias/Idioma y destinos pendientes;
+Cámara → CaptureController → DraftRepository → archivos privados de soporte.
+Preferencias v2 usa PreferencesStore, con documento JSON local para banco, selección
+e idioma; lee la base v1 al migrar. No hay I/O de servicios en build.
+La cámara y galería usan plugins oficiales, solo al entrar en su flujo. Un borrador
+activo recuperable, sin publicación ni recuerdos locales presentados como compartidos.
+Los estados anteriores descritos abajo corresponden a la entrega visual inicial;
+los contratos actuales están en los cuatro documentos de módulo v2.
+
+## Base de la entrega visual inicial
+
 Producto activo: Flutter y Dart. Android es el host Flutter; el prototipo
 anterior permanece en legacy/flutter, fuera del análisis y del arranque.
 

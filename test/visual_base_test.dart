@@ -118,10 +118,12 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Usuario y preferencias'));
       await tester.pumpAndSettle();
+      await tester.tap(find.text('Preferencias'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Forest'));
       await tester.pumpAndSettle();
       expect(repository.value, RomanzaPalette.forest);
-      await tester.pageBack();
+      await tester.tap(find.byType(BackButton));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Planes').last);
       await tester.pumpAndSettle();
@@ -166,8 +168,10 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Usuario y preferencias'));
     await tester.pumpAndSettle();
+    await tester.tap(find.text('Preferencias'));
+    await tester.pumpAndSettle();
     await capture(tester, key, 'Preferencias');
-    await tester.pageBack();
+    await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Recuerdos').last);
     await tester.pumpAndSettle();

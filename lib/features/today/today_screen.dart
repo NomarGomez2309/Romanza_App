@@ -8,8 +8,10 @@ class TodayScreen extends StatelessWidget {
     required this.onProfile,
     required this.onPlans,
     required this.onMemories,
+    this.onCamera,
   });
   final VoidCallback onProfile, onPlans, onMemories;
+  final VoidCallback? onCamera;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class TodayScreen extends StatelessWidget {
             style: RomanzaType.days.copyWith(color: c.secondary),
           ),
           const SizedBox(height: 16),
-          const InstantMomentsSection(),
+          InstantMomentsSection(onCamera: onCamera),
           const SizedBox(height: 14),
           RomanzaPreviewCard(
             title: 'Te guardé esto',
@@ -164,7 +166,8 @@ class CoupleHeader extends StatelessWidget {
 }
 
 class InstantMomentsSection extends StatelessWidget {
-  const InstantMomentsSection({super.key});
+  const InstantMomentsSection({super.key, this.onCamera});
+  final VoidCallback? onCamera;
   @override
   Widget build(BuildContext context) {
     final c = RomanzaColors.of(context);
@@ -191,7 +194,7 @@ class InstantMomentsSection extends StatelessWidget {
                 button: true,
                 label: 'Añadir instantánea',
                 child: InkWell(
-                  onTap: explain,
+                  onTap: onCamera ?? explain,
                   borderRadius: BorderRadius.circular(14),
                   child: SizedBox(
                     width: 52,
@@ -236,7 +239,7 @@ class InstantMomentsSection extends StatelessWidget {
                     height: height,
                     color: c.note,
                     icon: Icons.add_a_photo_outlined,
-                    onTap: explain,
+                    onTap: onCamera ?? explain,
                   ),
                 ),
                 const SizedBox(width: 8),

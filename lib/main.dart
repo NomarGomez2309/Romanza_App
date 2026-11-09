@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'app.dart';
 import 'firebase_options.dart';
 import 'preferences/palette_repository.dart';
+import 'preferences/preferences_store.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,7 @@ void main() {
     RomanzaApp(
       initialize: initializeFirebase,
       paletteRepository: LocalPaletteRepository(),
+      preferencesStore: LocalPreferencesStore(),
     ),
   );
 }

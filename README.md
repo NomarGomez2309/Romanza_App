@@ -2,6 +2,12 @@
 
 Base activa en Flutter y Dart. Android usa el host Flutter de `android/`.
 
+Continuidad en Flutter confirmada por el usuario para esta entrega, sin migración.
+Módulos v2: configuración inferior, preferencias con banco de paletas e idioma,
+cámara/galería/revisión y un borrador privado recuperable. Publicación y recuerdos
+compartidos permanecen bloqueados hasta cuentas y vínculo. No hay sincronización.
+Ver [validación v2](docs/qa/modules-v2-2026-11-08.md) y contratos de módulo.
+
 ## Ejecutar
 
 Requiere Flutter (validación con 3.41.9 y Dart 3.11.5) y Android SDK/JDK 17.

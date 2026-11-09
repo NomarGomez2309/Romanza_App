@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'preferences/preferences_store.dart';
 import 'design_system/components.dart';
 import 'design_system/romanza_theme.dart';
 import 'features/home_shell.dart';
@@ -10,9 +12,11 @@ class RomanzaApp extends StatefulWidget {
     super.key,
     required this.initialize,
     this.paletteRepository,
+    this.preferencesStore,
   });
   final Future<void> Function() initialize;
   final PaletteRepository? paletteRepository;
+  final PreferencesStore? preferencesStore;
   @override
   State<RomanzaApp> createState() => _RomanzaAppState();
 }
@@ -25,6 +29,7 @@ class _RomanzaAppState extends State<RomanzaApp> {
     super.initState();
     _palette = PaletteController(
       widget.paletteRepository ?? MemoryPaletteRepository(),
+      store: widget.preferencesStore,
     );
     _initialization = _start();
   }
@@ -48,7 +53,10 @@ class _RomanzaAppState extends State<RomanzaApp> {
     builder: (context, _) => MaterialApp(
       title: 'Romanza',
       debugShowCheckedModeBanner: false,
-      theme: romanzaTheme(_palette.palette),
+      theme: romanzaTheme(_palette.palette, custom: _palette.custom?.theme),
+      locale: _palette.systemLanguage ? null : const Locale('es'),
+      supportedLocales: const [Locale('es')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       home: FutureBuilder<void>(
         future: _initialization,
         builder: (context, snapshot) {
