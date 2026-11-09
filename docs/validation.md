@@ -26,7 +26,7 @@ texto derivados: #111A08 sobre primario y #4D5E26 para texto secundario.
 
 ## Límites
 
-No había un dispositivo Android conectado. No se ha probado Firebase real,
+En la entrega inicial no había un dispositivo Android conectado. La auditoría posterior del Pixel 9 está enlazada al final. No se ha probado Firebase real,
 persistencia nativa tras cierre del proceso, TalkBack/VoiceOver, iOS ni macOS.
 El texto al 200% produce varias líneas en pantallas estrechas; se mantiene legible
 sin desbordamiento y permite desplazamiento. Las capturas son del renderizador
@@ -37,3 +37,9 @@ la vista visual_preview omite Firebase expresamente y no persiste la paleta.
 Los Podfile.lock de Apple requieren regeneración con CocoaPods en macOS.
 Lint mantiene una advertencia anterior de drawable-v21 redundante; no hay errores.
 Las reglas de 24 horas y autoría están documentadas, sin implementación remota.
+
+## Auditoría posterior en Pixel 9
+
+El 8 de noviembre se validaron las pantallas en un Pixel 9 físico, incluido el guardado de paleta tras cerrar el proceso. Se registraron cuatro incidencias pendientes: contraste de Entendido, objetivo táctil de Hoy, etiquetas de navegación con texto grande y localización de accesibilidad. Las 16 pruebas anteriores pasan; el ensayo adicional reproduce dos fallos de contraste.
+
+[Informe y pasos de reproducción](qa/visual-audit-2026-11-08.md).
