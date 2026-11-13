@@ -1,5 +1,13 @@
 # Sistema visual Romanza
 
+## Cámara v4 — 10 noviembre 2026
+
+La grilla cámara1:1 y sus SVG sustituyen la sección cámara v2: visor y foto cuadrados,
+radio20, flash superior derecho, X superior izquierda, disparador centrado y giro
+a la derecha; sin galería. Confirmación comparte geometría y muestra texto opcional
+y Repetir/Publicar. Iconos de trazos de los SVG, coloreados con RomanzaColors.
+Ver contrato [cámara v4](modules/camera-v4.md). Los otros módulos no cambian.
+
 ## Ampliación v2
 
 ESPECIFICACION.md v2.1 y tokens.json aportados el8noviembre2026 gobiernan los cuatro

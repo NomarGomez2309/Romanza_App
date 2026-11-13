@@ -4,9 +4,13 @@ Base activa en Flutter y Dart. Android usa el host Flutter de `android/`.
 
 Continuidad en Flutter confirmada por el usuario para esta entrega, sin migración.
 Módulos v2: configuración inferior, preferencias con banco de paletas e idioma,
-cámara/galería/revisión y un borrador privado recuperable. Publicación y recuerdos
+cámara/revisión y un borrador privado recuperable. Publicación y recuerdos
 compartidos permanecen bloqueados hasta cuentas y vínculo. No hay sincronización.
 Ver [validación v2](docs/qa/modules-v2-2026-11-08.md) y contratos de módulo.
+
+Cámara v4 (10 noviembre): captura1:1 sin galería, confirmación con el mismo archivo
+cuadrado, flash trasero de captura y frontal de pantalla en Android.
+[Diseño y límites](docs/modules/camera-v4.md) · [Resultados de pruebas](docs/qa/camera-v4-2026-11-10.md).
 
 ## Ejecutar
 

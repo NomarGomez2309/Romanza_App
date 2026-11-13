@@ -1,5 +1,13 @@
 # Arquitectura
 
+## Cámara v4 — 10 noviembre
+
+Se reemplaza ImagePicker por captura directa. CameraComposition comparte layout;
+CaptureController prepara EXIF/recorte/espejo mediante image en isolate y guarda
+el archivo final en DraftRepository. CameraFlash usa un puente Android mínimo
+para consultar flash físico y ajustar/restaurar brillo solo de la ventana. Kotlin
+no sustituye la UI Flutter. Ver módulos/camera-v4.md para estados y límites.
+
 ## Actualización v2 — 8 noviembre 2026
 
 Flutter confirmado por el usuario frente a instrucciones históricas que indicaban

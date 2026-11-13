@@ -4,8 +4,6 @@
 <dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Romanza usa la cámara para preparar tus fotos.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Elige una foto para preparar tu borrador en Romanza.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

@@ -247,9 +247,9 @@ void main() {
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
     expect(find.textContaining('No pudimos completar'), findsOneWidget);
-    expect(find.text('Galería'), findsOneWidget);
+    expect(find.text('Galería'), findsNothing);
     expect(find.text('Volver'), findsOneWidget);
-    expect(find.byTooltip('Abrir galería'), findsOneWidget);
+    expect(find.byTooltip('Abrir galería'), findsNothing);
     expect(find.byTooltip('Girar cámara'), findsOneWidget);
     final semantics = tester.ensureSemantics();
     await expectLater(tester, meetsGuideline(androidTapTargetGuideline));

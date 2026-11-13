@@ -1,5 +1,10 @@
 # Validación de la entrega visual
 
+## Cierres posteriores
+
+[Cierre v2](qa/modules-v2-2026-11-08.md) y [cámara1:1/flash v4](qa/camera-v4-2026-11-10.md)
+recogen resultados posteriores. La descripción que sigue corresponde a la base inicial.
+
 ## Comprobado
 
 - Flutter 3.41.9 / Dart 3.11.5 en Windows.

@@ -7,6 +7,8 @@
 - [Preferencias](modules/preferences.md)
 - [Configuración v2](modules/settings.md)
 - [Cámara y borrador local v2](modules/camera.md)
+- [Cámara 1:1 v4 — diseño vigente](modules/camera-v4.md)
+- [Pruebas de cámara y flash v4](qa/camera-v4-2026-11-10.md)
 - [Recuerdos v2 y límites de publicación](modules/memories.md)
 - [Validación de módulos v2](qa/modules-v2-2026-11-08.md)
 - [Arranque](startup-ui.md)
