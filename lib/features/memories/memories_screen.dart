@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
 import '../../design_system/components.dart';
 import '../../design_system/romanza_theme.dart';
@@ -14,7 +15,7 @@ class MemoriesScreen extends StatelessWidget {
         const SizedBox(height: 16),
         Text('Recuerdos', style: RomanzaType.section),
         RomanzaEmptyState(
-          icon: Icons.photo_library_outlined,
+          icon: RomanzaSymbol.romanzaRecuerdos,
           title: 'Lo que quieren conservar',
           message:
               'Todavía no hay recuerdos compartidos. Puedes preparar una foto como borrador en este dispositivo.',
@@ -61,7 +62,7 @@ class MemoryPhotoCard extends StatelessWidget {
                     image: photo,
                     fit: BoxFit.cover,
                     errorBuilder: (_, _, _) =>
-                        const Center(child: Icon(Icons.broken_image_outlined)),
+                        const Center(child: RomanzaIcon(RomanzaSymbol.images)),
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,

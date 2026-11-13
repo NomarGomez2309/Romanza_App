@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'romanza_theme.dart';
@@ -26,7 +27,7 @@ class RomanzaEmptyState extends StatelessWidget {
     required this.message,
     this.action,
   });
-  final IconData icon;
+  final RomanzaSymbol icon;
   final String title, message;
   final Widget? action;
   @override
@@ -45,7 +46,7 @@ class RomanzaEmptyState extends StatelessWidget {
                 color: c.note,
                 borderRadius: BorderRadius.circular(28),
               ),
-              child: Icon(icon, size: 36),
+              child: RomanzaIcon(icon, size: 36),
             ),
           ),
           const SizedBox(height: 24),
@@ -102,7 +103,7 @@ enum BadgeShape { clover, hexagon }
 
 class RomanzaBadge extends StatelessWidget {
   const RomanzaBadge({super.key, required this.icon, required this.shape});
-  final IconData icon;
+  final RomanzaSymbol icon;
   final BadgeShape shape;
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,7 @@ class RomanzaBadge extends StatelessWidget {
         height: 44,
         child: CustomPaint(
           painter: _BadgePainter(c.background, shape),
-          child: Icon(icon, size: 26, color: c.ink),
+          child: RomanzaIcon(icon, size: 26, color: c.ink),
         ),
       ),
     );
@@ -233,7 +234,7 @@ class RomanzaPreviewCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   const ExcludeSemantics(
-                    child: Icon(Icons.arrow_forward_rounded, size: 18),
+                    child: RomanzaIcon(RomanzaSymbol.arrowLeft, forward: true),
                   ),
                 ],
               ),

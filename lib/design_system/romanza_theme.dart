@@ -1,3 +1,4 @@
+import 'romanza_icon.dart';
 import 'package:flutter/material.dart';
 
 enum RomanzaPalette { defaultPalette, forest, neo }
@@ -54,6 +55,7 @@ abstract final class RomanzaType {
   static const navigation = TextStyle(
     fontFamily: 'Nunito',
     fontSize: 14,
+    letterSpacing: 0,
     height: 18 / 14,
   );
 }
@@ -76,6 +78,15 @@ class RomanzaColors extends ThemeExtension<RomanzaColors> {
 
   final Color background, ink, secondary, primary, deep, accent, onPrimary;
   final Color note, plan, memory, border;
+  Color get onAccent {
+    final light = accent.computeLuminance();
+    final dark = ink.computeLuminance();
+    final contrast = (light > dark
+        ? (light + .05) / (dark + .05)
+        : (dark + .05) / (light + .05));
+    if (contrast >= 4.5) return ink;
+    return light > .179 ? Colors.black : Colors.white;
+  }
 
   static RomanzaColors of(BuildContext context) =>
       Theme.of(context).extension<RomanzaColors>()!;
@@ -163,6 +174,11 @@ ThemeData romanzaTheme(RomanzaPalette palette, {RomanzaColors? custom}) {
         surfaceTint: Colors.transparent,
       );
   return ThemeData(
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (_) => const RomanzaIcon(RomanzaSymbol.arrowLeft),
+      closeButtonIconBuilder: (_) =>
+          const RomanzaIcon(RomanzaSymbol.x, size: 22),
+    ),
     useMaterial3: true,
     colorScheme: scheme,
     scaffoldBackgroundColor: c.background,

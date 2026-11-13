@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../design_system/romanza_theme.dart';
@@ -13,6 +14,7 @@ Future<void> openSettings(
     isScrollControlled: true,
     useSafeArea: true,
     backgroundColor: Colors.transparent,
+    barrierColor: Colors.black.withValues(alpha: .24),
     showDragHandle: false,
     sheetAnimationStyle: MediaQuery.disableAnimationsOf(context)
         ? AnimationStyle.noAnimation
@@ -31,13 +33,13 @@ Future<void> openSettings(
 
 class SettingsSheet extends StatelessWidget {
   const SettingsSheet({super.key});
-  static const entries = <String, IconData>{
-    'Cuenta': Icons.person_outline,
-    'Preferencias': Icons.tune,
-    'Administración de pareja': Icons.link,
-    'Idioma': Icons.language,
-    'Términos y condiciones': Icons.description_outlined,
-    'Cerrar sesión': Icons.logout,
+  static const entries = <String, RomanzaSymbol>{
+    'Cuenta': RomanzaSymbol.userRound,
+    'Preferencias': RomanzaSymbol.slidersHorizontal,
+    'Administración de pareja': RomanzaSymbol.link,
+    'Idioma': RomanzaSymbol.globe,
+    'Términos y condiciones': RomanzaSymbol.fileText,
+    'Cerrar sesión': RomanzaSymbol.logOut,
   };
   @override
   Widget build(BuildContext context) {
@@ -49,13 +51,32 @@ class SettingsSheet extends StatelessWidget {
       borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: opaque ? 0 : 18,
-          sigmaY: opaque ? 0 : 18,
+          sigmaX: opaque ? 0 : 32,
+          sigmaY: opaque ? 0 : 32,
         ),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: c.note.withValues(alpha: opaque ? 1 : .80),
-            border: Border.all(color: Colors.white.withValues(alpha: .22)),
+            color: opaque ? c.note : null,
+            gradient: opaque
+                ? null
+                : LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color.lerp(
+                        c.note,
+                        Colors.white,
+                        .10,
+                      )!.withValues(alpha: .76),
+                      c.note.withValues(alpha: .58),
+                      c.note.withValues(alpha: .72),
+                    ],
+                    stops: const [0, .48, 1],
+                  ),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: opaque ? .22 : .46),
+            ),
           ),
           child: SafeArea(
             top: false,
@@ -78,7 +99,7 @@ class SettingsSheet extends StatelessWidget {
                         IconButton(
                           tooltip: 'Cerrar configuración',
                           onPressed: () => Navigator.pop(context),
-                          icon: const Icon(Icons.close),
+                          icon: const RomanzaIcon(RomanzaSymbol.x, size: 22),
                         ),
                       ],
                     ),
@@ -94,7 +115,11 @@ class SettingsSheet extends StatelessWidget {
                           horizontal: 24,
                         ),
                         minLeadingWidth: 30,
-                        leading: Icon(entry.value, size: 24, color: c.ink),
+                        leading: RomanzaIcon(
+                          entry.value,
+                          size: 24,
+                          color: c.ink,
+                        ),
                         title: Text(
                           entry.key,
                           style: RomanzaType.body.copyWith(
@@ -142,7 +167,7 @@ class SettingsDetail extends StatelessWidget {
                 ListTile(
                   title: Text(entry.value),
                   trailing: controller.systemLanguage == entry.key
-                      ? const Icon(Icons.check)
+                      ? const RomanzaIcon(RomanzaSymbol.check)
                       : null,
                   selected: controller.systemLanguage == entry.key,
                   onTap: controller.saving
@@ -161,7 +186,10 @@ class SettingsDetail extends StatelessWidget {
               ])
                 ListTile(
                   title: Text(label),
-                  trailing: const Icon(Icons.chevron_right),
+                  trailing: const RomanzaIcon(
+                    RomanzaSymbol.arrowLeft,
+                    forward: true,
+                  ),
                   onTap: () => showDialog<void>(
                     context: context,
                     builder: (context) => AlertDialog(
@@ -178,6 +206,17 @@ class SettingsDetail extends StatelessWidget {
                     ),
                   ),
                 ),
+              ListTile(
+                title: const Text('Licencias de terceros'),
+                trailing: const RomanzaIcon(
+                  RomanzaSymbol.arrowLeft,
+                  forward: true,
+                ),
+                onTap: () => showLicensePage(
+                  context: context,
+                  applicationName: 'Romanza',
+                ),
+              ),
             ] else
               Text(switch (title) {
                 'Cuenta' =>

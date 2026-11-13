@@ -26,3 +26,6 @@ No son flujos de autenticación ni administración de pareja implementados.
 Sin certificación de lector de pantalla. El sistema no expone una señal Flutter
 universal de reducción de transparencia; alto contraste y navegación accesible
 activan el fallback sólido.
+
+## Ajuste de vidrio — 12/11/2026
+Desenfoque 32 (antes 18), degradado de superficie con opacidades 76/58/72 %, borde blanco al 46 % y sombreado exterior al 24 %. Se conserva la geometría, las seis acciones y el fallback opaco de accesibilidad. Validación: 14 pruebas de módulos aprobadas, flutter analyze sin incidencias e instalación/revisión visual en Pixel 9. Evidencias locales: build/glass-*.log y build/visual-audit/glass-settings*.png.

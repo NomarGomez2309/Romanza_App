@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
 import '../design_system/components.dart';
 import '../design_system/romanza_theme.dart';
@@ -35,7 +36,7 @@ class _HomeShellState extends State<HomeShell> {
           ),
           const _CollectionPage(
             title: 'Planes',
-            icon: Icons.calendar_today_outlined,
+            icon: RomanzaSymbol.calendarDays,
             emptyTitle: 'Algo bonito por hacer',
             message:
                 'Todavía no hay planes. Aquí tendrán un lugar para las cosas que quieren hacer juntos.',
@@ -59,7 +60,7 @@ class _CollectionPage extends StatelessWidget {
     required this.message,
   });
   final String title, emptyTitle, message;
-  final IconData icon;
+  final RomanzaSymbol icon;
   @override
   Widget build(BuildContext context) => RomanzaPage(
     child: Column(
@@ -84,14 +85,15 @@ class RomanzaNavigation extends StatelessWidget {
   });
   final int selected;
   final ValueChanged<int> onSelect;
+
   @override
   Widget build(BuildContext context) {
     final c = RomanzaColors.of(context);
     const labels = ['Hoy', 'Planes', 'Recuerdos'];
     const icons = [
-      Icons.home_outlined,
-      Icons.calendar_today_outlined,
-      Icons.photo_library_outlined,
+      RomanzaSymbol.romanzaHoy,
+      RomanzaSymbol.calendarDays,
+      RomanzaSymbol.romanzaRecuerdos,
     ];
     return Material(
       color: c.background,
@@ -105,54 +107,90 @@ class RomanzaNavigation extends StatelessWidget {
               minHeight: 72,
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (var i = 0; i < labels.length; i++)
-                    Expanded(
-                      child: Semantics(
-                        selected: selected == i,
-                        button: true,
-                        label: labels[i],
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          child: Align(
+              padding: EdgeInsets.symmetric(
+                horizontal:
+                    MediaQuery.sizeOf(context).width < 360 &&
+                        MediaQuery.textScalerOf(context).scale(14) > 21
+                    ? 8
+                    : 16,
+                vertical: 8,
+              ),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final textWidths = labels.map((label) {
+                    final painter = TextPainter(
+                      text: TextSpan(
+                        text: label,
+                        style: DefaultTextStyle.of(
+                          context,
+                        ).style.merge(RomanzaType.navigation),
+                      ),
+                      textDirection: Directionality.of(context),
+                      textScaler: MediaQuery.textScalerOf(context),
+                    )..layout();
+                    final width = painter.width.ceilToDouble();
+                    painter.dispose();
+                    return width;
+                  }).toList();
+                  final available = constraints.maxWidth;
+                  final equal = available / 3;
+                  var padding = 16.0;
+                  List<double> needed() => textWidths
+                      .map((w) => (w + padding).clamp(80.0, available))
+                      .toList();
+                  var widths = needed();
+                  if (widths.fold<double>(0, (a, b) => a + b) > available) {
+                    padding = 0;
+                    widths = needed();
+                  }
+                  final total = widths.fold<double>(0, (a, b) => a + b);
+                  final slots = widths.every((w) => w <= equal)
+                      ? List<double>.filled(3, equal)
+                      : total <= available
+                      ? widths.map((w) => w + (available - total) / 3).toList()
+                      : List<double>.filled(3, equal);
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (var i = 0; i < 3; i++)
+                        SizedBox(
+                          width: slots[i],
+                          child: Center(
                             heightFactor: 1,
-                            child: SizedBox(
-                              width:
-                                  MediaQuery.textScalerOf(context).scale(14) <=
-                                      14
-                                  ? 80
-                                  : null,
+                            child: Semantics(
+                              selected: selected == i,
+                              button: true,
+                              label: labels[i],
                               child: InkWell(
                                 onTap: () => onSelect(i),
-                                borderRadius: BorderRadius.circular(27),
+                                borderRadius: BorderRadius.circular(28),
                                 child: ExcludeSemantics(
                                   child: AnimatedContainer(
+                                    key: ValueKey('nav-pill-$i'),
                                     duration:
                                         MediaQuery.disableAnimationsOf(context)
                                         ? Duration.zero
-                                        : const Duration(milliseconds: 180),
+                                        : const Duration(milliseconds: 160),
+                                    width: widths[i].clamp(0.0, slots[i]),
                                     constraints: const BoxConstraints(
                                       minHeight: 56,
                                     ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 4,
-                                      vertical: 5,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: padding / 2,
+                                      vertical: 6,
                                     ),
                                     decoration: BoxDecoration(
                                       color: selected == i
                                           ? c.primary
                                           : Colors.transparent,
-                                      borderRadius: BorderRadius.circular(27),
+                                      borderRadius: BorderRadius.circular(28),
                                     ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(
+                                        RomanzaIcon(
                                           icons[i],
-                                          size: 26,
+                                          size: 24,
                                           color: selected == i
                                               ? c.onPrimary
                                               : c.ink,
@@ -176,9 +214,9 @@ class RomanzaNavigation extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                ],
+                    ],
+                  );
+                },
               ),
             ),
           ),

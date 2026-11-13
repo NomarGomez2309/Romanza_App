@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../design_system/components.dart';
@@ -109,6 +110,16 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                   children: [
                     for (final palette in RomanzaPalette.values)
                       ChoiceChip(
+                        showCheckmark: false,
+                        avatar:
+                            controller.custom == null &&
+                                controller.palette == palette
+                            ? RomanzaIcon(
+                                RomanzaSymbol.check,
+                                size: 24,
+                                color: RomanzaColors.of(context).onPrimary,
+                              )
+                            : null,
                         label: Text(palette.label),
                         shape: const StadiumBorder(),
                         selectedColor: RomanzaColors.of(context).primary,
@@ -345,7 +356,7 @@ class PaletteSample extends StatelessWidget {
                       color: RomanzaColors.of(context).background,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.check, size: 20),
+                    child: const RomanzaIcon(RomanzaSymbol.check, size: 20),
                   ),
                 ),
             ],

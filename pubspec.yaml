@@ -19,6 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   image: ^4.12.0
+  flutter_svg: ^2.3.4
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +29,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/icons/lucide/
+    - assets/icons/romanza/
+    - assets/icons/LICENSE-LUCIDE.txt
     - assets/fonts/Fredoka-OFL.txt
     - assets/fonts/Nunito-OFL.txt
   fonts:

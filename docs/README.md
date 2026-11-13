@@ -19,3 +19,6 @@
 Índice manual reconstruido para esta entrega. tools/knowledge.py no existe en
 esta base; no se reconstruye un índice vectorial ni se indexan archivos personales,
 configuración Firebase, conversaciones, credenciales o datos de usuarios.
+
+- [Iconografía v2.3 y navegación adaptable](modules/iconography.md)
+- [Validación de iconografía en Pixel 9](qa/iconography-2026-11-12.md)

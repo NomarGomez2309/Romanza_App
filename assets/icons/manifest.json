@@ -1,0 +1,132 @@
+{
+  "status": "Incorporado a documentacion v2.3; integrado en prototipo web; implementacion Flutter pendiente",
+  "source": "https://github.com/lucide-icons/lucide",
+  "baseGrid": 24,
+  "strokeWidth": 2,
+  "linecap": "round",
+  "linejoin": "round",
+  "lucide": [
+    {
+      "file": "house.svg",
+      "use": "Hoy"
+    },
+    {
+      "file": "calendar-days.svg",
+      "use": "Planes"
+    },
+    {
+      "file": "images.svg",
+      "use": "Recuerdos"
+    },
+    {
+      "file": "heart.svg",
+      "use": "Pareja"
+    },
+    {
+      "file": "mail.svg",
+      "use": "Notas"
+    },
+    {
+      "file": "link.svg",
+      "use": "Invitación"
+    },
+    {
+      "file": "camera.svg",
+      "use": "Cámara"
+    },
+    {
+      "file": "switch-camera.svg",
+      "use": "Girar cámara"
+    },
+    {
+      "file": "zap.svg",
+      "use": "Flash activo"
+    },
+    {
+      "file": "zap-off.svg",
+      "use": "Flash apagado"
+    },
+    {
+      "file": "rotate-ccw.svg",
+      "use": "Repetir"
+    },
+    {
+      "file": "send.svg",
+      "use": "Publicar"
+    },
+    {
+      "file": "user-round.svg",
+      "use": "Cuenta"
+    },
+    {
+      "file": "sliders-horizontal.svg",
+      "use": "Preferencias"
+    },
+    {
+      "file": "palette.svg",
+      "use": "Paletas"
+    },
+    {
+      "file": "globe.svg",
+      "use": "Idioma"
+    },
+    {
+      "file": "file-text.svg",
+      "use": "Términos"
+    },
+    {
+      "file": "log-out.svg",
+      "use": "Cerrar sesión"
+    },
+    {
+      "file": "plus.svg",
+      "use": "Añadir"
+    },
+    {
+      "file": "x.svg",
+      "use": "Cerrar"
+    },
+    {
+      "file": "arrow-left.svg",
+      "use": "Volver"
+    },
+    {
+      "file": "check.svg",
+      "use": "Confirmar"
+    },
+    {
+      "file": "trash.svg",
+      "use": "Eliminar"
+    },
+    {
+      "file": "refresh-cw.svg",
+      "use": "Reintentar"
+    }
+  ],
+  "custom": [
+    {
+      "file": "romanza-hoy.svg",
+      "use": "Hoy compartido",
+      "reference": "house",
+      "status": "Custom adaptation or redrawing; not official Lucide"
+    },
+    {
+      "file": "romanza-nota.svg",
+      "use": "Nota para ti",
+      "reference": "mail",
+      "status": "Custom adaptation or redrawing; not official Lucide"
+    },
+    {
+      "file": "romanza-recuerdos.svg",
+      "use": "Libro compartido",
+      "reference": "images",
+      "status": "Custom adaptation or redrawing; not official Lucide"
+    },
+    {
+      "file": "romanza-vinculo.svg",
+      "use": "Nuestro vínculo",
+      "reference": "link",
+      "status": "Custom adaptation or redrawing; not official Lucide"
+    }
+  ]
+}

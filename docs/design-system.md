@@ -57,3 +57,6 @@ Iconos Material delineados y formas vectoriales propias como base; ilustraciones
 finales pendientes. Fuentes y licencias se empaquetan, sin descarga en ejecución.
 Decoraciones excluidas de semántica y gestos. Estados compartidos para carga,
 error, vacío y avisos. Foco visible, controles táctiles de al menos 48.
+
+## Iconografía vigente v2.3
+La iconografía v2.3 sustituye los glifos anteriores, incluidos los de cámara v4; mantiene su composición y disparador. Ver [especificación de integración](modules/iconography.md) para tamaños, roles y navegación adaptable.

@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'preferences/preferences_store.dart';
@@ -27,6 +28,7 @@ class _RomanzaAppState extends State<RomanzaApp> {
   @override
   void initState() {
     super.initState();
+    registerRomanzaIconLicenses();
     _palette = PaletteController(
       widget.paletteRepository ?? MemoryPaletteRepository(),
       store: widget.preferencesStore,
@@ -76,7 +78,7 @@ class _RomanzaAppState extends State<RomanzaApp> {
               body: SafeArea(
                 child: RomanzaPage(
                   child: RomanzaEmptyState(
-                    icon: Icons.cloud_off_outlined,
+                    icon: RomanzaSymbol.refreshCw,
                     title: 'No pudimos empezar',
                     message:
                         'No se pudo iniciar Romanza. Vuelve a intentarlo en un momento.',

@@ -1,3 +1,4 @@
+import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
 import '../../design_system/components.dart';
 import '../../design_system/romanza_theme.dart';
@@ -37,7 +38,7 @@ class TodayScreen extends StatelessWidget {
             title: 'Te guardé esto',
             subtitle: 'Un espacio para tus palabras',
             leading: const RomanzaBadge(
-              icon: Icons.mail_outline_rounded,
+              icon: RomanzaSymbol.romanzaNota,
               shape: BadgeShape.clover,
             ),
             color: c.note,
@@ -53,7 +54,7 @@ class TodayScreen extends StatelessWidget {
             title: 'Nuestro próximo plan',
             subtitle: 'Algo bonito por hacer',
             leading: const RomanzaBadge(
-              icon: Icons.calendar_today_outlined,
+              icon: RomanzaSymbol.calendarDays,
               shape: BadgeShape.hexagon,
             ),
             color: c.plan,
@@ -71,7 +72,7 @@ class TodayScreen extends StatelessWidget {
                   color: c.background,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.photo_outlined),
+                child: const RomanzaIcon(RomanzaSymbol.images),
               ),
             ),
             color: c.memory,
@@ -108,15 +109,11 @@ class CoupleHeader extends StatelessWidget {
                 children: [
                   Positioned(
                     left: 0,
-                    child: _avatar(c.note, Icons.person_outline_rounded, c.ink),
+                    child: _avatar(c.note, RomanzaSymbol.userRound, c.ink),
                   ),
                   Positioned(
                     right: 0,
-                    child: _avatar(
-                      c.plan,
-                      Icons.person_add_alt_outlined,
-                      c.ink,
-                    ),
+                    child: _avatar(c.plan, RomanzaSymbol.userRound, c.ink),
                   ),
                   Container(
                     width: 24,
@@ -125,8 +122,8 @@ class CoupleHeader extends StatelessWidget {
                       color: c.background,
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(
-                      Icons.favorite_border_rounded,
+                    child: RomanzaIcon(
+                      RomanzaSymbol.heart,
                       size: 17,
                       color: c.ink,
                     ),
@@ -153,7 +150,7 @@ class CoupleHeader extends StatelessWidget {
           );
   }
 
-  Widget _avatar(Color color, IconData icon, Color ink) => Container(
+  Widget _avatar(Color color, RomanzaSymbol icon, Color ink) => Container(
     width: 64,
     height: 64,
     decoration: BoxDecoration(
@@ -161,7 +158,7 @@ class CoupleHeader extends StatelessWidget {
       shape: BoxShape.circle,
       border: Border.all(color: Colors.white, width: 3),
     ),
-    child: Icon(icon, color: ink, size: 28),
+    child: RomanzaIcon(icon, color: ink, size: 28),
   );
 }
 
@@ -204,14 +201,14 @@ class InstantMomentsSection extends StatelessWidget {
                         width: 52,
                         height: 44,
                         decoration: BoxDecoration(
-                          color: c.primary,
+                          color: c.accent,
                           borderRadius: BorderRadius.circular(14),
                         ),
                         child: ExcludeSemantics(
-                          child: Icon(
-                            Icons.add_rounded,
-                            color: c.onPrimary,
-                            size: 30,
+                          child: RomanzaIcon(
+                            RomanzaSymbol.plus,
+                            color: c.onAccent,
+                            size: 28,
                           ),
                         ),
                       ),
@@ -238,7 +235,7 @@ class InstantMomentsSection extends StatelessWidget {
                     subtitle: 'Comparte algo de hoy',
                     height: height,
                     color: c.note,
-                    icon: Icons.add_a_photo_outlined,
+                    icon: RomanzaSymbol.camera,
                     onTap: onCamera ?? explain,
                   ),
                 ),
@@ -249,7 +246,7 @@ class InstantMomentsSection extends StatelessWidget {
                     subtitle: 'Un espacio para su día',
                     height: height,
                     color: c.plan,
-                    icon: Icons.wb_sunny_outlined,
+                    icon: RomanzaSymbol.camera,
                     onTap: () => showRomanzaInfo(
                       context,
                       title: 'Su momento',
@@ -280,7 +277,7 @@ class MomentCard extends StatelessWidget {
   final String title, subtitle;
   final double height;
   final Color color;
-  final IconData icon;
+  final RomanzaSymbol icon;
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
@@ -308,13 +305,7 @@ class MomentCard extends StatelessWidget {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                Icons.auto_awesome_outlined,
-                                size: 18,
-                                color: c.secondary,
-                              ),
-                              const SizedBox(height: 10),
-                              Icon(icon, size: 32, color: c.secondary),
+                              RomanzaIcon(icon, size: 32, color: c.secondary),
                             ],
                           ),
                         ),
