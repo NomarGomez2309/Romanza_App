@@ -37,3 +37,6 @@ semántico, nombres de controles, selección de navegación y áreas de toque.
 Pruebas de layout para 390×844, 412×924 y 320×640, tres paletas, escala 100% y
 200%, proporción de fotos, navegación, objetivos táctiles y contraste de texto.
 Revisión con TalkBack/VoiceOver y validación en hardware pendientes.
+
+## Encabezado vigente — 14/11/2026
+El anexo CAMBIO_APROBADO.md de encabezado v1 sustituye únicamente las medidas antiguas de esta fila. Símbolo SVG 41.6 × 29.25, avatares 41.6 y grupo 76.7; se conserva la altura de fila 72 y el acceso a Configuración. Ya no hay wordmark visible ni Wrap del encabezado. Ver [entrega y validación](../qa/header-v1-2026-11-14.md).

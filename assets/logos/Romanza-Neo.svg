@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="334" height="233" viewBox="89 133 334 233" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Romanza — R y corazón</title>
+  <desc id="description">Símbolo formado por una R de terminaciones suaves y una pieza en color de acento que completa un corazón. Ambas formas quedan separadas por un canal curvo transparente.</desc>
+  <!-- Fondo transparente. Los dos elementos son trazados editables, sin fuentes. -->
+  <g id="romanza-symbol">
+    <path id="letter-r" fill="#EEEEEE" fill-rule="evenodd" d="M119 133 H188 C243 133 280 167 280 215 C280 244 270 265 251 280 L280 320 C289 332 287 341 275 350 L261 360 C248 369 238 366 229 354 L191 300 H151 V340 C151 358 143 366 125 366 H115 C97 366 89 358 89 340 V163 C89 142 98 133 119 133 Z M151 194 V244 H185 C204 244 216 235 216 219 C216 203 204 194 185 194 H151 Z" clip-rule="evenodd"/>
+    <path id="heart-half" fill="#08CB00" d="M282 160 C299 141 320 133 344 134 C389 135 423 171 423 215 C423 268 380 311 301 355 C298 357 296 355 298 352 C305 341 303 328 295 317 L271 282 C289 262 296 241 296 215 C296 194 291 176 282 160 Z"/>
+  </g>
+</svg>

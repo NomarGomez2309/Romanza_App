@@ -1,3 +1,4 @@
+import '../../design_system/header_logo.dart';
 import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
 import '../../design_system/components.dart';
@@ -86,80 +87,122 @@ class TodayScreen extends StatelessWidget {
 }
 
 class CoupleHeader extends StatelessWidget {
-  const CoupleHeader({super.key, required this.onProfile});
+  const CoupleHeader({
+    super.key,
+    required this.onProfile,
+    this.userImage,
+    this.partnerImage,
+    this.profileLabel = 'Usuario y preferencias. Sin pareja vinculada',
+  });
   final VoidCallback onProfile;
+  final ImageProvider? userImage, partnerImage;
+  final String profileLabel;
+  static const rowHeight = 72.0;
+  static const avatarDiameter = 41.6;
+  static const groupWidth = 76.7;
+  static const unionDiameter = 15.6;
+  static const heartSize = 11.05;
+
   @override
   Widget build(BuildContext context) {
     final c = RomanzaColors.of(context);
-    final large = MediaQuery.textScalerOf(context).scale(30) > 42;
-    final avatars = Tooltip(
-      message: 'Usuario y preferencias',
-      child: Semantics(
-        button: true,
-        label: 'Usuario y preferencias. Sin pareja vinculada',
-        child: InkWell(
-          onTap: onProfile,
-          borderRadius: BorderRadius.circular(36),
-          child: ExcludeSemantics(
-            child: SizedBox(
-              width: 118,
-              height: 72,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    left: 0,
-                    child: _avatar(c.note, RomanzaSymbol.userRound, c.ink),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: _avatar(c.plan, RomanzaSymbol.userRound, c.ink),
-                  ),
-                  Container(
-                    width: 24,
-                    height: 24,
-                    decoration: BoxDecoration(
-                      color: c.background,
-                      shape: BoxShape.circle,
+    return SizedBox(
+      height: rowHeight,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const HeaderLogo(),
+          Tooltip(
+            message: 'Usuario y preferencias',
+            excludeFromSemantics: true,
+            child: Semantics(
+              button: true,
+              label: profileLabel,
+              child: InkWell(
+                onTap: onProfile,
+                borderRadius: BorderRadius.circular(24),
+                child: ExcludeSemantics(
+                  child: SizedBox(
+                    key: const ValueKey('header-profile-target'),
+                    width: groupWidth,
+                    height: 48,
+                    child: Center(
+                      child: SizedBox(
+                        key: const ValueKey('header-avatar-group'),
+                        width: groupWidth,
+                        height: avatarDiameter,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: _avatar(c.note, c.ink, userImage, 'user'),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: _avatar(
+                                c.plan,
+                                c.ink,
+                                partnerImage,
+                                'partner',
+                              ),
+                            ),
+                            Container(
+                              key: const ValueKey('header-union'),
+                              width: unionDiameter,
+                              height: unionDiameter,
+                              decoration: BoxDecoration(
+                                color: c.background,
+                                shape: BoxShape.circle,
+                              ),
+                              child: RomanzaIcon(
+                                RomanzaSymbol.heart,
+                                size: heartSize,
+                                color: c.ink,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    child: RomanzaIcon(
-                      RomanzaSymbol.heart,
-                      size: 17,
-                      color: c.ink,
-                    ),
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
-    final brand = Text('romanza', style: RomanzaType.brand);
-    return large
-        ? Wrap(
-            spacing: 16,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [brand, avatars],
-          )
-        : Row(
-            children: [
-              Expanded(child: brand),
-              avatars,
-            ],
-          );
   }
 
-  Widget _avatar(Color color, RomanzaSymbol icon, Color ink) => Container(
-    width: 64,
-    height: 64,
-    decoration: BoxDecoration(
+  Widget _avatar(Color color, Color ink, ImageProvider? image, String name) {
+    final fallback = ColoredBox(
       color: color,
-      shape: BoxShape.circle,
-      border: Border.all(color: Colors.white, width: 3),
-    ),
-    child: RomanzaIcon(icon, color: ink, size: 28),
-  );
+      child: RomanzaIcon(RomanzaSymbol.userRound, color: ink, size: 18.2),
+    );
+    return Container(
+      key: ValueKey('header-avatar-$name'),
+      width: avatarDiameter,
+      height: avatarDiameter,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      padding: const EdgeInsets.all(1.95),
+      child: ClipOval(
+        child: image == null
+            ? fallback
+            : Image(
+                image: image,
+                fit: BoxFit.cover,
+                excludeFromSemantics: true,
+                errorBuilder: (_, _, _) => fallback,
+                frameBuilder: (_, child, frame, synchronous) =>
+                    synchronous || frame != null ? child : fallback,
+              ),
+      ),
+    );
+  }
 }
 
 class InstantMomentsSection extends StatelessWidget {

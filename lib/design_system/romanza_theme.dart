@@ -1,4 +1,5 @@
 import 'romanza_icon.dart';
+import 'header_logo.dart';
 import 'package:flutter/material.dart';
 
 enum RomanzaPalette { defaultPalette, forest, neo }
@@ -183,7 +184,14 @@ ThemeData romanzaTheme(RomanzaPalette palette, {RomanzaColors? custom}) {
     colorScheme: scheme,
     scaffoldBackgroundColor: c.background,
     fontFamily: 'Nunito',
-    extensions: [c],
+    extensions: [
+      c,
+      HeaderLogoTheme(
+        asset:
+            'assets/logos/Romanza-${custom == null ? palette.label : 'Default'}.svg',
+        monochrome: custom == null ? null : c.ink,
+      ),
+    ],
     textTheme: TextTheme(
       bodyMedium: RomanzaType.body.copyWith(color: c.ink),
       titleLarge: RomanzaType.section.copyWith(color: c.ink),

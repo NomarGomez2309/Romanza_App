@@ -22,3 +22,5 @@ configuración Firebase, conversaciones, credenciales o datos de usuarios.
 
 - [Iconografía v2.3 y navegación adaptable](modules/iconography.md)
 - [Validación de iconografía en Pixel 9](qa/iconography-2026-11-12.md)
+
+- [Encabezado v1: implementación, antes/después y entrega](qa/header-v1-2026-11-14.md)
