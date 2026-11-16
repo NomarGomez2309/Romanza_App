@@ -24,3 +24,5 @@ configuración Firebase, conversaciones, credenciales o datos de usuarios.
 - [Validación de iconografía en Pixel 9](qa/iconography-2026-11-12.md)
 
 - [Encabezado v1: implementación, antes/después y entrega](qa/header-v1-2026-11-14.md)
+
+- [Icono y nombre de instalación: validación en Pixel 9](qa/launcher-pixel-2026-11-15.md)
