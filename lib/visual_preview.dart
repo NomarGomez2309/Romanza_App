@@ -18,6 +18,11 @@ class _PreviewAuth implements AuthRepository {
   @override
   Future<void> ensureProfile() async {}
   @override
+  Future<String> readName() async => 'Vista visual';
+  @override
+  Future<void> saveName(String name) async =>
+      throw UnsupportedError('Visual preview');
+  @override
   Future<void> login(String email, String password) async =>
       throw UnsupportedError('Visual preview');
   @override

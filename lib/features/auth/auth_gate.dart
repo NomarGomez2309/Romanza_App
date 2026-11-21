@@ -4,6 +4,8 @@ import '../../design_system/romanza_theme.dart';
 import 'auth_repository.dart';
 import 'session_controller.dart';
 import 'auth_screens.dart';
+import 'profile_setup_screen.dart';
+import 'session_scope.dart';
 
 /// Replacing this nested navigator destroys forms and private routes on a UID or
 /// session-stage change, including when sign-out occurs in a pushed settings page.
@@ -51,21 +53,25 @@ class _AuthGateState extends State<AuthGate> with WidgetsBindingObserver {
         routeIdentity = identity;
         navigator = GlobalKey<NavigatorState>();
       }
-      return NavigatorPopHandler<Object?>(
-        onPopWithResult: (_) => navigator.currentState?.pop(),
-        child: Navigator(
-          key: navigator,
-          onGenerateRoute: (_) => MaterialPageRoute<void>(
-            builder: (context) => switch (session.stage) {
-              SessionStage.welcome => AuthWelcomeScreen(session: session),
-              SessionStage.verification => EmailVerificationScreen(
-                session: session,
-              ),
-              SessionStage.authenticated => widget.authenticated(context),
-              SessionStage.loading => const AuthLoadingScreen(),
-              SessionStage.error ||
-              SessionStage.disabled => AuthRecoveryScreen(session: session),
-            },
+      return SessionScope(
+        session: session,
+        child: NavigatorPopHandler<Object?>(
+          onPopWithResult: (_) => navigator.currentState?.pop(),
+          child: Navigator(
+            key: navigator,
+            onGenerateRoute: (_) => MaterialPageRoute<void>(
+              builder: (context) => switch (session.stage) {
+                SessionStage.welcome => AuthWelcomeScreen(session: session),
+                SessionStage.verification => EmailVerificationScreen(
+                  session: session,
+                ),
+                SessionStage.profile => ProfileSetupScreen(session: session),
+                SessionStage.authenticated => widget.authenticated(context),
+                SessionStage.loading => const AuthLoadingScreen(),
+                SessionStage.error ||
+                SessionStage.disabled => AuthRecoveryScreen(session: session),
+              },
+            ),
           ),
         ),
       );

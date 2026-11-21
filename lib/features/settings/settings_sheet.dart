@@ -9,6 +9,7 @@ import '../../preferences/preferences_screen.dart';
 import 'settings_account.dart';
 import 'settings_localizations.dart';
 import 'legal_draft_screen.dart';
+import 'account_screen.dart';
 
 Future<void> openSettings(
   BuildContext context,
@@ -38,7 +39,9 @@ Future<void> openSettings(
   }
   await Navigator.of(context).push(
     MaterialPageRoute<void>(
-      builder: (_) => destination == 'Preferencias'
+      builder: (_) => destination == 'Cuenta'
+          ? const AccountScreen()
+          : destination == 'Preferencias'
           ? PreferencesScreen(controller: controller)
           : SettingsDetail(title: destination, controller: controller),
     ),

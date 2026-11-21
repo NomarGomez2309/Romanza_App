@@ -3,74 +3,35 @@ import '../../design_system/components.dart';
 import '../../design_system/header_logo.dart';
 import '../../design_system/romanza_theme.dart';
 import 'session_controller.dart';
+import 'auth_design.dart';
+import '../../design_system/romanza_icon.dart';
 import '../settings/legal_draft_screen.dart';
 
 class AuthWelcomeScreen extends StatelessWidget {
   const AuthWelcomeScreen({super.key, required this.session});
   final SessionController session;
+  void _email(BuildContext context, EmailAccessMode mode) =>
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) => EmailAccessScreen(session: session, mode: mode),
+        ),
+      );
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: SafeArea(
-      child: RomanzaPage(
-        child: ListenableBuilder(
-          listenable: session,
-          builder: (context, _) => Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: session,
+    builder: (context, _) => AuthPageLayout(
+      footer: Column(
+        children: [
+          Text(
+            'Romanza es para mayores de 18 años.',
+            style: RomanzaType.caption.copyWith(
+              color: RomanzaColors.of(context).secondary,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
             children: [
-              const SizedBox(height: 64),
-              SizedBox(
-                height: 64,
-                child: Center(
-                  child: Transform.scale(scale: 2, child: const HeaderLogo()),
-                ),
-              ),
-              const SizedBox(height: 40),
-              Text('Sus momentos, más cerca', style: RomanzaType.greeting),
-              const SizedBox(height: 12),
-              Text(
-                'Un espacio para compartir lo cotidiano y guardar lo que importa.',
-                style: RomanzaType.body.copyWith(fontSize: 16, height: 24 / 16),
-              ),
-              const SizedBox(height: 32),
-              FilledButton(
-                onPressed: session.busy ? null : session.google,
-                child: const Text('Continuar con Google'),
-              ),
-              const SizedBox(height: 12),
-              OutlinedButton(
-                onPressed: session.busy
-                    ? null
-                    : () => Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) => EmailAccessScreen(
-                            session: session,
-                            mode: EmailAccessMode.register,
-                          ),
-                        ),
-                      ),
-                child: const Text('Continuar con correo'),
-              ),
-              const SizedBox(height: 12),
-              TextButton(
-                onPressed: session.busy
-                    ? null
-                    : () => Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) => EmailAccessScreen(
-                            session: session,
-                            mode: EmailAccessMode.login,
-                          ),
-                        ),
-                      ),
-                child: const Text('Iniciar sesión'),
-              ),
-              AuthOperationStatus(session: session),
-              const SizedBox(height: 24),
-              Text(
-                'Romanza es para mayores de 18 años.',
-                style: RomanzaType.caption,
-                textAlign: TextAlign.center,
-              ),
               for (final privacy in [false, true])
                 TextButton(
                   onPressed: () => Navigator.of(context).push(
@@ -82,10 +43,60 @@ class AuthWelcomeScreen extends StatelessWidget {
                     privacy ? 'Privacidad · Borrador' : 'Términos · Borrador',
                   ),
                 ),
-              const SizedBox(height: 16),
             ],
           ),
-        ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const AuthBrand(),
+          const SizedBox(height: 20),
+          const TogetherIllustration(),
+          const SizedBox(height: 12),
+          Semantics(
+            header: true,
+            child: Text(
+              'Más cotidiano.\nMás Romanza.',
+              style: RomanzaType.heading(40, 44, 600),
+            ),
+          ),
+          const SizedBox(height: 14),
+          Text(
+            'Un espacio para compartir sus días y guardar lo que importa, incluso a la distancia.',
+            style: RomanzaType.body.copyWith(
+              fontSize: 16,
+              height: 24 / 16,
+              color: RomanzaColors.of(context).secondary,
+            ),
+          ),
+          const SizedBox(height: 28),
+          AuthPrimaryButton(
+            label: 'Continuar con Google',
+            onPressed: session.busy ? null : session.google,
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size.fromHeight(56),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            onPressed: session.busy
+                ? null
+                : () => _email(context, EmailAccessMode.register),
+            child: const Text('Continuar con correo'),
+          ),
+          TextButton(
+            onPressed: session.busy
+                ? null
+                : () => _email(context, EmailAccessMode.login),
+            child: const Text('Iniciar sesión'),
+          ),
+          AuthOperationStatus(session: session),
+        ],
       ),
     ),
   );
@@ -149,124 +160,138 @@ class _EmailAccessScreenState extends State<EmailAccessScreen> {
     listenable: widget.session,
     builder: (context, _) {
       final busy = widget.session.busy;
-      return Scaffold(
-        appBar: AppBar(title: Text(title)),
-        body: SafeArea(
-          top: false,
-          child: RomanzaPage(
-            child: Form(
-              key: form,
-              child: AutofillGroup(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 24),
-                    TextFormField(
-                      key: const ValueKey('auth-email'),
-                      controller: email,
-                      enabled: !busy,
-                      keyboardType: TextInputType.emailAddress,
-                      autofillHints: const [AutofillHints.email],
-                      autocorrect: false,
-                      decoration: const InputDecoration(
-                        labelText: 'Correo electrónico',
-                      ),
-                      validator: (value) =>
-                          RegExp(
-                            r'^[^\s@]+@[^\s@]+\.[^\s@]+$',
-                          ).hasMatch((value ?? '').trim())
-                          ? null
-                          : 'Escribe un correo válido.',
-                    ),
-                    if (mode != EmailAccessMode.reset) ...[
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        key: const ValueKey('auth-password'),
-                        controller: password,
-                        enabled: !busy,
-                        obscureText: obscure,
-                        autocorrect: false,
-                        enableSuggestions: false,
-                        autofillHints: [
-                          mode == EmailAccessMode.register
-                              ? AutofillHints.newPassword
-                              : AutofillHints.password,
-                        ],
-                        decoration: InputDecoration(
-                          labelText: 'Contraseña',
-                          suffixIcon: TextButton(
-                            onPressed: busy
-                                ? null
-                                : () => setState(() => obscure = !obscure),
-                            child: Text(obscure ? 'Mostrar' : 'Ocultar'),
-                          ),
-                        ),
-                        validator: (value) => value == null || value.isEmpty
-                            ? 'Escribe tu contraseña.'
-                            : null,
-                      ),
-                      if (mode == EmailAccessMode.register) ...[
-                        const SizedBox(height: 16),
-                        TextFormField(
-                          key: const ValueKey('auth-confirmation'),
-                          controller: confirmation,
-                          enabled: !busy,
-                          obscureText: obscure,
-                          autocorrect: false,
-                          enableSuggestions: false,
-                          autofillHints: const [AutofillHints.newPassword],
-                          decoration: const InputDecoration(
-                            labelText: 'Confirmar contraseña',
-                          ),
-                          validator: (value) =>
-                              value == password.text && value!.isNotEmpty
-                              ? null
-                              : 'Las contraseñas deben coincidir.',
-                        ),
-                      ],
-                    ],
-                    const SizedBox(height: 24),
-                    FilledButton(
-                      onPressed: busy ? null : submit,
-                      child: Text(
-                        mode == EmailAccessMode.reset
-                            ? 'Enviar instrucciones'
-                            : title,
-                      ),
-                    ),
-                    if (mode == EmailAccessMode.login)
-                      TextButton(
-                        onPressed: busy
-                            ? null
-                            : () => selectMode(EmailAccessMode.reset),
-                        child: const Text('Olvidé mi contraseña'),
-                      ),
-                    TextButton(
-                      onPressed: busy
-                          ? null
-                          : () => selectMode(
-                              mode == EmailAccessMode.register
-                                  ? EmailAccessMode.login
-                                  : EmailAccessMode.register,
-                            ),
-                      child: Text(
-                        mode == EmailAccessMode.register
-                            ? 'Ya tengo una cuenta'
-                            : 'Crear una cuenta',
-                      ),
-                    ),
-                    if (mode == EmailAccessMode.reset)
-                      TextButton(
-                        onPressed: busy
-                            ? null
-                            : () => selectMode(EmailAccessMode.login),
-                        child: const Text('Volver a iniciar sesión'),
-                      ),
-                    AuthOperationStatus(session: widget.session),
-                    const SizedBox(height: 16),
-                  ],
+      return AuthPageLayout(
+        title: title,
+        child: Form(
+          key: form,
+          child: AutofillGroup(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                AuthIntro(
+                  title: mode == EmailAccessMode.login
+                      ? 'Qué bueno verte'
+                      : mode == EmailAccessMode.register
+                      ? 'Su historia empieza aquí'
+                      : 'Volvamos a encontrarnos',
+                  subtitle: mode == EmailAccessMode.reset
+                      ? 'Te enviaremos un enlace para recuperar el acceso.'
+                      : mode == EmailAccessMode.register
+                      ? 'Crea tu espacio. Lo demás puede ir a su ritmo.'
+                      : 'Entra a ese pequeño espacio que comparten.',
+                  icon: mode == EmailAccessMode.reset
+                      ? RomanzaSymbol.mail
+                      : RomanzaSymbol.userRound,
                 ),
-              ),
+                TextFormField(
+                  key: const ValueKey('auth-email'),
+                  controller: email,
+                  enabled: !busy,
+                  keyboardType: TextInputType.emailAddress,
+                  autofillHints: const [AutofillHints.email],
+                  autocorrect: false,
+                  textInputAction: TextInputAction.next,
+                  decoration: authFieldDecoration(
+                    context,
+                    'Correo electrónico',
+                    hint: 'tu@correo.com',
+                  ),
+                  validator: (value) =>
+                      RegExp(
+                        r'^[^\s@]+@[^\s@]+\.[^\s@]+$',
+                      ).hasMatch((value ?? '').trim())
+                      ? null
+                      : 'Escribe un correo válido.',
+                ),
+                if (mode != EmailAccessMode.reset) ...[
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    key: const ValueKey('auth-password'),
+                    controller: password,
+                    enabled: !busy,
+                    obscureText: obscure,
+                    autocorrect: false,
+                    enableSuggestions: false,
+                    autofillHints: [
+                      mode == EmailAccessMode.register
+                          ? AutofillHints.newPassword
+                          : AutofillHints.password,
+                    ],
+                    decoration: authFieldDecoration(
+                      context,
+                      'Contraseña',
+                      suffix: TextButton(
+                        onPressed: busy
+                            ? null
+                            : () => setState(() => obscure = !obscure),
+                        child: Text(obscure ? 'Mostrar' : 'Ocultar'),
+                      ),
+                    ),
+                    validator: (value) => value == null || value.isEmpty
+                        ? 'Escribe tu contraseña.'
+                        : null,
+                  ),
+                  if (mode == EmailAccessMode.register) ...[
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      key: const ValueKey('auth-confirmation'),
+                      controller: confirmation,
+                      enabled: !busy,
+                      obscureText: obscure,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      autofillHints: const [AutofillHints.newPassword],
+                      decoration: authFieldDecoration(
+                        context,
+                        'Confirmar contraseña',
+                      ),
+                      textInputAction: TextInputAction.done,
+                      onFieldSubmitted: (_) => submit(),
+                      validator: (value) =>
+                          value == password.text && value!.isNotEmpty
+                          ? null
+                          : 'Las contraseñas deben coincidir.',
+                    ),
+                  ],
+                ],
+                const SizedBox(height: 24),
+                AuthPrimaryButton(
+                  onPressed: busy ? null : submit,
+                  label: mode == EmailAccessMode.reset
+                      ? 'Enviar instrucciones'
+                      : title,
+                ),
+                if (mode == EmailAccessMode.login)
+                  TextButton(
+                    onPressed: busy
+                        ? null
+                        : () => selectMode(EmailAccessMode.reset),
+                    child: const Text('Olvidé mi contraseña'),
+                  ),
+                TextButton(
+                  onPressed: busy
+                      ? null
+                      : () => selectMode(
+                          mode == EmailAccessMode.register
+                              ? EmailAccessMode.login
+                              : EmailAccessMode.register,
+                        ),
+                  child: Text(
+                    mode == EmailAccessMode.register
+                        ? 'Ya tengo una cuenta'
+                        : 'Crear una cuenta',
+                  ),
+                ),
+                if (mode == EmailAccessMode.reset)
+                  TextButton(
+                    onPressed: busy
+                        ? null
+                        : () => selectMode(EmailAccessMode.login),
+                    child: const Text('Volver a iniciar sesión'),
+                  ),
+                AuthOperationStatus(session: widget.session),
+                const SizedBox(height: 16),
+              ],
             ),
           ),
         ),
@@ -279,51 +304,64 @@ class EmailVerificationScreen extends StatelessWidget {
   const EmailVerificationScreen({super.key, required this.session});
   final SessionController session;
   @override
-  Widget build(BuildContext context) => Scaffold(
-    body: SafeArea(
-      child: RomanzaPage(
-        child: ListenableBuilder(
-          listenable: session,
-          builder: (context, _) => Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 48),
-              const Center(child: HeaderLogo()),
-              const SizedBox(height: 24),
-              Text('Revisa tu correo', style: RomanzaType.greeting),
-              const SizedBox(height: 16),
-              Text(
-                'Confirma tu correo con el enlace de verificación. Si no lo tienes, puedes solicitarlo aquí.',
-                style: RomanzaType.body,
-              ),
-              if (session.identity?.email != null)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: SelectableText(session.identity!.email!),
-                ),
-              const SizedBox(height: 16),
-              FilledButton(
-                onPressed: session.busy ? null : session.checkVerification,
-                child: const Text('Ya verifiqué mi correo'),
-              ),
-              OutlinedButton(
-                onPressed: session.busy || session.verificationCooldown > 0
-                    ? null
-                    : session.resendVerification,
-                child: Text(
-                  session.verificationCooldown > 0
-                      ? 'Reenviar en ${session.verificationCooldown} s'
-                      : 'Reenviar correo',
-                ),
-              ),
-              TextButton(
-                onPressed: session.busy ? null : session.signOut,
-                child: const Text('Usar otra cuenta'),
-              ),
-              AuthOperationStatus(session: session),
-            ],
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: session,
+    builder: (context, _) => AuthPageLayout(
+      footer: TextButton(
+        onPressed: session.busy ? null : session.signOut,
+        child: const Text('Usar otra cuenta'),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const AuthBrand(),
+          const SizedBox(height: 56),
+          const AuthIntro(
+            title: 'Revisa tu correo',
+            subtitle:
+                'Un pequeño paso para cuidar tu cuenta. Abre el enlace que te enviamos y vuelve aquí.',
+            icon: RomanzaSymbol.mail,
           ),
-        ),
+          if (session.identity?.email != null)
+            Container(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(bottom: 28),
+              decoration: BoxDecoration(
+                color: RomanzaColors.of(context).note,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: SelectableText(
+                session.identity!.email!,
+                style: RomanzaType.body.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          AuthPrimaryButton(
+            label: 'Ya verifiqué mi correo',
+            onPressed: session.busy ? null : session.checkVerification,
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton(
+            onPressed: session.busy || session.verificationCooldown > 0
+                ? null
+                : session.resendVerification,
+            child: Text(
+              session.verificationCooldown > 0
+                  ? 'Reenviar en ${session.verificationCooldown} s'
+                  : 'Reenviar correo',
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            '¿No aparece? Revisa también la carpeta de spam.',
+            style: RomanzaType.body.copyWith(
+              color: RomanzaColors.of(context).secondary,
+            ),
+          ),
+          AuthOperationStatus(session: session),
+        ],
       ),
     ),
   );
