@@ -4,6 +4,7 @@ import '../../design_system/header_logo.dart';
 import '../../design_system/romanza_theme.dart';
 import 'session_controller.dart';
 import 'auth_design.dart';
+import 'welcome_design.dart';
 import '../../design_system/romanza_icon.dart';
 import '../settings/legal_draft_screen.dart';
 
@@ -19,85 +20,15 @@ class AuthWelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: session,
-    builder: (context, _) => AuthPageLayout(
-      footer: Column(
-        children: [
-          Text(
-            'Romanza es para mayores de 18 años.',
-            style: RomanzaType.caption.copyWith(
-              color: RomanzaColors.of(context).secondary,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          Wrap(
-            alignment: WrapAlignment.center,
-            children: [
-              for (final privacy in [false, true])
-                TextButton(
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) => LegalDraftScreen(privacy: privacy),
-                    ),
-                  ),
-                  child: Text(
-                    privacy ? 'Privacidad · Borrador' : 'Términos · Borrador',
-                  ),
-                ),
-            ],
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const AuthBrand(),
-          const SizedBox(height: 20),
-          const TogetherIllustration(),
-          const SizedBox(height: 12),
-          Semantics(
-            header: true,
-            child: Text(
-              'Más cotidiano.\nMás Romanza.',
-              style: RomanzaType.heading(40, 44, 600),
-            ),
-          ),
-          const SizedBox(height: 14),
-          Text(
-            'Un espacio para compartir sus días y guardar lo que importa, incluso a la distancia.',
-            style: RomanzaType.body.copyWith(
-              fontSize: 16,
-              height: 24 / 16,
-              color: RomanzaColors.of(context).secondary,
-            ),
-          ),
-          const SizedBox(height: 28),
-          AuthPrimaryButton(
-            label: 'Continuar con Google',
-            onPressed: session.busy ? null : session.google,
-          ),
-          const SizedBox(height: 12),
-          OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              minimumSize: const Size.fromHeight(56),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            onPressed: session.busy
-                ? null
-                : () => _email(context, EmailAccessMode.register),
-            child: const Text('Continuar con correo'),
-          ),
-          TextButton(
-            onPressed: session.busy
-                ? null
-                : () => _email(context, EmailAccessMode.login),
-            child: const Text('Iniciar sesión'),
-          ),
-          AuthOperationStatus(session: session),
-        ],
-      ),
+    builder: (context, _) => WelcomeLayout(
+      onGoogle: session.busy ? null : session.google,
+      onEmail: session.busy
+          ? null
+          : () => _email(context, EmailAccessMode.register),
+      onLogin: session.busy
+          ? null
+          : () => _email(context, EmailAccessMode.login),
+      status: AuthOperationStatus(session: session),
     ),
   );
 }
@@ -162,6 +93,9 @@ class _EmailAccessScreenState extends State<EmailAccessScreen> {
       final busy = widget.session.busy;
       return AuthPageLayout(
         title: title,
+        footer: mode == EmailAccessMode.register
+            ? const _RegistrationResources()
+            : null,
         child: Form(
           key: form,
           child: AutofillGroup(
@@ -434,6 +368,40 @@ class AuthOperationStatus extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Semantics(liveRegion: true, child: Text(session.notice!)),
         ),
+    ],
+  );
+}
+
+/// Existing eligibility copy and draft resources remain available at registration.
+/// This is information, not an acceptance control or age verification.
+class _RegistrationResources extends StatelessWidget {
+  const _RegistrationResources();
+  @override
+  Widget build(BuildContext context) => Column(
+    children: [
+      Text(
+        'Romanza es para mayores de 18 años.',
+        style: RomanzaType.caption.copyWith(
+          color: RomanzaColors.of(context).secondary,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      Wrap(
+        alignment: WrapAlignment.center,
+        children: [
+          for (final privacy in [false, true])
+            TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => LegalDraftScreen(privacy: privacy),
+                ),
+              ),
+              child: Text(
+                privacy ? 'Privacidad · Borrador' : 'Términos · Borrador',
+              ),
+            ),
+        ],
+      ),
     ],
   );
 }

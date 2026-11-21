@@ -1,5 +1,9 @@
 # Onboarding y cuenta — propuesta implementada v1
 
+> La bienvenida fue sustituida por [ondas y tres temas](welcome-waves.md).
+> Las tarjetas y cotas de bienvenida descritas aquí son el histórico v1;
+> formularios, perfil y cuenta siguen vigentes.
+
 Base exacta: `53b9743f122890ebfac1a7968741560af06431a5`, rama `Romanza/Dart`.
 Se reutilizan el repositorio de autenticación, controlador de sesión, logo SVG,
 Fredoka/Nunito locales, iconos Lucide/Romanza, paletas y rutas de ese commit.

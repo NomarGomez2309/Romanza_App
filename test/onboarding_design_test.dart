@@ -24,6 +24,45 @@ void main() {
       )..addFont(rootBundle.load('assets/fonts/$font.ttf'))).load();
     }
   });
+  testWidgets('welcome keeps Google, registration and login destinations', (
+    tester,
+  ) async {
+    final repository = FakeAuthRepository(user: null);
+    final session = SessionController(repository);
+    await tester.pump();
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: romanzaTheme(RomanzaPalette.defaultPalette),
+        home: AuthWelcomeScreen(session: session),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Romanza es para mayores de 18 años.'), findsNothing);
+    expect(find.text('A su ritmo'), findsNothing);
+    await tester.tap(find.text('Continuar con correo'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('auth-confirmation')), findsOneWidget);
+    await tester.ensureVisible(find.text('Privacidad · Borrador'));
+    await tester.tap(find.text('Privacidad · Borrador'));
+    await tester.pumpAndSettle();
+    expect(find.text('Privacidad · Borrador'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(Scaffold).last)).pop();
+    await tester.pumpAndSettle();
+    Navigator.of(tester.element(find.byType(EmailAccessScreen))).pop();
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Iniciar sesión'));
+    await tester.pumpAndSettle();
+    expect(find.text('Qué bueno verte'), findsOneWidget);
+    expect(find.byKey(const ValueKey('auth-confirmation')), findsNothing);
+    Navigator.of(tester.element(find.byType(EmailAccessScreen))).pop();
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Continuar con Google'));
+    await tester.pumpAndSettle();
+    expect(session.identity?.uid, 'google-user');
+    await tester.pumpWidget(const SizedBox());
+    session.dispose();
+  });
+
   test(
     'verified users without a name finish setup once and preserve it on return',
     () async {
@@ -181,13 +220,17 @@ void main() {
   );
 
   Future<void> capture(WidgetTester tester, GlobalKey key, String name) async {
-    if (!const bool.fromEnvironment('CAPTURE_DESIGN')) return;
+    final welcome =
+        const bool.fromEnvironment('CAPTURE_WELCOME') &&
+        name.startsWith('welcome-');
+    if (!welcome && !const bool.fromEnvironment('CAPTURE_DESIGN')) return;
     final boundary =
         key.currentContext!.findRenderObject()! as RenderRepaintBoundary;
     await tester.runAsync(() async {
       final image = await boundary.toImage(pixelRatio: 2);
       final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
-      final file = File('docs/qa/evidence/onboarding-v1/$name.png');
+      final folder = welcome ? 'welcome-waves' : 'onboarding-v1';
+      final file = File('docs/qa/evidence/$folder/$name.png');
       await file.parent.create(recursive: true);
       await file.writeAsBytes(bytes!.buffer.asUint8List());
       image.dispose();
@@ -238,10 +281,12 @@ void main() {
           }
 
           await show(AuthWelcomeScreen(session: session));
-          if (size.width == 390 &&
-              scale == 1 &&
-              palette == RomanzaPalette.forest) {
-            await capture(tester, key, 'welcome-forest-390');
+          if (scale == 1) {
+            await capture(
+              tester,
+              key,
+              'welcome-${palette.label.toLowerCase()}-${size.width.toInt()}',
+            );
           }
           await show(
             EmailAccessScreen(session: session, mode: EmailAccessMode.register),
