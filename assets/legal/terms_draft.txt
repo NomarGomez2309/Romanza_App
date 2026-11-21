@@ -1,0 +1,28 @@
+ROMANZA — CONDICIONES DE USO
+Borrador para revisión · 21 de noviembre de 2026 · No aprobado para publicación
+
+Este documento es una propuesta, no una versión contractual vigente. La aplicación no registra su aceptación. Deben completarse los campos pendientes y revisarse las condiciones para los países admitidos antes de publicarlo.
+
+Responsable y contacto
+Titular del servicio: Nomar Gomez. Lugar de operación: Nueva York, Estados Unidos. Contacto de soporte y privacidad: romanza@gmail.com. Dirección postal y países admitidos: pendientes de completar antes de publicación.
+
+Finalidad y disponibilidad
+Romanza ofrece un espacio para parejas. La versión actual permite autenticación, preferencias visuales y preparación de fotografías locales. Invitaciones, fotografías remotas, notas, planes y recuerdos compartidos se habilitarán progresivamente. Su presencia en una propuesta visual no implica disponibilidad.
+
+Edad y territorio
+El servicio está destinado a personas de 18 años o más. Los países de lanzamiento y el mecanismo de comprobación deben concretarse. Google Sign-In y verificar un correo no prueban por sí solos la edad.
+
+Cuenta y credenciales
+Debes utilizar cuentas propias y proteger tus credenciales. Firebase Authentication gestiona acceso, recuperación y verificación. Cerrar sesión no elimina tu cuenta ni desvincula automáticamente a la pareja.
+
+Contenido y consentimiento
+Conservas la titularidad de tu contenido. Debes contar con los permisos necesarios para compartirlo. Se prohíben el acceso no autorizado, la suplantación, el acoso y compartir contenido ilícito o íntimo sin consentimiento. Vincularse no autoriza a distribuir contenido fuera de Romanza.
+
+Funciones compartidas futuras
+El vínculo inicial será entre dos cuentas y requerirá confirmación de ambas. Cada autor podrá eliminar su contenido conforme a la política final. Antes de habilitar contenido remoto deben definirse y comunicarse la conservación, efectos de desvinculación y eliminación de copias. No se promete revocar imágenes ya copiadas por quien pudo verlas.
+
+Cambios, suspensión y reclamaciones
+Las funciones pueden evolucionar. Las medidas ante abuso deberán ser proporcionales y disponer de un canal de contacto. La versión definitiva establecerá avisos, reclamaciones, cierre de cuenta, disponibilidad y jurisdicción, respetando los derechos obligatorios aplicables.
+
+Pendientes antes de publicación
+Dirección postal, países, jurisdicción, comprobación de la edad mínima de 18 años, procedimientos de reclamación y eliminación, retención, política tras desvinculación y fecha de entrada en vigor. Este documento no incorpora monetización ni sustituye una revisión legal.

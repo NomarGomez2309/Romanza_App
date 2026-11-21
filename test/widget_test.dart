@@ -1,3 +1,4 @@
+import 'support/fake_auth_repository.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ void main() {
     var calls = 0;
     await tester.pumpWidget(
       RomanzaApp(
+        authRepository: FakeAuthRepository(),
         initialize: () {
           calls++;
           return initialization.future;
@@ -34,6 +36,7 @@ void main() {
     var attempts = 0;
     await tester.pumpWidget(
       RomanzaApp(
+        authRepository: FakeAuthRepository(),
         initialize: () async {
           if (++attempts == 1) throw StateError('Initialization failed');
         },

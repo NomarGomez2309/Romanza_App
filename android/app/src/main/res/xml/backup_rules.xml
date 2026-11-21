@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Device-bound Firebase Auth ciphertext cannot be restored on another key. -->
+    <exclude domain="sharedpref" path="com.google.firebase.auth.api.Store.W0RFRkFVTFRd+MToxMDc3ODI4NTc4NzM5OmFuZHJvaWQ6ODg2YjMzODk1Y2Q3NWJlNTcyMmZjNg.xml" />
+    <exclude domain="sharedpref" path="com.google.firebase.auth.api.crypto.W0RFRkFVTFRd+MToxMDc3ODI4NTc4NzM5OmFuZHJvaWQ6ODg2YjMzODk1Y2Q3NWJlNTcyMmZjNg.xml" />
+</full-backup-content>

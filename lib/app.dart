@@ -8,6 +8,8 @@ import 'features/home_shell.dart';
 import 'features/settings/settings_localizations.dart';
 import 'preferences/palette_controller.dart';
 import 'preferences/palette_repository.dart';
+import 'features/auth/auth_repository.dart';
+import 'features/auth/auth_gate.dart';
 
 class RomanzaApp extends StatefulWidget {
   const RomanzaApp({
@@ -15,10 +17,12 @@ class RomanzaApp extends StatefulWidget {
     required this.initialize,
     this.paletteRepository,
     this.preferencesStore,
+    this.authRepository,
   });
   final Future<void> Function() initialize;
   final PaletteRepository? paletteRepository;
   final PreferencesStore? preferencesStore;
+  final AuthRepository? authRepository;
   @override
   State<RomanzaApp> createState() => _RomanzaAppState();
 }
@@ -26,6 +30,7 @@ class RomanzaApp extends StatefulWidget {
 class _RomanzaAppState extends State<RomanzaApp> {
   late Future<void> _initialization;
   late final PaletteController _palette;
+  AuthRepository? _auth;
   @override
   void initState() {
     super.initState();
@@ -39,6 +44,7 @@ class _RomanzaAppState extends State<RomanzaApp> {
 
   Future<void> _start() async {
     await Future.wait([Future<void>.sync(widget.initialize), _palette.load()]);
+    _auth = widget.authRepository ?? FirebaseAuthRepository();
   }
 
   void _retry() => setState(() {
@@ -67,15 +73,7 @@ class _RomanzaAppState extends State<RomanzaApp> {
         future: _initialization,
         builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
-            return const Scaffold(
-              body: SafeArea(
-                child: Center(
-                  child: CircularProgressIndicator(
-                    semanticsLabel: 'Iniciando Romanza',
-                  ),
-                ),
-              ),
-            );
+            return const AuthLoadingScreen();
           }
           if (snapshot.hasError) {
             return Scaffold(
@@ -95,7 +93,10 @@ class _RomanzaAppState extends State<RomanzaApp> {
               ),
             );
           }
-          return HomeShell(paletteController: _palette);
+          return AuthGate(
+            repository: _auth!,
+            authenticated: (_) => HomeShell(paletteController: _palette),
+          );
         },
       ),
     ),

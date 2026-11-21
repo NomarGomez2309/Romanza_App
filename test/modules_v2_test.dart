@@ -1,3 +1,4 @@
+import 'support/fake_auth_repository.dart';
 import 'dart:io';
 import 'package:romanza/features/camera/capture_mode.dart';
 import 'dart:ui' as ui;
@@ -197,7 +198,10 @@ void main() {
         await tester.pumpWidget(
           RepaintBoundary(
             key: key,
-            child: RomanzaApp(initialize: () async {}),
+            child: RomanzaApp(
+              authRepository: FakeAuthRepository(),
+              initialize: () async {},
+            ),
           ),
         );
         await tester.pumpAndSettle();

@@ -1,3 +1,4 @@
+import 'support/fake_auth_repository.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
@@ -66,6 +67,7 @@ void main() {
           RepaintBoundary(
             key: key,
             child: RomanzaApp(
+              authRepository: FakeAuthRepository(),
               initialize: () async {},
               paletteRepository: repository,
             ),
@@ -113,12 +115,16 @@ void main() {
     (tester) async {
       final repository = MemoryPaletteRepository();
       await tester.pumpWidget(
-        RomanzaApp(initialize: () async {}, paletteRepository: repository),
+        RomanzaApp(
+          authRepository: FakeAuthRepository(),
+          initialize: () async {},
+          paletteRepository: repository,
+        ),
       );
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Usuario y preferencias'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Preferencias'));
+      await tester.tap(find.text('Temas'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Forest'));
       await tester.pumpAndSettle();
@@ -130,7 +136,11 @@ void main() {
       expect(find.textContaining('Todavía no hay planes.'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       await tester.pumpWidget(
-        RomanzaApp(initialize: () async {}, paletteRepository: repository),
+        RomanzaApp(
+          authRepository: FakeAuthRepository(),
+          initialize: () async {},
+          paletteRepository: repository,
+        ),
       );
       await tester.pumpAndSettle();
       expect(
@@ -145,7 +155,12 @@ void main() {
   testWidgets('touch targets and labels are accessible', (tester) async {
     final semantics = tester.ensureSemantics();
     try {
-      await tester.pumpWidget(RomanzaApp(initialize: () async {}));
+      await tester.pumpWidget(
+        RomanzaApp(
+          authRepository: FakeAuthRepository(),
+          initialize: () async {},
+        ),
+      );
       await tester.pumpAndSettle();
       await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
       await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
@@ -162,13 +177,16 @@ void main() {
     await tester.pumpWidget(
       RepaintBoundary(
         key: key,
-        child: RomanzaApp(initialize: () async {}),
+        child: RomanzaApp(
+          authRepository: FakeAuthRepository(),
+          initialize: () async {},
+        ),
       ),
     );
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Usuario y preferencias'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Preferencias'));
+    await tester.tap(find.text('Temas'));
     await tester.pumpAndSettle();
     await capture(tester, key, 'Preferencias');
     await tester.tap(find.byType(BackButton));

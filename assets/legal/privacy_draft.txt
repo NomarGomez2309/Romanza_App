@@ -1,0 +1,31 @@
+ROMANZA — AVISO DE PRIVACIDAD
+Borrador para revisión · 21 de noviembre de 2026 · No aprobado para publicación
+
+Este aviso distingue los datos utilizados actualmente de las funciones futuras. Su lectura no registra aceptación ni autoriza tratamientos adicionales. Debe completarse y aprobarse antes del lanzamiento público.
+
+Responsable
+Responsable: Nomar Gomez, con operación en Nueva York, Estados Unidos. Contacto para consultas y solicitudes de privacidad: romanza@gmail.com. Dirección postal y países admitidos: pendientes de completar antes de publicación.
+
+Datos actuales
+Acceso: identificador de Firebase, correo, estado de verificación y proveedor de autenticación. Google puede facilitar nombre y fotografía de perfil. El perfil de Firestore conserva identificador, nombre disponible, correo, fotografía opcional, proveedores y fechas de creación o actualización.
+Firebase Authentication gestiona contraseñas y persistencia de sesión; Romanza no guarda contraseñas en Firestore ni copia tokens manualmente en sus preferencias.
+En el dispositivo se conservan tema, paletas, idioma y borrador fotográfico con texto y fecha local. La cámara se solicita al usarla. La captura actual no graba audio y los borradores no se publican automáticamente.
+
+Finalidades
+Permitir acceso, recuperar credenciales, confirmar correo, mostrar el perfil y conservar preferencias. Firebase puede procesar información técnica necesaria para operar y proteger la autenticación, según sus condiciones y configuración.
+
+Proveedores y ubicación
+Se utilizan Firebase Authentication y Cloud Firestore de Google. La base Firestore actual está en us-east4. Esa región no garantiza que todos los datos de autenticación, soporte o procesamiento permanezcan allí. Antes de publicar deben documentarse contratos y garantías de transferencias internacionales para los países admitidos.
+Referencias del proveedor: https://firebase.google.com/support/privacy y https://firebase.google.com/terms/data-processing-terms
+
+Funciones futuras
+Los vínculos utilizarán identificadores y estado de pareja. Fotografías, textos, notas, planes y recuerdos remotos requerirán acceso privado y políticas de conservación definidas. Estos tratamientos deben revisarse antes de activar esas funciones. Este cambio no incorpora anuncios ni Analytics.
+
+Conservación y eliminación
+Preferencias y borradores permanecen localmente hasta su modificación, descarte o eliminación mediante las funciones disponibles. Cerrar sesión no borra automáticamente datos o cuenta. Plazos del perfil, solicitudes, eliminación remota y copias de seguridad: PENDIENTES. No se garantiza borrar instantáneamente copias ajenas o respaldos.
+
+Edad, elecciones y derechos
+Romanza se destina a mayores de 18 años; su comprobación y alcance territorial deben concretarse. Deben habilitarse contacto y procedimientos para los derechos de acceso, corrección, eliminación y otros que resulten aplicables. Las bases jurídicas y avisos regionales requieren revisión.
+
+Pendientes antes de publicación
+Dirección postal, países, bases jurídicas, conservación, cierre de cuenta y derechos, contratos y transferencias, comprobación de edad, política tras desvinculación y entrada en vigor. Este borrador no garantiza cumplimiento mundial.

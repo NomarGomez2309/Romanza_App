@@ -1,3 +1,4 @@
+import 'support/fake_auth_repository.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
@@ -62,6 +63,7 @@ void main() {
                 RepaintBoundary(
                   key: key,
                   child: RomanzaApp(
+                    authRepository: FakeAuthRepository(),
                     initialize: () async {},
                     paletteRepository: repository,
                   ),

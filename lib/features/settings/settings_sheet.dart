@@ -8,6 +8,7 @@ import '../../preferences/palette_controller.dart';
 import '../../preferences/preferences_screen.dart';
 import 'settings_account.dart';
 import 'settings_localizations.dart';
+import 'legal_draft_screen.dart';
 
 Future<void> openSettings(
   BuildContext context,
@@ -470,19 +471,11 @@ class SettingsDetail extends StatelessWidget {
                     RomanzaSymbol.arrowLeft,
                     forward: true,
                   ),
-                  onTap: () => showDialog<void>(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text(label),
-                      content: const Text(
-                        'El texto definitivo todavía no está disponible.',
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => LegalDraftScreen(
+                        privacy: label == 'Política de privacidad',
                       ),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Entendido'),
-                        ),
-                      ],
                     ),
                   ),
                 ),
@@ -500,9 +493,12 @@ class SettingsDetail extends StatelessWidget {
             ] else
               Text(switch (title) {
                 'Cuenta' =>
-                  'Todavía no hay una cuenta iniciada. El acceso y la edición del perfil estarán disponibles en una próxima entrega.',
+                  Firebase.apps.isEmpty ||
+                          FirebaseAuth.instance.currentUser == null
+                      ? 'No hay una sesión iniciada.'
+                      : 'Correo: ${FirebaseAuth.instance.currentUser!.email ?? "No disponible"}\nLa edición del perfil estará disponible en una próxima entrega.',
                 'Administración de pareja' =>
-                  'Todavía no hay una pareja vinculada. Las invitaciones mediante enlace estarán disponibles cuando se implemente el acceso.',
+                  'Las invitaciones mediante enlace estarán disponibles en una próxima entrega.',
                 _ =>
                   'No hay una sesión iniciada que cerrar. Tus preferencias y borradores permanecen en este dispositivo.',
               }),
