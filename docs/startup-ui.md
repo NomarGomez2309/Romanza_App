@@ -1,14 +1,16 @@
-# Módulo de arranque
+# Arranque y sesión
 
-Objetivo: abrir una base mínima después de inicializar los servicios externos.
-Entrada: inicio de la aplicación. Salida: pantalla con nombre Romanza.
+Inicializa Firebase y App Check fuera de build. Se ejecuta una vez y comparte la
+operación si hay un reintento mientras sigue pendiente. A los 20 segundos aparece
+error/reintento si no termina; no se afirma que inicializar un SDK pruebe conexión
+remota o permisos.
 
-Estados: progreso mientras se inicializa; error genérico con Reintentar;
-pantalla vacía de producto tras éxito. No hay formularios, datos persistidos,
-navegación de producto ni afirmaciones de conexión remota.
+Tras éxito se construye `SessionRoot`, que decide entre acceso, verificación,
+perfil, documentos/aceptación, pareja opcional e inicio mínimo. El perfil tiene
+otro límite de carga de 15 s. Ver [la especificación de servicios](secure-core.md).
 
-Material 3 estándar; márgenes 24 y separación 16. Progreso con etiqueta semántica,
-texto de error centrado y botón Material. Diseño visual definitivo pendiente.
+Material 3 estándar, margen de 24 y separación de 16. Estas pantallas permiten
+probar la lógica de servicios y no sustituyen las grillas visuales aprobadas.
 
-Pruebas: inicialización pendiente y completada, error y reintento satisfactorio.
-La plantilla anterior docs/templates/module-ui.md no existe tras la limpieza.
+Pruebas: arranque pendiente/completado, error/reintento, construcción de sesión
+solo después de inicializar y recuperación después de un timeout.

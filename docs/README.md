@@ -1,5 +1,7 @@
 # Índice documental
 
+- [Base segura de servicios](secure-core.md)
+- [Evaluación de reglas](security-audit.json)
 - [Arquitectura](architecture.md)
 - [Plan](roadmap.md)
 - [Base visual](design-system.md)

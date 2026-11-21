@@ -14,3 +14,16 @@ configuración Firebase propia; Windows/Linux no tienen opciones configuradas.
 
 
 Se apartaron dos entradas dañadas de la caché Gradle para regenerarlas y se retiró la actividad Android del antiguo plugin OAuth. Los Podfile.lock de Apple se conservan y deben regenerarse con CocoaPods en macOS tras cambiar las dependencias.
+
+## Base segura de servicios
+
+Las anotaciones anteriores corresponden a la limpieza previa. Esta fase añade
+pruebas de resolución de sesión y 21 pruebas de lógica backend/reglas en
+Firestore y Storage emulados. Consultar `secure-core.md` para ejecutarlas y para
+los límites de esa validación. No equivale a probar un login nativo ni atestación
+real. No se ha recompilado Android/iOS en esta máquina durante esta fase.
+
+Resultados de esta fase: `flutter analyze` sin incidencias; 11 pruebas Flutter
+aprobadas; 21 pruebas backend/reglas aprobadas en emuladores; `git diff --check`
+sin errores. `npm audit --omit=dev` del backend: cero avisos en el momento de
+la comprobación. Los avisos futuros pueden cambiar y esto no certifica seguridad.

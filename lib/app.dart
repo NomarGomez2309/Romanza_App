@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 /// Initializes external services once, outside build.
 class RomanzaApp extends StatefulWidget {
-  const RomanzaApp({super.key, required this.initialize});
+  const RomanzaApp({super.key, required this.initialize, this.homeBuilder});
 
   final Future<void> Function() initialize;
+  final WidgetBuilder? homeBuilder;
 
   @override
   State<RomanzaApp> createState() => _RomanzaAppState();
@@ -16,12 +17,16 @@ class _RomanzaAppState extends State<RomanzaApp> {
   @override
   void initState() {
     super.initState();
-    _initialization = Future<void>.sync(widget.initialize);
+    _initialization = Future<void>.sync(
+      widget.initialize,
+    ).timeout(const Duration(seconds: 20));
   }
 
   void _retry() {
     setState(() {
-      _initialization = Future<void>.sync(widget.initialize);
+      _initialization = Future<void>.sync(
+        widget.initialize,
+      ).timeout(const Duration(seconds: 20));
     });
   }
 
@@ -31,42 +36,42 @@ class _RomanzaAppState extends State<RomanzaApp> {
       title: 'Romanza',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: FutureBuilder<void>(
-                future: _initialization,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState != ConnectionState.done) {
-                    return const CircularProgressIndicator(
-                      semanticsLabel: 'Iniciando Romanza',
-                    );
-                  }
-                  if (snapshot.hasError) {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text(
-                          'No se pudo iniciar Romanza. '
-                          'Comprueba la configuración de Firebase y vuelve a intentar.',
-                          textAlign: TextAlign.center,
+      home: FutureBuilder<void>(
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done &&
+              !snapshot.hasError) {
+            return widget.homeBuilder?.call(context) ??
+                const Scaffold(body: Center(child: Text('Romanza')));
+          }
+          return Scaffold(
+            body: SafeArea(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: snapshot.hasError
+                      ? Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              'No se pudo iniciar Romanza. Comprueba la configuración de Firebase y vuelve a intentar.',
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 16),
+                            FilledButton(
+                              onPressed: _retry,
+                              child: const Text('Reintentar'),
+                            ),
+                          ],
+                        )
+                      : const CircularProgressIndicator(
+                          semanticsLabel: 'Iniciando Romanza',
                         ),
-                        const SizedBox(height: 16),
-                        FilledButton(
-                          onPressed: _retry,
-                          child: const Text('Reintentar'),
-                        ),
-                      ],
-                    );
-                  }
-                  return const Text('Romanza');
-                },
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

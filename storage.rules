@@ -1,0 +1,8 @@
+rules_version = '2';
+// Media remains closed until upload validation, expiry and cleanup are implemented.
+// Metadata deletion alone does not delete an object; never expose token download URLs.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
