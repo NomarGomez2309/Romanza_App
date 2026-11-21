@@ -5,9 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 @immutable
 class AuthIdentity {
-  const AuthIdentity({required this.uid, required this.verified, this.email});
+  const AuthIdentity({
+    required this.uid,
+    required this.verified,
+    this.email,
+    this.photoUrl,
+    this.providers = const [],
+  });
   final String uid;
-  final String? email;
+  final String? email, photoUrl;
+  final List<String> providers;
   final bool verified;
 }
 
@@ -26,6 +33,8 @@ abstract interface class AuthRepository {
   Future<void> sendVerification();
   Future<void> refresh();
   Future<void> ensureProfile();
+  Future<String> readName();
+  Future<void> saveName(String name);
   Future<void> signOut();
 }
 
@@ -44,6 +53,10 @@ class FirebaseAuthRepository implements AuthRepository {
           uid: user.uid,
           email: user.email,
           verified: user.emailVerified,
+          photoUrl: user.photoURL,
+          providers: user.providerData
+              .map((p) => p.providerId)
+              .toList(growable: false),
         );
   @override
   Stream<AuthIdentity?> get changes => _auth.idTokenChanges().map(_identity);
@@ -162,6 +175,71 @@ class FirebaseAuthRepository implements AuthRepository {
       }
     });
   });
+  @override
+  Future<String> readName() async {
+    final user = _auth.currentUser;
+    if (user == null || !user.emailVerified) {
+      throw const AuthFailure(
+        'verification-required',
+        'Verifica tu cuenta para continuar.',
+      );
+    }
+    try {
+      final profile = await _database.collection('users').doc(user.uid).get();
+      if (_auth.currentUser?.uid != user.uid) {
+        throw const AuthFailure(
+          'session-changed',
+          'Tu sesión cambió. Vuelve a intentarlo.',
+        );
+      }
+      final name = profile.data()?['name'];
+      return name is String ? name : '';
+    } on FirebaseException catch (_) {
+      throw const AuthFailure(
+        'profile-unavailable',
+        'No pudimos cargar tu perfil. Vuelve a intentarlo.',
+      );
+    }
+  }
+
+  @override
+  Future<void> saveName(String name) async {
+    final user = _auth.currentUser;
+    final value = name.trim();
+    if (user == null || !user.emailVerified) {
+      throw const AuthFailure(
+        'verification-required',
+        'Verifica tu cuenta para continuar.',
+      );
+    }
+    if (value.isEmpty || value.length > 100) {
+      throw const AuthFailure(
+        'invalid-name',
+        'Escribe un nombre de 1 a 100 caracteres.',
+      );
+    }
+    try {
+      await _database
+          .collection('users')
+          .doc(user.uid)
+          .update({'name': value, 'updatedAt': FieldValue.serverTimestamp()})
+          .timeout(
+            const Duration(seconds: 20),
+            onTimeout: () {
+              throw const AuthFailure(
+                'save-timeout',
+                'No pudimos confirmar el guardado. Comprueba tu conexión antes de reintentar.',
+              );
+            },
+          );
+    } on FirebaseException catch (_) {
+      throw const AuthFailure(
+        'profile-unavailable',
+        'No pudimos guardar tu nombre. Revisa la conexión y reintenta.',
+      );
+    }
+  }
+
   @override
   Future<void> signOut() async {
     await _run(() => _auth.signOut());

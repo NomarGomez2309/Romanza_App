@@ -10,9 +10,11 @@ class FakeAuthRepository implements AuthRepository {
     ),
   });
   AuthIdentity? user;
+  String name = 'Mara';
+  int nameSaves = 0;
   final events = StreamController<AuthIdentity?>.broadcast(sync: true);
   AuthFailure? failure, refreshFailure, profileFailure;
-  Completer<void>? pending;
+  Completer<void>? pending, namePending;
   int loginCalls = 0, profileCalls = 0, verificationCalls = 0;
   String? lastPassword;
   @override
@@ -66,6 +68,20 @@ class FakeAuthRepository implements AuthRepository {
   Future<void> ensureProfile() async {
     profileCalls++;
     if (profileFailure != null) throw profileFailure!;
+  }
+
+  @override
+  Future<String> readName() async {
+    if (profileFailure != null) throw profileFailure!;
+    return name;
+  }
+
+  @override
+  Future<void> saveName(String value) async {
+    nameSaves++;
+    if (profileFailure != null) throw profileFailure!;
+    await namePending?.future;
+    name = value.trim();
   }
 
   @override

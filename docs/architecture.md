@@ -49,3 +49,15 @@ No hay autenticación, vínculo ni sincronización implementados. Las pantallas
 Planes y Recuerdos son estados vacíos. No se efectúan escrituras remotas ni se
 modifican reglas de Firebase. Las futuras funciones usarán presentación →
 controlador → contrato de repositorio → servicio/almacenamiento.
+
+## Onboarding y cuenta — sobre 53b9743f
+
+El acceso real de esa base se conserva. `AuthRepository` añade lectura y escritura
+del nombre propio, y `SessionController` resuelve el estado `profile` únicamente
+si falta el nombre. `SessionScope` comparte esa misma sesión con el editor Cuenta.
+Las rutas privadas siguen destruyéndose al cambiar UID o cerrar sesión.
+Los nuevos controles visuales se agrupan en `auth_design.dart`; el tema, logo y
+colección de iconos existentes no se reemplazan. Ver
+[especificación y límites vigentes de esta entrega](modules/onboarding-account.md).
+Las afirmaciones históricas anteriores sobre ausencia de autenticación describen
+la base visual anterior, no el estado de esta rama.

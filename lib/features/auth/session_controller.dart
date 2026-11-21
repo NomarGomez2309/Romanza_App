@@ -6,6 +6,7 @@ enum SessionStage {
   loading,
   welcome,
   verification,
+  profile,
   authenticated,
   error,
   disabled,
@@ -28,6 +29,7 @@ class SessionController extends ChangeNotifier {
   SessionStage stage = SessionStage.loading;
   AuthIdentity? identity;
   String? error, notice;
+  String? name;
   bool busy = false, _disposed = false;
   String? _profileUid;
   int _generation = 0;
@@ -46,6 +48,7 @@ class SessionController extends ChangeNotifier {
     identity = user;
     if (previousUid != user?.uid) {
       _profileUid = null;
+      name = null;
       error = null;
       notice = null;
       _cooldownTimer?.cancel();
@@ -56,16 +59,25 @@ class SessionController extends ChangeNotifier {
     } else if (!user.verified) {
       stage = SessionStage.verification;
     } else if (_profileUid == user.uid) {
-      stage = SessionStage.authenticated;
+      stage = name == null || name!.trim().isEmpty
+          ? SessionStage.profile
+          : SessionStage.authenticated;
     } else {
       stage = SessionStage.loading;
       _emit();
       try {
         await repository.ensureProfile().timeout(const Duration(seconds: 20));
         if (_disposed || generation != _generation) return;
+        final profileName = await repository.readName().timeout(
+          const Duration(seconds: 20),
+        );
+        if (_disposed || generation != _generation) return;
         _profileUid = user.uid;
+        name = profileName;
         error = null;
-        stage = SessionStage.authenticated;
+        stage = profileName.trim().isEmpty
+            ? SessionStage.profile
+            : SessionStage.authenticated;
       } catch (e) {
         if (_disposed || generation != _generation) return;
         error = _message(e);
@@ -101,6 +113,17 @@ class SessionController extends ChangeNotifier {
       _emit();
     }
   }
+
+  Future<void> saveName(String value) => _action(() async {
+    final uid = identity?.uid;
+    final generation = _generation;
+    if (uid == null || identity?.verified != true) return;
+    await repository.saveName(value);
+    if (_disposed || generation != _generation || identity?.uid != uid) return;
+    name = value.trim();
+    stage = SessionStage.authenticated;
+    notice = 'Tu nombre se guardó.';
+  });
 
   Future<void> login(String email, String password) =>
       _action(() => repository.login(email, password));
@@ -173,6 +196,7 @@ class SessionController extends ChangeNotifier {
           _invalidating = false;
           identity = null;
           _profileUid = null;
+          name = null;
           _disabled = e.code == 'user-disabled';
           stage = _disabled ? SessionStage.disabled : SessionStage.welcome;
           error = e.code == 'user-not-found'
