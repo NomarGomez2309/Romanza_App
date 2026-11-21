@@ -14,10 +14,8 @@ void main() {
       'Nunito',
     )..addFont(rootBundle.load('assets/fonts/Nunito.ttf'))).load();
   });
-  testWidgets('all 28 original SVG assets render and remain decorative', (
-    tester,
-  ) async {
-    expect(RomanzaSymbol.values.length, 28);
+  testWidgets('all SVG assets render and remain decorative', (tester) async {
+    expect(RomanzaSymbol.values.length, 31);
     for (final symbol in RomanzaSymbol.values) {
       expect(
         File(symbol.asset).readAsStringSync(),

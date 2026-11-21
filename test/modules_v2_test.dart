@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:romanza/features/camera/capture_mode.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -13,6 +14,7 @@ import 'package:romanza/preferences/custom_palette.dart';
 import 'package:romanza/preferences/palette_controller.dart';
 import 'package:romanza/preferences/palette_repository.dart';
 import 'package:romanza/preferences/preferences_screen.dart';
+import 'package:romanza/preferences/custom_palette_screen.dart';
 import 'package:romanza/preferences/preferences_store.dart';
 
 class FailedStore implements PreferencesStore {
@@ -28,8 +30,10 @@ class FailedDraftRepository implements DraftRepository {
   Future<PhotoDraft?> read() async =>
       throw const FileSystemException('unavailable');
   @override
-  Future<PhotoDraft> importPhoto(String source) async =>
-      throw const FileSystemException('unavailable');
+  Future<PhotoDraft> importPhoto(
+    String source, {
+    CaptureMode mode = CaptureMode.instant,
+  }) async => throw const FileSystemException('unavailable');
   @override
   Future<void> save(PhotoDraft draft) async =>
       throw const FileSystemException('unavailable');
@@ -146,10 +150,14 @@ void main() {
         await source.writeAsBytes([1, 2, 3, 4]);
         final repo = LocalDraftRepository(directory: root);
         expect(await repo.read(), isNull);
-        final photo = await repo.importPhoto(source.path);
+        final photo = await repo.importPhoto(
+          source.path,
+          mode: CaptureMode.mirror,
+        );
         await repo.save(photo.withCaption('Nuestro día 🌿'));
         final restored = await LocalDraftRepository(directory: root).read();
         expect(restored!.caption, 'Nuestro día 🌿');
+        expect(restored.mode, CaptureMode.mirror);
         expect(await File(restored.path).readAsBytes(), [1, 2, 3, 4]);
         await expectLater(
           repo.importPhoto('${root.path}/absent.jpg'),
@@ -157,6 +165,7 @@ void main() {
         );
         expect((await repo.read())!.path, restored.path);
         final replacement = await repo.importPhoto(source.path);
+        expect(replacement.mode, CaptureMode.instant);
         expect(replacement.path, isNot(restored.path));
         expect(await File(restored.path).exists(), isFalse);
         await repo.delete();
@@ -195,16 +204,21 @@ void main() {
         await tester.tap(find.byTooltip('Usuario y preferencias'));
         await tester.pumpAndSettle();
         expect(find.byType(SettingsSheet), findsOneWidget);
-        expect(find.byType(ListTile), findsNWidgets(6));
+        expect(find.byType(ListTile), findsNWidgets(5));
         expect(tester.takeException(), isNull);
         if (scale == 1) {
           await capture(tester, key, 'settings-${size.width.toInt()}');
         }
-        await tester.ensureVisible(find.text('Preferencias'));
-        await tester.tap(find.text('Preferencias'));
+        await tester.ensureVisible(find.text('Temas'));
+        await tester.tap(find.text('Temas'));
         await tester.pumpAndSettle();
         expect(find.byType(PreferencesScreen), findsOneWidget);
         expect(find.byTooltip('Atrás'), findsOneWidget);
+        await tester.ensureVisible(find.text('Custom'));
+        await tester.tap(find.text('Custom'));
+        await tester.pumpAndSettle();
+        await chooseSeed(tester, 1, '9FA0FF');
+        await chooseSeed(tester, 2, 'FF7171');
         await tester.ensureVisible(find.text('Generar paletas'));
         await tester.tap(find.text('Generar paletas'));
         await tester.pumpAndSettle();
@@ -263,13 +277,20 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: romanzaTheme(RomanzaPalette.defaultPalette),
-        home: PreferencesScreen(controller: controller),
+        home: CustomPaletteScreen(controller: controller),
       ),
     );
+    await chooseSeed(tester, 1, '9FA0FF');
+    await chooseSeed(tester, 2, 'FF7171');
+    await tester.ensureVisible(find.text('Generar paletas'));
     await tester.tap(find.text('Generar paletas'));
     await tester.pumpAndSettle();
     expect(find.byType(PaletteSample), findsNWidgets(3));
+    await tester.ensureVisible(find.text('Color 1'));
     await tester.tap(find.text('Color 1'));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Editar valores de Color 1'));
+    await tester.tap(find.text('Editar valores de Color 1'));
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'ZZZZZZ');
     await tester.tap(find.text('Aplicar'));
@@ -281,4 +302,16 @@ void main() {
     expect(find.byType(PaletteSample), findsNothing);
     controller.dispose();
   });
+}
+
+Future<void> chooseSeed(WidgetTester tester, int index, String hex) async {
+  await tester.ensureVisible(find.text('Color $index'));
+  await tester.tap(find.text('Color $index'));
+  await tester.pumpAndSettle();
+  await tester.ensureVisible(find.text('Editar valores de Color $index'));
+  await tester.tap(find.text('Editar valores de Color $index'));
+  await tester.pumpAndSettle();
+  await tester.enterText(find.byType(TextField), hex);
+  await tester.tap(find.text('Aplicar'));
+  await tester.pumpAndSettle();
 }

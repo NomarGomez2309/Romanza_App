@@ -16,6 +16,13 @@ class HomeShell extends StatefulWidget {
 }
 
 class _HomeShellState extends State<HomeShell> {
+  final _profileFocus = FocusNode(debugLabel: 'Inicio: cuenta');
+  @override
+  void dispose() {
+    _profileFocus.dispose();
+    super.dispose();
+  }
+
   int _selected = 0;
   void _select(int index) => setState(() => _selected = index);
   void _camera() => Navigator.of(
@@ -29,7 +36,12 @@ class _HomeShellState extends State<HomeShell> {
         index: _selected,
         children: [
           TodayScreen(
-            onProfile: () => openSettings(context, widget.paletteController),
+            profileFocus: _profileFocus,
+            onProfile: () => openSettings(
+              context,
+              widget.paletteController,
+              returnFocus: _profileFocus,
+            ),
             onCamera: _camera,
             onPlans: () => _select(1),
             onMemories: () => _select(2),

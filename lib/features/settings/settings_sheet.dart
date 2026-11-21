@@ -1,14 +1,20 @@
-import 'package:romanza/design_system/romanza_icon.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../design_system/romanza_icon.dart';
 import '../../design_system/romanza_theme.dart';
 import '../../preferences/palette_controller.dart';
 import '../../preferences/preferences_screen.dart';
+import 'settings_account.dart';
+import 'settings_localizations.dart';
 
 Future<void> openSettings(
   BuildContext context,
-  PaletteController controller,
-) async {
+  PaletteController controller, {
+  FocusNode? returnFocus,
+}) async {
+  final previousFocus = returnFocus ?? FocusManager.instance.primaryFocus;
   final destination = await showModalBottomSheet<String>(
     context: context,
     isScrollControlled: true,
@@ -19,9 +25,16 @@ Future<void> openSettings(
     sheetAnimationStyle: MediaQuery.disableAnimationsOf(context)
         ? AnimationStyle.noAnimation
         : const AnimationStyle(duration: Duration(milliseconds: 250)),
-    builder: (context) => const SettingsSheet(),
+    builder: (_) => const _LiveSettingsSheet(),
   );
+  if (previousFocus?.context != null) previousFocus!.requestFocus();
   if (!context.mounted || destination == null) return;
+  if (destination == 'signedOut') {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Sesión cerrada')));
+    return;
+  }
   await Navigator.of(context).push(
     MaterialPageRoute<void>(
       builder: (_) => destination == 'Preferencias'
@@ -31,10 +44,55 @@ Future<void> openSettings(
   );
 }
 
-class SettingsSheet extends StatelessWidget {
-  const SettingsSheet({super.key});
+class _LiveSettingsSheet extends StatefulWidget {
+  const _LiveSettingsSheet();
+  @override
+  State<_LiveSettingsSheet> createState() => _LiveSettingsSheetState();
+}
+
+class _LiveSettingsSheetState extends State<_LiveSettingsSheet> {
+  SettingsAccount account = const SettingsAccount();
+  SettingsAccountSubscription? subscription;
+  @override
+  void initState() {
+    super.initState();
+    if (Firebase.apps.isNotEmpty) {
+      account = const SettingsAccount(
+        status: AccountStatus.loading,
+        partnerStatus: PartnerStatus.loading,
+      );
+      subscription = SettingsAccountSubscription((value) {
+        if (mounted) setState(() => account = value);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    subscription?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => SettingsSheet(
+    account: account,
+    onSignOut:
+        Firebase.apps.isNotEmpty && FirebaseAuth.instance.currentUser != null
+        ? () => FirebaseAuth.instance.signOut()
+        : null,
+  );
+}
+
+class SettingsSheet extends StatefulWidget {
+  const SettingsSheet({
+    super.key,
+    this.account = const SettingsAccount(),
+    this.onSignOut,
+  });
+  final SettingsAccount account;
+  final Future<void> Function()? onSignOut;
+  // Route keys remain unchanged; labels are localized independently.
   static const entries = <String, RomanzaSymbol>{
-    'Cuenta': RomanzaSymbol.userRound,
     'Preferencias': RomanzaSymbol.slidersHorizontal,
     'Administración de pareja': RomanzaSymbol.link,
     'Idioma': RomanzaSymbol.globe,
@@ -42,96 +100,316 @@ class SettingsSheet extends StatelessWidget {
     'Cerrar sesión': RomanzaSymbol.logOut,
   };
   @override
+  State<SettingsSheet> createState() => _SettingsSheetState();
+}
+
+class _SettingsSheetState extends State<SettingsSheet> {
+  bool signingOut = false;
+  String? error;
+  Future<void> signOut() async {
+    if (signingOut || widget.onSignOut == null) return;
+    setState(() {
+      signingOut = true;
+      error = null;
+    });
+    try {
+      await widget.onSignOut!();
+      if (mounted) Navigator.pop(context, 'signedOut');
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          signingOut = false;
+          error = 'No pudimos cerrar la sesión. Vuelve a intentarlo.';
+        });
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final c = RomanzaColors.of(context);
+    final copy = SettingsLocalizations.of(context);
     final opaque =
         MediaQuery.highContrastOf(context) ||
         MediaQuery.accessibleNavigationOf(context);
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: opaque ? 0 : 32,
-          sigmaY: opaque ? 0 : 32,
-        ),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: opaque ? c.note : null,
-            gradient: opaque
-                ? null
-                : LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color.lerp(
-                        c.note,
-                        Colors.white,
-                        .10,
-                      )!.withValues(alpha: .76),
-                      c.note.withValues(alpha: .58),
-                      c.note.withValues(alpha: .72),
-                    ],
-                    stops: const [0, .48, 1],
-                  ),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: opaque ? .22 : .46),
-            ),
-          ),
-          child: SafeArea(
-            top: false,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(height: 12),
-                  Container(width: 52, height: 3, color: c.secondary),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 8, 12, 16),
-                    child: Row(
+    final content = SafeArea(
+      top: false,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 64),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 12, 12, 0),
+                child: Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 52,
+                        height: 3,
+                        color: c.secondary,
+                      ),
+                    ),
+                    Row(
                       children: [
                         Expanded(
-                          child: Text(
-                            'Configuración',
-                            style: RomanzaType.section,
+                          child: Semantics(
+                            header: true,
+                            child: Text(
+                              copy.title,
+                              style: RomanzaType.heading(26, 32, 600),
+                            ),
                           ),
                         ),
                         IconButton(
                           tooltip: 'Cerrar configuración',
-                          onPressed: () => Navigator.pop(context),
-                          icon: const RomanzaIcon(RomanzaSymbol.x, size: 22),
+                          onPressed: signingOut
+                              ? null
+                              : () => Navigator.pop(context),
+                          icon: const RomanzaIcon(RomanzaSymbol.x, size: 24),
                         ),
                       ],
                     ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 26),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: _AccountBlock(
+                account: widget.account,
+                onTap: signingOut
+                    ? null
+                    : () => Navigator.pop(context, 'Cuenta'),
+              ),
+            ),
+            const SizedBox(height: 17),
+            for (final entry in SettingsSheet.entries.entries)
+              ListTile(
+                minTileHeight: 58,
+                minVerticalPadding: 17,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 27),
+                minLeadingWidth: 24,
+                horizontalTitleGap: 19,
+                leading: RomanzaIcon(entry.value, size: 24, color: c.ink),
+                title: Text(
+                  copy.destination(entry.key),
+                  style: RomanzaType.body.copyWith(
+                    fontSize: 17,
+                    height: 24 / 17,
+                    color: c.ink,
                   ),
-                  for (final entry in entries.entries)
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: entry.key == 'Cerrar sesión' ? 16 : 0,
+                ),
+                enabled:
+                    !signingOut &&
+                    (entry.key != 'Cerrar sesión' || widget.onSignOut != null),
+                onTap: entry.key == 'Cerrar sesión'
+                    ? signOut
+                    : () => Navigator.pop(context, entry.key),
+              ),
+            const SizedBox(height: 17),
+            if (signingOut)
+              const LinearProgressIndicator(semanticsLabel: 'Cerrando sesión'),
+            if (error != null)
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Semantics(liveRegion: true, child: Text(error!)),
+              ),
+          ],
+        ),
+      ),
+    );
+    return PopScope(
+      canPop: !signingOut,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: opaque ? 0 : 20.52,
+            sigmaY: opaque ? 0 : 20.52,
+          ),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: opaque ? c.note : c.note.withValues(alpha: .77),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(24),
+              ),
+              border: Border.all(color: Colors.white.withValues(alpha: .253)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: .08),
+                  blurRadius: 16,
+                  offset: const Offset(0, -2),
+                ),
+              ],
+            ),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: opaque
+                    ? null
+                    : LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.white.withValues(alpha: .06),
+                          Colors.transparent,
+                        ],
                       ),
-                      child: ListTile(
-                        minTileHeight: 64,
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                        ),
-                        minLeadingWidth: 30,
-                        leading: RomanzaIcon(
-                          entry.value,
-                          size: 24,
-                          color: c.ink,
-                        ),
-                        title: Text(
-                          entry.key,
-                          style: RomanzaType.body.copyWith(
-                            fontSize: 17,
-                            height: 24 / 17,
+              ),
+              child: content,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AccountBlock extends StatelessWidget {
+  const _AccountBlock({required this.account, required this.onTap});
+  final SettingsAccount account;
+  final VoidCallback? onTap;
+  Widget avatar(BuildContext context, double size, String? url) {
+    final c = RomanzaColors.of(context);
+    final fallback = ColoredBox(
+      color: c.background,
+      child: RomanzaIcon(
+        RomanzaSymbol.userRound,
+        size: size * .5,
+        color: c.secondary,
+      ),
+    );
+    return SizedBox.square(
+      dimension: size,
+      child: ClipOval(
+        child: url == null
+            ? fallback
+            : Image.network(
+                url,
+                fit: BoxFit.cover,
+                excludeFromSemantics: true,
+                errorBuilder: (_, _, _) => fallback,
+                frameBuilder: (_, child, frame, synchronous) =>
+                    frame != null || synchronous ? child : fallback,
+              ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = RomanzaColors.of(context);
+    final copy = SettingsLocalizations.of(context);
+    final name = switch (account.status) {
+      AccountStatus.signedOut => copy.signedOut,
+      AccountStatus.loading => copy.loading,
+      AccountStatus.error => copy.error,
+      AccountStatus.ready => account.name ?? copy.unnamed,
+    };
+    final link = switch (account.partnerStatus) {
+      PartnerStatus.none => copy.noPartner,
+      PartnerStatus.loading => copy.loadingPartner,
+      PartnerStatus.error => copy.partnerError,
+      PartnerStatus.linked =>
+        account.partnerName == null
+            ? copy.partnerError
+            : copy.linkedWith(account.partnerName!),
+    };
+    return Semantics(
+      key: const ValueKey('settings-account'),
+      button: true,
+      onTap: onTap,
+      label: '${copy.account}. $name. $link. Abrir Cuenta',
+      child: ExcludeSemantics(
+        child: Material(
+          color: c.background.withValues(alpha: .70),
+          borderRadius: BorderRadius.circular(20),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: onTap,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 104),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 64,
+                      height: 60,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            left: 0,
+                            top: 4,
+                            child: avatar(context, 46, account.photoUrl),
                           ),
-                        ),
-                        onTap: () => Navigator.pop(context, entry.key),
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(1.2),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: c.background,
+                              ),
+                              child: avatar(
+                                context,
+                                27.6,
+                                account.partnerStatus == PartnerStatus.linked
+                                    ? account.partnerPhotoUrl
+                                    : null,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  const SizedBox(height: 24),
-                ],
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            copy.account,
+                            style: RomanzaType.body.copyWith(
+                              fontSize: 13.8,
+                              height: 18 / 13.8,
+                              color: c.secondary,
+                            ),
+                          ),
+                          Text(
+                            name,
+                            style: RomanzaType.body.copyWith(
+                              fontSize: 19.55,
+                              height: 24 / 19.55,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            link,
+                            style: RomanzaType.body.copyWith(
+                              fontSize: 14.95,
+                              height: 20 / 14.95,
+                              color: c.secondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    RomanzaIcon(
+                      RomanzaSymbol.chevronRight,
+                      size: 23,
+                      color: c.ink,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -151,7 +429,9 @@ class SettingsDetail extends StatelessWidget {
   final PaletteController controller;
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: Text(title)),
+    appBar: AppBar(
+      title: Text(SettingsLocalizations.of(context).destination(title)),
+    ),
     body: SafeArea(
       top: false,
       child: ListenableBuilder(

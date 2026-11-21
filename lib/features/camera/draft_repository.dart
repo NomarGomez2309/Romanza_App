@@ -1,22 +1,28 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'capture_mode.dart';
 
 class PhotoDraft {
   const PhotoDraft({
     required this.path,
     required this.createdAt,
     this.caption = '',
+    this.mode = CaptureMode.instant,
   });
   final String path, caption;
   final DateTime createdAt;
+  final CaptureMode mode;
   PhotoDraft withCaption(String text) =>
-      PhotoDraft(path: path, createdAt: createdAt, caption: text);
+      PhotoDraft(path: path, createdAt: createdAt, caption: text, mode: mode);
 }
 
 abstract interface class DraftRepository {
   Future<PhotoDraft?> read();
-  Future<PhotoDraft> importPhoto(String source);
+  Future<PhotoDraft> importPhoto(
+    String source, {
+    CaptureMode mode = CaptureMode.instant,
+  });
   Future<void> save(PhotoDraft draft);
   Future<void> delete();
 }
@@ -49,11 +55,15 @@ class LocalDraftRepository implements DraftRepository {
       path: photo.path,
       createdAt: DateTime.parse(data['createdAt'] as String),
       caption: data['caption'] as String,
+      mode: data['mode'] == 'mirror' ? CaptureMode.mirror : CaptureMode.instant,
     );
   }
 
   @override
-  Future<PhotoDraft> importPhoto(String source) async {
+  Future<PhotoDraft> importPhoto(
+    String source, {
+    CaptureMode mode = CaptureMode.instant,
+  }) async {
     final old = await read();
     final root = await _root();
     final suffix = source.split('.').last;
@@ -61,7 +71,11 @@ class LocalDraftRepository implements DraftRepository {
     final path =
         '${root.path}/photo-${DateTime.now().microsecondsSinceEpoch}.$ext';
     final file = await File(source).copy(path);
-    final next = PhotoDraft(path: file.path, createdAt: DateTime.now().toUtc());
+    final next = PhotoDraft(
+      path: file.path,
+      createdAt: DateTime.now().toUtc(),
+      mode: mode,
+    );
     try {
       await save(next);
     } catch (_) {
@@ -91,6 +105,7 @@ class LocalDraftRepository implements DraftRepository {
         'file': draft.path.split(RegExp(r'[/\\]')).last,
         'createdAt': draft.createdAt.toIso8601String(),
         'caption': draft.caption,
+        'mode': draft.mode.name,
       }),
       flush: true,
     );

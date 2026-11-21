@@ -11,9 +11,11 @@ class TodayScreen extends StatelessWidget {
     required this.onPlans,
     required this.onMemories,
     this.onCamera,
+    this.profileFocus,
   });
   final VoidCallback onProfile, onPlans, onMemories;
   final VoidCallback? onCamera;
+  final FocusNode? profileFocus;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class TodayScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CoupleHeader(onProfile: onProfile),
+          CoupleHeader(onProfile: onProfile, focusNode: profileFocus),
           const SizedBox(height: 8),
           Semantics(
             header: true,
@@ -92,10 +94,12 @@ class CoupleHeader extends StatelessWidget {
     required this.onProfile,
     this.userImage,
     this.partnerImage,
+    this.focusNode,
     this.profileLabel = 'Usuario y preferencias. Sin pareja vinculada',
   });
   final VoidCallback onProfile;
   final ImageProvider? userImage, partnerImage;
+  final FocusNode? focusNode;
   final String profileLabel;
   static const rowHeight = 72.0;
   static const avatarDiameter = 41.6;
@@ -119,6 +123,7 @@ class CoupleHeader extends StatelessWidget {
               button: true,
               label: profileLabel,
               child: InkWell(
+                focusNode: focusNode,
                 onTap: onProfile,
                 borderRadius: BorderRadius.circular(24),
                 child: ExcludeSemantics(

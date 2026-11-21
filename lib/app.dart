@@ -5,6 +5,7 @@ import 'preferences/preferences_store.dart';
 import 'design_system/components.dart';
 import 'design_system/romanza_theme.dart';
 import 'features/home_shell.dart';
+import 'features/settings/settings_localizations.dart';
 import 'preferences/palette_controller.dart';
 import 'preferences/palette_repository.dart';
 
@@ -58,7 +59,10 @@ class _RomanzaAppState extends State<RomanzaApp> {
       theme: romanzaTheme(_palette.palette, custom: _palette.custom?.theme),
       locale: _palette.systemLanguage ? null : const Locale('es'),
       supportedLocales: const [Locale('es')],
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      localizationsDelegates: const [
+        SettingsLocalizations.delegate,
+        ...GlobalMaterialLocalizations.delegates,
+      ],
       home: FutureBuilder<void>(
         future: _initialization,
         builder: (context, snapshot) {
