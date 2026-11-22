@@ -9,6 +9,8 @@ Pantalla con fondo del tema y ondas periféricas suaves; sin tarjetas de pareja,
 píldora «A su ritmo», carrusel ni animación. Las ondas se dibujan como curvas
 vectoriales con gradientes, sombras de contacto difuminadas y un borde iluminado
 recortado dentro de cada capa para producir relieve; el centro queda libre.
+La trama completa (capas, sombras y luces) tiene opacidad global del 15%,
+compuesta como un grupo sobre el fondo. Logo, texto y controles quedan al 100%.
 Un RepaintBoundary aísla la decoración estática de los cambios de estado. No se usa un mockup rasterizado
 como interfaz. Las formas reproducen la dirección visual aprobada; el render
 Flutter es la referencia implementable para medidas y fuentes reales.
@@ -51,9 +53,9 @@ pantalla a una resolución ni se reduce texto para encajarlo.
 | Neo | #000000 | #08CB00 / #253900 con transparencia | #253900 | #EEEEEE |
 
 Se reutilizan `RomanzaColors` y los temas Custom existentes. La G de Google
-conserva sus colores en los tres temas sobre superficie blanca neutra, con tinta
+se muestra monocromática en #1F1F1F en los tres temas, sobre superficie blanca neutra, con tinta
 #1F1F1F y contorno #B6B8BD. El sobre usa el recurso Lucide local `mail.svg`.
-La identidad de Google no se tiñe con la paleta Romanza.
+La G mantiene sus proporciones y no adopta los colores de la paleta Romanza.
 Referencia de marca: https://developers.google.com/identity/branding-guidelines
 
 ## Acciones y alcance

@@ -28,7 +28,10 @@ class WelcomeLayout extends StatelessWidget {
             child: IgnorePointer(
               child: ExcludeSemantics(
                 child: RepaintBoundary(
-                  child: CustomPaint(painter: WelcomeWaves(c)),
+                  child: Opacity(
+                    opacity: .15,
+                    child: CustomPaint(painter: WelcomeWaves(c)),
+                  ),
                 ),
               ),
             ),
@@ -79,6 +82,10 @@ class WelcomeLayout extends StatelessWidget {
                             border: const Color(0xFFB6B8BD),
                             icon: SvgPicture.asset(
                               'assets/icons/providers/google-g.svg',
+                              colorFilter: const ColorFilter.mode(
+                                Color(0xFF1F1F1F),
+                                BlendMode.srcIn,
+                              ),
                               width: 24,
                               height: 24,
                               excludeFromSemantics: true,

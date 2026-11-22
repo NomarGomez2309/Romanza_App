@@ -35,3 +35,10 @@ Verificación posterior a esta revisión: analyze sin incidencias, 18 pruebas de
 onboarding/cuenta aprobadas y diff --check correcto. Las 135 pruebas indicadas
 arriba corresponden a la implementación anterior al ajuste de pintura y peso.
 No se midió rendimiento en un teléfono físico.
+
+## Revisión de opacidad y proveedor
+
+Trama con opacidad global 0.15, manteniendo el relieve debajo de la composición.
+Marca y contenido permanecen opacos. La G se muestra monocromática #1F1F1F
+sobre blanco en todos los temas. Se regeneran las seis capturas; se ejecutan
+las 18 pruebas de onboarding/cuenta y analyze para esta revisión.
