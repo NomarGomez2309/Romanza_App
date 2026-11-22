@@ -28,9 +28,15 @@ class WelcomeLayout extends StatelessWidget {
             child: IgnorePointer(
               child: ExcludeSemantics(
                 child: RepaintBoundary(
-                  child: Opacity(
-                    opacity: .15,
-                    child: CustomPaint(painter: WelcomeWaves(c)),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Opacity(
+                        opacity: .15,
+                        child: CustomPaint(painter: WelcomeWaves(c)),
+                      ),
+                      CustomPaint(painter: WelcomeConnection(c)),
+                    ],
                   ),
                 ),
               ),
@@ -67,8 +73,8 @@ class WelcomeLayout extends StatelessWidget {
                           Text(
                             'Un espacio para compartir sus días y guardar lo que importa, incluso a la distancia.',
                             style: RomanzaType.body.copyWith(
-                              fontSize: 16,
-                              height: 24 / 16,
+                              fontSize: 18,
+                              height: 26 / 18,
                               color: c.secondary,
                             ),
                           ),
@@ -285,63 +291,128 @@ class WelcomeWaves extends CustomPainter {
       canvas.restore();
     }
 
+    // Shallow ribbons leave the connection motif and all content unobstructed.
     wave(
       Path()
         ..moveTo(0, 0)
         ..lineTo(390, 0)
-        ..lineTo(390, 242)
-        ..cubicTo(328, 176, 303, 187, 277, 123)
-        ..cubicTo(228, 34, 85, 116, 0, 19)
+        ..lineTo(390, 34)
+        ..cubicTo(298, 69, 260, 8, 190, 24)
+        ..cubicTo(102, 46, 67, 47, 0, 17)
         ..close(),
       c.deep,
-      dark ? .70 : .68,
+      dark ? .9 : .78,
     );
     wave(
       Path()
-        ..moveTo(44, 0)
+        ..moveTo(0, 0)
         ..lineTo(390, 0)
-        ..lineTo(390, 196)
-        ..cubicTo(325, 139, 273, 151, 246, 78)
-        ..cubicTo(209, 11, 122, 62, 44, 0)
+        ..lineTo(390, 24)
+        ..cubicTo(298, 57, 259, 0, 188, 15)
+        ..cubicTo(106, 34, 64, 37, 0, 8)
         ..close(),
       c.primary,
-      dark ? .28 : .52,
+      dark ? .5 : .72,
     );
     wave(
       Path()
-        ..moveTo(211, 0)
+        ..moveTo(0, 0)
         ..lineTo(390, 0)
-        ..lineTo(390, 123)
-        ..cubicTo(304, 116, 302, 29, 211, 0)
+        ..lineTo(390, 9)
+        ..cubicTo(300, 34, 259, -8, 190, 1)
+        ..cubicTo(100, 22, 58, 24, 0, 0)
         ..close(),
       c.deep,
-      dark ? .75 : .36,
+      dark ? .9 : .45,
     );
     wave(
       Path()
-        ..moveTo(0, 742)
-        ..cubicTo(70, 776, 53, 825, 160, 786)
-        ..cubicTo(253, 739, 284, 797, 390, 807)
+        ..moveTo(0, 766)
+        ..cubicTo(76, 790, 62, 820, 151, 795)
+        ..cubicTo(246, 761, 288, 808, 390, 820)
         ..lineTo(390, 844)
         ..lineTo(0, 844)
         ..close(),
       c.primary,
-      dark ? .32 : .52,
+      dark ? .5 : .72,
     );
     wave(
       Path()
-        ..moveTo(0, 778)
-        ..cubicTo(78, 853, 111, 792, 193, 806)
-        ..cubicTo(246, 816, 272, 838, 294, 844)
+        ..moveTo(0, 784)
+        ..cubicTo(76, 813, 65, 834, 154, 809)
+        ..cubicTo(245, 782, 290, 824, 390, 834)
+        ..lineTo(390, 844)
         ..lineTo(0, 844)
         ..close(),
       c.deep,
-      dark ? .74 : .66,
+      dark ? .9 : .78,
     );
     canvas.restore();
   }
 
   @override
   bool shouldRepaint(covariant WelcomeWaves oldDelegate) =>
+      oldDelegate.colors != colors;
+}
+
+/// Two individual paths meet gently above the brand. Their own contrast is
+/// independent of the 15% wave opacity. Static, decorative and theme-aware.
+class WelcomeConnection extends CustomPainter {
+  const WelcomeConnection(this.colors);
+  final RomanzaColors colors;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final dark = colors.background.computeLuminance() < .179;
+    canvas.save();
+    canvas.clipRect(Offset.zero & size);
+    canvas.scale(size.width / 390, size.height / 844);
+    final first = Path()
+      ..moveTo(78, 54)
+      ..cubicTo(143, 65, 193, 109, 254, 99)
+      ..cubicTo(284, 86, 308, 101, 329, 108)
+      ..cubicTo(352, 115, 372, 120, 390, 120);
+    final second = Path()
+      ..moveTo(185, 128)
+      ..cubicTo(235, 119, 251, 91, 282, 99)
+      ..cubicTo(323, 112, 333, 48, 390, 56);
+    void thread(Path path, Color color) {
+      final shader = LinearGradient(
+        colors: [
+          color.withValues(alpha: 0),
+          color.withValues(alpha: dark ? .72 : .65),
+          color.withValues(alpha: .8),
+          color.withValues(alpha: .2),
+        ],
+        stops: const [0, .38, .76, 1],
+      ).createShader(path.getBounds());
+      canvas.save();
+      canvas.translate(0, 1.2);
+      canvas.drawPath(
+        path,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2
+          ..strokeCap = StrokeCap.round
+          ..color = color.withValues(alpha: .12)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.5),
+      );
+      canvas.restore();
+      canvas.drawPath(
+        path,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.15
+          ..strokeCap = StrokeCap.round
+          ..shader = shader,
+      );
+    }
+
+    thread(first, dark ? colors.ink : colors.primary);
+    thread(second, colors.accent);
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant WelcomeConnection oldDelegate) =>
       oldDelegate.colors != colors;
 }

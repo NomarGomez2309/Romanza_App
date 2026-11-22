@@ -5,7 +5,7 @@ con tarjetas de onboarding v1. Implementada sobre `Romanza/Dart` tras PR #8.
 
 ## Composición
 
-Pantalla con fondo del tema y ondas periféricas suaves; sin tarjetas de pareja,
+Pantalla con fondo del tema, ondas periféricas suaves y dos hilos de conexión; sin tarjetas de pareja,
 píldora «A su ritmo», carrusel ni animación. Las ondas se dibujan como curvas
 vectoriales con gradientes, sombras de contacto difuminadas y un borde iluminado
 recortado dentro de cada capa para producir relieve; el centro queda libre.
@@ -19,7 +19,7 @@ Marca alineada a la izquierda: símbolo SVG existente y texto «Romanza» en Fre
 26/32, eje variable 650. En Neo se usa la variación aprobada para esta
 pantalla: R verde y corazón claro (`Welcome-Neo.svg`); el logo del dashboard
 conserva su propio recurso. Titular Fredoka 40/44, peso 600:
-«Más cotidiano. / Más Romanza.». Cuerpo Nunito 16/24, color secundario del tema:
+«Más cotidiano. / Más Romanza.». Cuerpo Nunito 18/26, color secundario del tema:
 «Un espacio para compartir sus días y guardar lo que importa, incluso a la distancia.»
 
 | Elemento | Unidades lógicas |
@@ -43,6 +43,28 @@ si no caben se desplazan verticalmente. SafeArea respeta recortes y navegación.
 Las ondas ignoran eventos y semántica. El logo se anuncia una sola vez, los iconos
 de botones son decorativos y las etiquetas explican la acción. No se fija la
 pantalla a una resolución ni se reduce texto para encajarlo.
+
+## Motivo de conexión aprobado
+
+Se mantienen las ondas con relieve al 15% de opacidad, ahora en bandas bajas y
+poco profundas en los bordes superior e inferior. Se añaden únicamente dos hilos
+continuos que se encuentran por encima de la marca. No se incluyen los círculos,
+anillos punteados ni órbitas de las propuestas descartadas.
+
+`WelcomeConnection` usa un lienzo normalizado 390×844. Primer hilo: empieza en
+(78,54), pasa cerca de (254,99) y termina en (390,120). Segundo hilo: empieza en
+(185,128), pasa cerca de (282,99) y termina en (390,56). Curvas cúbicas suaves,
+trazo 1.15, extremos redondeados y una sombra de 1.5 sigma desplazada 1.2 hacia
+abajo. La opacidad de los hilos varía a lo largo del recorrido de 0 a 0.8, con
+extremos atenuados; no heredan el 15% de las ondas. Default usa lavanda/coral;
+Forest oliva/naranja; Neo claro/verde. Cada persona conserva su recorrido,
+y ambos comparten un breve punto de encuentro.
+
+La decoración permanece anclada al fondo, no recibe eventos ni se anuncia a
+lectores de pantalla. No hay animación. Los elementos interactivos son widgets,
+no una imagen del mockup. El cuerpo pasa de 16/24 a 18/26 para aproximar los tres
+renglones del diseño a escala normal en los tamaños de referencia; con texto
+ampliado crece y desplaza el contenido naturalmente.
 
 ## Temas
 

@@ -42,3 +42,15 @@ Trama con opacidad global 0.15, manteniendo el relieve debajo de la composición
 Marca y contenido permanecen opacos. La G se muestra monocromática #1F1F1F
 sobre blanco en todos los temas. Se regeneran las seis capturas; se ejecutan
 las 18 pruebas de onboarding/cuenta y analyze para esta revisión.
+
+## Revisión de conexión
+
+Mockup aprobado: dos hilos curvos que se encuentran, sin círculos ni punteados,
+combinados con ondas de borde al 15%. Se implementa como dos CustomPainter
+estáticos en RepaintBoundary. Bandas más estrechas y cuerpo Nunito 18/26 para
+aproximar la composición aprobada. Se mantienen Fredoka 650, G monocromática
+y las tres rutas de acceso. Se regeneran las seis capturas.
+
+Validación de conexión: 18 pruebas de onboarding/cuenta aprobadas, analyze sin
+incidencias y diff --check correcto. Se inspeccionaron los tres temas renderizados
+a 390×844 y se generaron también a 412×924. No se probó en un Pixel físico.
