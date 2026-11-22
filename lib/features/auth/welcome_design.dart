@@ -29,7 +29,7 @@ class WelcomeLayout extends StatelessWidget {
               child: ExcludeSemantics(
                 child: RepaintBoundary(
                   child: Opacity(
-                    opacity: .15,
+                    opacity: .25,
                     child: CustomPaint(painter: WelcomeWaves(c)),
                   ),
                 ),

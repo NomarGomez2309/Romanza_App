@@ -9,7 +9,7 @@ Pantalla con fondo del tema y ondas periféricas suaves; sin tarjetas de pareja,
 píldora «A su ritmo», carrusel ni animación. Las ondas se dibujan como curvas
 vectoriales con gradientes, sombras de contacto difuminadas y un borde iluminado
 recortado dentro de cada capa para producir relieve; el centro queda libre.
-La trama completa (capas, sombras y luces) tiene opacidad global del 15%,
+La trama completa (capas, sombras y luces) tiene opacidad global del 25%,
 compuesta como un grupo sobre el fondo. Logo, texto y controles quedan al 100%.
 Un RepaintBoundary aísla la decoración estática de los cambios de estado. No se usa un mockup rasterizado
 como interfaz. Las formas reproducen la dirección visual aprobada; el render
