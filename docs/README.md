@@ -3,6 +3,7 @@
 - [Integración de ramas y entradas de la aplicación](qa/branch-integration-2026-11-21.md)
 - [Base de servicios segura experimental](secure-core.md)
 
+- [Planes — prototipo interactivo](modules/plans-ui.md)
 - [Bienvenida — ondas, Fredoka y tres temas](modules/welcome-waves.md)
 - [Onboarding y cuenta — diseño e integración](modules/onboarding-account.md)
 - [Validación de onboarding y cuenta](qa/onboarding-account-2026-11-21.md)

@@ -1,12 +1,12 @@
 import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
-import '../design_system/components.dart';
 import '../design_system/romanza_theme.dart';
 import '../preferences/palette_controller.dart';
 import 'settings/settings_sheet.dart';
 import 'camera/camera_screen.dart';
 import 'memories/memories_screen.dart';
 import 'today/today_screen.dart';
+import 'plans/plans_screen.dart';
 
 class HomeShell extends StatefulWidget {
   const HomeShell({super.key, required this.paletteController});
@@ -46,13 +46,7 @@ class _HomeShellState extends State<HomeShell> {
             onPlans: () => _select(1),
             onMemories: () => _select(2),
           ),
-          const _CollectionPage(
-            title: 'Planes',
-            icon: RomanzaSymbol.calendarDays,
-            emptyTitle: 'Algo bonito por hacer',
-            message:
-                'Todavía no hay planes. Aquí tendrán un lugar para las cosas que quieren hacer juntos.',
-          ),
+          const PlansScreen(),
           MemoriesScreen(onCamera: _camera),
         ],
       ),
@@ -60,31 +54,6 @@ class _HomeShellState extends State<HomeShell> {
     bottomNavigationBar: RomanzaNavigation(
       selected: _selected,
       onSelect: _select,
-    ),
-  );
-}
-
-class _CollectionPage extends StatelessWidget {
-  const _CollectionPage({
-    required this.title,
-    required this.icon,
-    required this.emptyTitle,
-    required this.message,
-  });
-  final String title, emptyTitle, message;
-  final RomanzaSymbol icon;
-  @override
-  Widget build(BuildContext context) => RomanzaPage(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 16),
-        Semantics(
-          header: true,
-          child: Text(title, style: RomanzaType.greeting),
-        ),
-        RomanzaEmptyState(icon: icon, title: emptyTitle, message: message),
-      ],
     ),
   );
 }
