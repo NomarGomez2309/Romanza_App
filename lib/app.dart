@@ -18,11 +18,14 @@ class RomanzaApp extends StatefulWidget {
     this.paletteRepository,
     this.preferencesStore,
     this.authRepository,
+    this.homeBuilder,
   });
   final Future<void> Function() initialize;
   final PaletteRepository? paletteRepository;
   final PreferencesStore? preferencesStore;
   final AuthRepository? authRepository;
+  // Explicit alternate entry point for the experimental secure-core flow.
+  final WidgetBuilder? homeBuilder;
   @override
   State<RomanzaApp> createState() => _RomanzaAppState();
 }
@@ -43,8 +46,13 @@ class _RomanzaAppState extends State<RomanzaApp> {
   }
 
   Future<void> _start() async {
-    await Future.wait([Future<void>.sync(widget.initialize), _palette.load()]);
-    _auth = widget.authRepository ?? FirebaseAuthRepository();
+    await Future.wait([
+      Future<void>.sync(widget.initialize),
+      _palette.load(),
+    ]).timeout(const Duration(seconds: 20));
+    if (widget.homeBuilder == null) {
+      _auth = widget.authRepository ?? FirebaseAuthRepository();
+    }
   }
 
   void _retry() => setState(() {
@@ -92,6 +100,9 @@ class _RomanzaAppState extends State<RomanzaApp> {
                 ),
               ),
             );
+          }
+          if (widget.homeBuilder != null) {
+            return widget.homeBuilder!(context);
           }
           return AuthGate(
             repository: _auth!,

@@ -1,5 +1,15 @@
 # Arquitectura
 
+## Integración de ramas — 21 noviembre 2026
+
+El producto visual mantiene `main.dart` → `AuthGate` → `HomeShell`, con temas,
+onboarding y Welcome Waves. La base de sesión/pareja de `services/`, `session/`
+y `screens/session_root.dart` se conserva en `secure_main.dart`, una entrada
+experimental explícita. Usa otro esquema de perfiles y `firebase.secure.json`;
+no se activa desde la navegación normal ni sustituye las reglas del producto.
+Las dos entradas comparten `RomanzaApp`, inicialización con timeout y reintento.
+La migración y activación de la base segura requieren un trabajo separado.
+
 ## Cámara v4 — 10 noviembre
 
 Se reemplaza ImagePicker por captura directa. CameraComposition comparte layout;

@@ -50,4 +50,44 @@ void main() {
     expect(attempts, 2);
     expect(find.text('Hoy, contigo'), findsOneWidget);
   });
+  testWidgets('constructs the session screen only after initialization', (
+    tester,
+  ) async {
+    final initialized = Completer<void>();
+    var builds = 0;
+    await tester.pumpWidget(
+      RomanzaApp(
+        initialize: () => initialized.future,
+        homeBuilder: (_) {
+          builds++;
+          return const Scaffold(body: Text('Session ready'));
+        },
+      ),
+    );
+    expect(builds, 0);
+    initialized.complete();
+    await tester.pumpAndSettle();
+    expect(find.text('Session ready'), findsOneWidget);
+  });
+
+  testWidgets('a stalled initialization times out and can be retried', (
+    tester,
+  ) async {
+    final stalled = Completer<void>();
+    var attempts = 0;
+    await tester.pumpWidget(
+      RomanzaApp(
+        homeBuilder: (_) => const Scaffold(body: Text('Romanza')),
+        initialize: () =>
+            ++attempts == 1 ? stalled.future : Future<void>.value(),
+      ),
+    );
+    await tester.pump(const Duration(seconds: 21));
+    await tester.pump();
+    expect(find.text('Reintentar'), findsOneWidget);
+    await tester.tap(find.text('Reintentar'));
+    await tester.pumpAndSettle();
+    expect(attempts, 2);
+    expect(find.text('Romanza'), findsOneWidget);
+  });
 }

@@ -1,0 +1,26 @@
+{
+  "score": 4,
+  "summary": "Prototype secure core; strict profile schema and backend-owned membership. Emulator coverage is not a production security certification. Media is intentionally unavailable.",
+  "findings": [
+    {"check": "Business logic vs rules", "severity": "minor", "issue": "Legacy profiles require an explicit administrative migration before rollout.", "recommendation": "Back up, validate ownership, rehearse migration in staging; do not silently reset user relationships."},
+    {"check": "Storage lifecycle", "severity": "minor", "issue": "Media upload, expiry, physical deletion and post-unlink retention are not implemented; Storage is denied.", "recommendation": "Complete media lifecycle and tests before opening Storage access."},
+    {"check": "Deployment boundary", "severity": "minor", "issue": "Real Auth providers, App Check attestation and HTTP callable verification are not exercised by local handler tests.", "recommendation": "Run a two-account Android staging acceptance test before public release."}
+  ],
+  "attack_outcomes": {
+    "public_list": "denied by emulator tests",
+    "cross_user_read_write": "denied by emulator tests",
+    "update_bypass": "invalid fields/types/lengths/removal denied",
+    "ownership_hijacking_create_update": "UID and membership protected",
+    "immutable_timestamps": "changes denied",
+    "schema_pollution_and_privilege_escalation": "extra fields denied",
+    "invalid_membership_transition": "all client writes denied; server handshake tested",
+    "path_scoping": "Storage denied; media creation unavailable",
+    "mixed_content_leak": "private user documents inaccessible to other accounts",
+    "orphaned_subcollection": "denied when active parent membership missing",
+    "counter_replay": "no counters enabled; default deny",
+    "negative_numeric_overflow": "profile accepts no numeric business fields",
+    "query_mismatch": "active app uses own profile/legal/invitation/couple document reads; tested",
+    "rate_replay": "failed lookups consume durable UID limit",
+    "validator_pattern": "user create and update both validate complete schema"
+  }
+}

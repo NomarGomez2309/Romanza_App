@@ -1,0 +1,22 @@
+{
+  "name": "romanza-secure-backend",
+  "private": true,
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.test.js",
+    "test:emulators": "firebase emulators:exec --config ../firebase.secure.json --project demo-romanza --only firestore,storage 'npm test'"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.1",
+    "firebase-functions": "^7.0.0"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
+    "firebase": "^12.6.0",
+    "firebase-tools": "^14.26.0"
+  }
+}

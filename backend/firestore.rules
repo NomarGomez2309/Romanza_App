@@ -1,0 +1,75 @@
+rules_version = '2';
+// Prototype schema v1. Legacy clients must not be restored against these rules.
+// users/{uid}: uid, displayName (0..60), theme, language, onboardingSkipped,
+//   createdAt, updatedAt; backend owns coupleId, partnerId, activeInviteId,
+//   acceptedTermsVersion, acceptedTermsAt. No email or age duplicated here.
+// legal/current: backend-published version and HTTPS document URLs.
+// users/{uid}/consents/{version}: backend-only, owner-readable consent evidence.
+// invites/{hash}: backend-only tokens hashed; owner can read their invitations.
+// couples/{id}: backend-only membership/status; active members can read.
+// couples/{id}/gallery/{id}: backend-created metadata, authorUid and timestamps;
+//   active members read, only original author deletes. No client creation yet.
+// Other content and Storage are closed until their dedicated media phase.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function owner(uid) { return signedIn() && request.auth.uid == uid; }
+    function verified() { return signedIn() && request.auth.token.email_verified == true; }
+    function member(coupleId) {
+      let path = /databases/$(database)/documents/couples/$(coupleId);
+      return verified() && exists(path) && get(path).data.status == 'active'
+        && request.auth.uid in get(path).data.members;
+    }
+    function nullableId(value) {
+      return value == null || (value is string && value.size() > 0 && value.size() <= 128);
+    }
+    function validUser(data, uid) {
+      return data.keys().hasAll(['uid', 'displayName', 'theme', 'language',
+        'onboardingSkipped', 'createdAt', 'updatedAt', 'coupleId', 'partnerId',
+        'activeInviteId', 'acceptedTermsVersion', 'acceptedTermsAt'])
+        && data.keys().hasOnly(['uid', 'displayName', 'theme', 'language',
+        'onboardingSkipped', 'createdAt', 'updatedAt', 'coupleId', 'partnerId',
+        'activeInviteId', 'acceptedTermsVersion', 'acceptedTermsAt'])
+        && data.uid == uid && data.uid is string && data.uid.size() <= 128
+        && data.displayName is string && data.displayName.size() <= 60
+        && data.theme in ['Default', 'Forest', 'Neo', 'Custom']
+        && data.language is string && data.language.size() >= 2 && data.language.size() <= 20
+        && data.onboardingSkipped is bool
+        && data.createdAt is timestamp && data.updatedAt is timestamp
+        && nullableId(data.coupleId) && nullableId(data.partnerId) && nullableId(data.activeInviteId)
+        && nullableId(data.acceptedTermsVersion)
+        && (data.acceptedTermsAt == null || data.acceptedTermsAt is timestamp);
+    }
+    match /users/{uid} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && validUser(request.resource.data, uid)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.coupleId == null && request.resource.data.partnerId == null
+        && request.resource.data.activeInviteId == null
+        && request.resource.data.acceptedTermsVersion == null
+        && request.resource.data.acceptedTermsAt == null;
+      allow update: if owner(uid) && validUser(request.resource.data, uid)
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['displayName', 'theme', 'language', 'onboardingSkipped', 'updatedAt'])
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+      match /consents/{version} { allow read: if owner(uid); allow write: if false; }
+    }
+    match /legal/current { allow read: if signedIn(); allow write: if false; }
+    match /invites/{id} {
+      allow read: if verified() && resource.data.ownerUid == request.auth.uid;
+      allow write: if false;
+    }
+    match /couples/{id} {
+      allow read: if member(id);
+      allow write: if false;
+      match /gallery/{item} {
+        allow read: if member(id);
+        allow create, update: if false;
+        allow delete: if member(id) && resource.data.authorUid == request.auth.uid;
+      }
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

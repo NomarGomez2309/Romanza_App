@@ -46,6 +46,21 @@ Las fuentes Fredoka/Nunito y sus licencias se empaquetan localmente. Las imágen
 
 [Índice documental](docs/README.md).
 
+## Ramas integradas y base de seguridad
+
+`Romanza/Dart` reúne onboarding, Welcome Waves y la base de servicios segura.
+El arranque habitual (`lib/main.dart`) conserva la interfaz aprobada, sus temas
+y el esquema de perfiles actual. La base segura se conserva como entrada
+experimental en `lib/secure_main.dart`, con configuración independiente
+`firebase.secure.json` y reglas en `backend/firestore.rules`.
+
+No son dos esquemas intercambiables: antes de activar la base segura con cuentas
+existentes hay que revisar la migración de perfiles, configurar App Check,
+publicar los documentos legales definitivos y validar su backend en pruebas.
+La fusión de ramas no despliega servicios ni cambia los datos de Firebase.
+Consulta [la integración](docs/qa/branch-integration-2026-11-21.md) y
+[la base segura](docs/secure-core.md).
+
 ## Entrega visual
 
 Hoy, navegación a Planes/Recuerdos vacíos y Usuario con paletas Default, Forest y Neo.
