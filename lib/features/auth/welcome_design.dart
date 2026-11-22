@@ -27,7 +27,9 @@ class WelcomeLayout extends StatelessWidget {
           Positioned.fill(
             child: IgnorePointer(
               child: ExcludeSemantics(
-                child: CustomPaint(painter: WelcomeWaves(c)),
+                child: RepaintBoundary(
+                  child: CustomPaint(painter: WelcomeWaves(c)),
+                ),
               ),
             ),
           ),
@@ -150,7 +152,7 @@ class _WelcomeBrand extends StatelessWidget {
               style: RomanzaType.heading(
                 26,
                 32,
-                500,
+                650,
               ).copyWith(color: RomanzaColors.of(context).ink),
             ),
           ),
@@ -209,8 +211,8 @@ class _WelcomeButton extends StatelessWidget {
   );
 }
 
-/// Resolution-independent waves, normalized to the viewport. No raster UI,
-/// animation or blur cost; the center remains clear for text and controls.
+/// Layered vector ribbons with soft contact shadows and a narrow lit edge.
+/// RepaintBoundary isolates the static relief from session status updates.
 class WelcomeWaves extends CustomPainter {
   const WelcomeWaves(this.colors);
   final RomanzaColors colors;
@@ -219,8 +221,23 @@ class WelcomeWaves extends CustomPainter {
     final c = colors;
     final dark = c.background.computeLuminance() < .179;
     canvas.save();
+    canvas.clipRect(Offset.zero & size);
     canvas.scale(size.width / 390, size.height / 844);
-    void wave(Path path, Color color, double opacity) {
+    void wave(Path path, Color color, double strength) {
+      final base = Color.lerp(c.background, color, strength)!;
+      // Contact shadow falls onto the lower ribbon, beyond the cut edge.
+      canvas.save();
+      canvas.translate(0, 4);
+      canvas.drawPath(
+        path,
+        Paint()
+          ..color = (dark ? c.primary : c.secondary).withValues(
+            alpha: dark ? .24 : .18,
+          )
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 7),
+      );
+      canvas.restore();
+      final bounds = path.getBounds();
       canvas.drawPath(
         path,
         Paint()
@@ -228,11 +245,37 @@ class WelcomeWaves extends CustomPainter {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              color.withValues(alpha: opacity * .35),
-              color.withValues(alpha: opacity),
+              Color.lerp(base, dark ? Colors.black : Colors.white, .42)!,
+              base,
+              Color.lerp(base, color, .24)!,
             ],
-          ).createShader(const Rect.fromLTWH(0, 0, 390, 844)),
+            stops: const [0, .65, 1],
+          ).createShader(bounds),
       );
+      // Both strokes are clipped to the upper ribbon: a rounded inner bevel,
+      // then a very fine highlight, rather than a hard outline or neon glow.
+      canvas.save();
+      canvas.clipPath(path);
+      canvas.drawPath(
+        path,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 12
+          ..color = (dark ? c.primary : Colors.white).withValues(
+            alpha: dark ? .16 : .7,
+          )
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
+      );
+      canvas.drawPath(
+        path,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = .8
+          ..color = (dark ? c.primary : Colors.white).withValues(
+            alpha: dark ? .25 : .72,
+          ),
+      );
+      canvas.restore();
     }
 
     wave(
@@ -244,7 +287,7 @@ class WelcomeWaves extends CustomPainter {
         ..cubicTo(228, 34, 85, 116, 0, 19)
         ..close(),
       c.deep,
-      dark ? .75 : .45,
+      dark ? .70 : .68,
     );
     wave(
       Path()
@@ -255,7 +298,7 @@ class WelcomeWaves extends CustomPainter {
         ..cubicTo(209, 11, 122, 62, 44, 0)
         ..close(),
       c.primary,
-      dark ? .17 : .34,
+      dark ? .28 : .52,
     );
     wave(
       Path()
@@ -265,7 +308,7 @@ class WelcomeWaves extends CustomPainter {
         ..cubicTo(304, 116, 302, 29, 211, 0)
         ..close(),
       c.deep,
-      dark ? .9 : .4,
+      dark ? .75 : .36,
     );
     wave(
       Path()
@@ -276,7 +319,7 @@ class WelcomeWaves extends CustomPainter {
         ..lineTo(0, 844)
         ..close(),
       c.primary,
-      dark ? .2 : .34,
+      dark ? .32 : .52,
     );
     wave(
       Path()
@@ -286,7 +329,7 @@ class WelcomeWaves extends CustomPainter {
         ..lineTo(0, 844)
         ..close(),
       c.deep,
-      dark ? .9 : .55,
+      dark ? .74 : .66,
     );
     canvas.restore();
   }

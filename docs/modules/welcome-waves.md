@@ -7,12 +7,14 @@ con tarjetas de onboarding v1. Implementada sobre `Romanza/Dart` tras PR #8.
 
 Pantalla con fondo del tema y ondas periféricas suaves; sin tarjetas de pareja,
 píldora «A su ritmo», carrusel ni animación. Las ondas se dibujan como curvas
-vectoriales con gradientes; el centro queda libre. No se usa un mockup rasterizado
+vectoriales con gradientes, sombras de contacto difuminadas y un borde iluminado
+recortado dentro de cada capa para producir relieve; el centro queda libre.
+Un RepaintBoundary aísla la decoración estática de los cambios de estado. No se usa un mockup rasterizado
 como interfaz. Las formas reproducen la dirección visual aprobada; el render
 Flutter es la referencia implementable para medidas y fuentes reales.
 
 Marca alineada a la izquierda: símbolo SVG existente y texto «Romanza» en Fredoka
-Medium, 26/32, eje variable 500. En Neo se usa la variación aprobada para esta
+26/32, eje variable 650. En Neo se usa la variación aprobada para esta
 pantalla: R verde y corazón claro (`Welcome-Neo.svg`); el logo del dashboard
 conserva su propio recurso. Titular Fredoka 40/44, peso 600:
 «Más cotidiano. / Más Romanza.». Cuerpo Nunito 16/24, color secundario del tema:
