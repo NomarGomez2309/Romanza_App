@@ -42,10 +42,3 @@ Trama con opacidad global 0.15, manteniendo el relieve debajo de la composición
 Marca y contenido permanecen opacos. La G se muestra monocromática #1F1F1F
 sobre blanco en todos los temas. Se regeneran las seis capturas; se ejecutan
 las 18 pruebas de onboarding/cuenta y analyze para esta revisión.
-
-## Ajuste de visibilidad
-
-La revisión al 15% resultó demasiado tenue. Se reduce la transparencia diez
-puntos, elevando la opacidad global a 25%; se conserva el relieve y la G
-monocromática. Se regeneran las seis capturas y se repiten las 18 pruebas
-de onboarding/cuenta.
