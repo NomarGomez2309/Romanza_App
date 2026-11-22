@@ -60,7 +60,8 @@ Se respeta escalado de texto y scroll; los horarios usan Wrap cuando no caben.
 El cambio de cabecera se anima en200ms mediante AnimatedSize, y pasa a duración
 cero si el sistema solicita reducir animaciones. Iconos decorativos excluidos de
 semántica; fechas seleccionadas y días con planes anunciados. Flechas con tooltip.
-La navegación inferior existente y el dashboard conservan su geometría.
+La navegación inferior se actualiza por separado en [cápsula flotante](floating-navigation.md).
+El layout de las tarjetas y el dashboard conservan su geometría.
 
 ## Archivos y verificación
 

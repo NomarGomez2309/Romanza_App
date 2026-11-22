@@ -57,15 +57,15 @@ void main() {
             await tester.pumpAndSettle();
             final sizes = List.generate(
               3,
-              (i) => tester.getSize(find.byKey(ValueKey('nav-pill-$i'))),
+              (i) => tester.getSize(find.byKey(ValueKey('nav-item-$i'))),
             );
             for (final size in sizes) {
-              expect(size.width, greaterThanOrEqualTo(80));
+              expect(size.width, greaterThanOrEqualTo(48));
               expect(size.height, greaterThanOrEqualTo(56));
             }
             expect(
               tester.getSize(find.byType(RomanzaNavigation)).height,
-              lessThan(130),
+              lessThan(scale > 1.5 ? 200 : 130),
             );
             expect(find.text('Contenido').hitTestable(), findsOneWidget);
             for (final label in ['Hoy', 'Planes', 'Recuerdos']) {
@@ -74,7 +74,13 @@ void main() {
               );
               expect(
                 paragraph.size.height,
-                lessThanOrEqualTo(18 * scale + 1),
+                lessThanOrEqualTo(
+                  sizes[['Hoy', 'Planes', 'Recuerdos'].indexOf(label)].height -
+                      24 -
+                      4 -
+                      12 +
+                      1,
+                ),
                 reason: '$width $scale $label',
               );
               await tester.tap(find.text(label));
@@ -94,7 +100,7 @@ void main() {
               );
               for (var i = 0; i < 3; i++) {
                 expect(
-                  tester.getSize(find.byKey(ValueKey('nav-pill-$i'))),
+                  tester.getSize(find.byKey(ValueKey('nav-item-$i'))),
                   sizes[i],
                 );
               }
