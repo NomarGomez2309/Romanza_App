@@ -50,6 +50,19 @@ detrás del vidrio. `RomanzaPage` suma el inset inferior de MediaQuery a su padd
 de scroll: permite subir el último elemento por encima de la barra. No se añade
 una capa opaca del ancho completo de la pantalla.
 
+## Iconos con relleno
+
+Hoy, Planes y Recuerdos tienen variantes SVG rellenas de24 unidades. Se activa
+el relleno mientras se mantiene pulsado el icono o si su pestaña está seleccionada.
+Cancelar el gesto devuelve el trazo; después de seleccionar, el relleno permanece
+hasta cambiar de pestaña. El color sigue el rol de contraste del tema.
+
+Los corazones de casa/libro y los seis días del calendario se recortan en negativo
+mediante fill-rule evenodd. Conservan detalle sin añadir un segundo color ni tapar
+su símbolo interior. El resto de iconos de la aplicación mantiene su versión de
+trazo. RomanzaIcon añade filled=false por defecto y el enum conserva sus31 símbolos.
+La selección rellena también funciona con reducir movimiento y alto contraste.
+
 ## Movimiento
 
 - Selector único:360ms, easeOutCubic. Interpolación de posición y ancho.

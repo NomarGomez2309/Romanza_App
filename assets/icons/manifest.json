@@ -1,5 +1,5 @@
 {
-  "status": "Incorporado a documentacion v2.3; integrado en prototipo web; implementacion Flutter pendiente",
+  "status": "Implementado en Flutter; navegación con variantes de relleno para pulsación y selección",
   "source": "https://github.com/lucide-icons/lucide",
   "baseGrid": 24,
   "strokeWidth": 2,
@@ -128,5 +128,12 @@
       "reference": "link",
       "status": "Custom adaptation or redrawing; not official Lucide"
     }
-  ]
+  ],
+  "navigationFilledVariants": {
+    "state": "pressed or selected",
+    "romanzaHoy": "romanza/romanza-hoy-filled.svg",
+    "calendarDays": "romanza/romanza-calendar-filled.svg",
+    "romanzaRecuerdos": "romanza/romanza-recuerdos-filled.svg",
+    "notes": "Variantes Romanza sobre retícula24; corazones, separador y días en negativo. El resto mantiene el trazo original."
+  }
 }

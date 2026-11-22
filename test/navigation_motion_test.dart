@@ -127,6 +127,59 @@ void main() {
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
   }
 
+  testWidgets(
+    'icon interior fills while pressed, cancels cleanly and stays selected',
+    (tester) async {
+      device(tester, 390);
+      final key = GlobalKey();
+      await tester.pumpWidget(_Preview(capture: key));
+      await tester.pumpAndSettle();
+      final icon = find.descendant(
+        of: tab(1),
+        matching: find.byType(RomanzaIcon),
+      );
+      Future<int> inkPixels() async {
+        final boundary =
+            key.currentContext!.findRenderObject()! as RenderRepaintBoundary;
+        final rect = tester
+            .getRect(icon)
+            .shift(-boundary.localToGlobal(Offset.zero));
+        return (await tester.runAsync(() async {
+          final image = await boundary.toImage(pixelRatio: 1);
+          final data = await image.toByteData(
+            format: ui.ImageByteFormat.rawRgba,
+          );
+          var count = 0;
+          for (var y = rect.top.floor(); y < rect.bottom.ceil(); y++) {
+            for (var x = rect.left.floor(); x < rect.right.ceil(); x++) {
+              final index = (y * image.width + x) * 4;
+              if (data!.getUint8(index) < 140 &&
+                  data.getUint8(index + 1) < 140 &&
+                  data.getUint8(index + 2) < 150) {
+                count++;
+              }
+            }
+          }
+          image.dispose();
+          return count;
+        }))!;
+      }
+
+      final outline = await inkPixels();
+      final gesture = await tester.startGesture(tester.getCenter(tab(1)));
+      await tester.pumpAndSettle();
+      expect(await inkPixels(), greaterThan(outline * 1.2));
+      await gesture.cancel();
+      await tester.pumpAndSettle();
+      expect(await inkPixels(), closeTo(outline, 3));
+      await tester.tap(tab(1));
+      await tester.pumpAndSettle();
+      expect(await inkPixels(), greaterThan(outline * 1.2));
+      await tester.tap(tab(2));
+      await tester.pumpAndSettle();
+      expect(await inkPixels(), closeTo(outline, 3));
+    },
+  );
   if (const bool.fromEnvironment('CAPTURE_NAVIGATION')) {
     testWidgets('render palette comparison board', (tester) async {
       tester.view.physicalSize = const Size(420, 460);

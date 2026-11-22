@@ -38,6 +38,14 @@ enum RomanzaSymbol {
 
   const RomanzaSymbol(this.asset);
   final String asset;
+  String get filledAsset => switch (this) {
+    RomanzaSymbol.romanzaHoy => 'assets/icons/romanza/romanza-hoy-filled.svg',
+    RomanzaSymbol.calendarDays =>
+      'assets/icons/romanza/romanza-calendar-filled.svg',
+    RomanzaSymbol.romanzaRecuerdos =>
+      'assets/icons/romanza/romanza-recuerdos-filled.svg',
+    _ => asset,
+  };
 }
 
 /// Local 24-unit artwork; only directional arrows may be mirrored.
@@ -49,17 +57,19 @@ class RomanzaIcon extends StatelessWidget {
     this.color,
     this.semanticLabel,
     this.forward = false,
+    this.filled = false,
   });
   final RomanzaSymbol symbol;
   final double size;
   final Color? color;
   final String? semanticLabel;
   final bool forward;
+  final bool filled;
   @override
   Widget build(BuildContext context) {
     assert(!forward || symbol == RomanzaSymbol.arrowLeft);
     final icon = SvgPicture.asset(
-      symbol.asset,
+      filled ? symbol.filledAsset : symbol.asset,
       width: size,
       height: size,
       colorFilter: ColorFilter.mode(

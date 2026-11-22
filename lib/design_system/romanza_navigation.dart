@@ -417,6 +417,7 @@ class _NavigationItemState extends State<_NavigationItem>
                         widget.symbol,
                         size: 24,
                         color: widget.foreground,
+                        filled: widget.selected || pressed,
                       ),
                     ),
                   ),
