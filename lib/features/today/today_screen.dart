@@ -3,6 +3,8 @@ import 'package:romanza/design_system/romanza_icon.dart';
 import 'package:flutter/material.dart';
 import '../../design_system/components.dart';
 import '../../design_system/romanza_theme.dart';
+import 'important_date.dart';
+import 'upcoming_date_card.dart';
 
 class TodayScreen extends StatelessWidget {
   const TodayScreen({
@@ -12,10 +14,14 @@ class TodayScreen extends StatelessWidget {
     required this.onMemories,
     this.onCamera,
     this.profileFocus,
+    this.importantDates = const [],
+    this.now,
   });
   final VoidCallback onProfile, onPlans, onMemories;
   final VoidCallback? onCamera;
   final FocusNode? profileFocus;
+  final List<ImportantDate> importantDates;
+  final DateTime? now;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +41,7 @@ class TodayScreen extends StatelessWidget {
             style: RomanzaType.days.copyWith(color: c.secondary),
           ),
           const SizedBox(height: 16),
+          UpcomingDateCard(dates: importantDates, now: now, onTap: onPlans),
           InstantMomentsSection(onCamera: onCamera),
           const SizedBox(height: 14),
           RomanzaPreviewCard(

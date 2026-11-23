@@ -7,10 +7,16 @@ import 'camera/camera_screen.dart';
 import 'memories/memories_screen.dart';
 import 'today/today_screen.dart';
 import 'plans/plans_screen.dart';
+import 'today/important_date.dart';
 
 class HomeShell extends StatefulWidget {
-  const HomeShell({super.key, required this.paletteController});
+  const HomeShell({
+    super.key,
+    required this.paletteController,
+    this.importantDates = const [],
+  });
   final PaletteController paletteController;
+  final List<ImportantDate> importantDates;
   @override
   State<HomeShell> createState() => _HomeShellState();
 }
@@ -37,6 +43,7 @@ class _HomeShellState extends State<HomeShell> {
         index: _selected,
         children: [
           TodayScreen(
+            importantDates: widget.importantDates,
             profileFocus: _profileFocus,
             onProfile: () => openSettings(
               context,

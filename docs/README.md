@@ -35,3 +35,5 @@ configuración Firebase, conversaciones, credenciales o datos de usuarios.
 - [Encabezado v1: implementación, antes/después y entrega](qa/header-v1-2026-11-14.md)
 
 - [Icono y nombre de instalación: validación en Pixel 9](qa/launcher-pixel-2026-11-15.md)
+
+- [Fechas importantes — dashboard y widget propuesto](modules/important-dates.md)
