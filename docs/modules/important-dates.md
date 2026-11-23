@@ -60,15 +60,19 @@ La fecha completa está disponible para lectores de pantalla.
 
 `DateHomeWidgetPreview` especifica el aspecto; **no instala un widget nativo**.
 Se representa un cuadrado de referencia de 180×180, radio 28 y padding 14.
-Contiene icono corazón, «Próxima fecha», fecha abreviada, título de hasta dos líneas
-y cuenta atrás. Usa los mismos tokens de color. Su acción prevista es abrir Planes.
+La fecha domina la composición: día.mes (por ejemplo «27.11») en la primera
+línea y mes abreviado en mayúsculas («NOV») en la segunda, alineadas a la izquierda.
+Incluye corazón arriba a la derecha, título de una línea y cuenta atrás con calendario.
+El título largo se abrevia visualmente con puntos suspensivos. Usa los mismos tokens de color. Su acción prevista es abrir Planes.
 
 A diferencia de la tarjeta, el widget debería mostrar la próxima ocasión aunque
 falte más de una semana. Sin ocasiones: «Sus próximos días especiales» y
 «Abrir Romanza». Las dimensiones finales de Android dependen del launcher y de sus
 celdas; 180×180 es una referencia visual, no una garantía para todas las grillas 2×2.
-El prototipo del teléfono se revisó visualmente a escala tipográfica normal; las
-variantes nativas deberán resolver escalado y redimensionado en cada plataforma.
+El prototipo Flutter se comprobó en cuadrados de 160 y 180 con texto 100/200%;
+el bloque de fecha se ajusta al espacio disponible y conserva una fecha completa
+para lectores de pantalla. Las variantes nativas necesitan su propia revisión de
+escalado y redimensionado en cada plataforma.
 
 ### Trabajo necesario para hacerlo instalable
 
@@ -102,3 +106,17 @@ flutter analyze --no-pub
 flutter test --no-pub
 flutter test --no-pub --dart-define=CAPTURE_DATES=true test/upcoming_date_test.dart
 ```
+
+## Iconos y movimiento sutil
+
+- Lucide corazón: identifica la ocasión. Calendario 16 junto a la cuenta atrás
+  del dashboard y 12 en el widget. Se conserva chevron-right para «Ver planes».
+- Entrada única: opacidad 0→1 y desplazamiento vertical 4→0 en 260 ms,
+  easeOutCubic. Se repite únicamente al cambiar la ocasión/fecha/cuenta atrás.
+- Pulsación: escala 1→0.985 en 140 ms; al soltar o cancelar vuelve a 1.
+  El bloque de fecha del dashboard gira -0.008 vueltas (unos -2.9°), luego regresa.
+- Con reducir movimiento: entrada y respuesta geométrica instantáneas, escala 1,
+  giro 0 y sin splash animado. Sin bucles, destellos ni efectos de urgencia.
+- `DateMotionSurface` comparte el comportamiento del componente Flutter y de su
+  previsualización. No implica que un AppWidget/WidgetKit nativo ejecute esas
+  animaciones: el widget del teléfono deberá respetar las capacidades del sistema.

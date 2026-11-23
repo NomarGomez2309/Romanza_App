@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../design_system/romanza_icon.dart';
 import '../../design_system/romanza_theme.dart';
 import 'important_date.dart';
+import 'date_motion_surface.dart';
 
 const _months = [
   'ENE',
@@ -157,9 +158,21 @@ class _UpcomingDateCardState extends State<UpcomingDateCard>
         const SizedBox(height: 6),
         Text(title, style: RomanzaType.heading(20, 24, 600)),
         const SizedBox(height: 8),
-        Text(
-          entry.countdown(now),
-          style: RomanzaType.body.copyWith(fontWeight: FontWeight.w800),
+        Row(
+          children: [
+            RomanzaIcon(
+              RomanzaSymbol.calendarDays,
+              size: 16,
+              color: c.secondary,
+            ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Text(
+                entry.countdown(now),
+                style: RomanzaType.body.copyWith(fontWeight: FontWeight.w800),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 4),
         Row(
@@ -175,37 +188,37 @@ class _UpcomingDateCardState extends State<UpcomingDateCard>
       padding: const EdgeInsets.only(bottom: 16),
       child: Semantics(
         button: true,
-        child: Material(
-          color: c.note,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-            side: BorderSide(color: c.border),
-          ),
-          clipBehavior: Clip.antiAlias,
-          child: InkWell(
-            onTap: widget.onTap,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final large = MediaQuery.textScalerOf(context).scale(14) > 21;
-                  final tile = ImportantDateTile(entry: entry);
-                  if (large || constraints.maxWidth < 260) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [tile, const SizedBox(height: 12), text],
-                    );
-                  }
-                  return Row(
-                    children: [
-                      Expanded(child: text),
-                      const SizedBox(width: 16),
-                      tile,
-                    ],
+        child: DateMotionSurface(
+          identity: '${entry.id}-${entry.date}-${entry.countdown(now)}',
+          radius: 24,
+          onTap: widget.onTap,
+          builder: (context, pressed) => Padding(
+            padding: const EdgeInsets.all(16),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final large = MediaQuery.textScalerOf(context).scale(14) > 21;
+                final tile = AnimatedRotation(
+                  turns: pressed ? -.008 : 0,
+                  duration: MediaQuery.disableAnimationsOf(context)
+                      ? Duration.zero
+                      : const Duration(milliseconds: 140),
+                  child: ImportantDateTile(entry: entry),
+                );
+                if (large || constraints.maxWidth < 260) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [tile, const SizedBox(height: 12), text],
                   );
-                },
-              ),
+                }
+                return Row(
+                  children: [
+                    Expanded(child: text),
+                    const SizedBox(width: 16),
+                    tile,
+                  ],
+                );
+              },
             ),
           ),
         ),

@@ -5,12 +5,14 @@ Fecha: 22 de noviembre de 2026. Base: `31557699` (Recuerdos integrado).
 ## Comprobaciones
 
 - `flutter analyze --no-pub`: sin incidencias.
-- `flutter test --no-pub`: **227 pruebas aprobadas**.
-- Archivo específico: 27 pruebas, incluidas 18 composiciones (320/390/412,
+- `flutter test --no-pub`: **241 pruebas aprobadas**.
+- Archivo específico: 41 pruebas, incluidas 18 composiciones (320/390/412,
   tres temas, texto 100/200%), orden cronológico, desempate, días naturales,
   cambio de año, año bisiesto, valores UTC, límites ayer/hoy/mañana/+7/+8,
-  actualización de entradas, lista vacía y acción de Planes.
-- Modo de captura: **35 pruebas aprobadas** (27 + 8 capturas).
+  actualización de entradas, lista vacía y acción de Planes. También pulsación y
+  cancelación con/sin reducir movimiento, y 12 composiciones del widget visual
+  en cuadrados 160/180, tres temas y texto 100/200%.
+- Modo de captura: **49 pruebas aprobadas** (41 + 8 capturas).
 - `git diff --check`: sin incidencias.
 
 Se inspeccionaron las dos comparativas de Flutter: jerarquía de la tarjeta,
@@ -40,7 +42,11 @@ sigue pendiente de su servicio y de la UI para crearlas.
 La tarjeta está integrada en Flutter y recibe eventos explícitos. El widget de
 pantalla de inicio es una especificación visual: no existe aún un proveedor
 Android ni una extensión WidgetKit, ni se ha instalado en un dispositivo. El texto
-ampliado se comprobó en el dashboard; el widget nativo tendrá su propia revisión
-de tamaños, tipografía y actualización diaria.
+ampliado se comprobó en el dashboard y la previsualización Flutter; el widget
+nativo tendrá su propia revisión de tamaños, tipografía y actualización diaria.
 
 [Diseño, lógica y próximos pasos](../modules/important-dates.md)
+
+Revisión visual: widget con día.mes grande y mes en segunda línea, iconos
+Lucide corazón/calendario y respuesta sutil. Entrada 260 ms, escala 0.985 y giro
+-2.9° al pulsar; reducir movimiento elimina las transformaciones animadas.

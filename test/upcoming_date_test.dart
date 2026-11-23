@@ -11,6 +11,7 @@ import 'package:romanza/features/today/today_screen.dart';
 import 'package:romanza/features/today/important_date.dart';
 import 'package:romanza/features/today/upcoming_date_card.dart';
 import 'package:romanza/features/today/date_home_widget_preview.dart';
+import 'package:romanza/features/today/date_motion_surface.dart';
 
 final now = DateTime(2026, 11, 22, 23, 30);
 ImportantDate occasion(
@@ -36,7 +37,12 @@ Widget frame({
   bool monochrome = false,
   List<ImportantDate>? dates,
   VoidCallback? onTap,
+  bool reduced = false,
 }) => MaterialApp(
+  builder: (context, child) => MediaQuery(
+    data: MediaQuery.of(context).copyWith(disableAnimations: reduced),
+    child: child!,
+  ),
   debugShowCheckedModeBanner: false,
   locale: const Locale('es'),
   supportedLocales: const [Locale('es')],
@@ -207,6 +213,73 @@ void main() {
           expect(tester.takeException(), isNull);
           await tester.ensureVisible(find.text('Ver planes'));
           expect(find.text('Ver planes').hitTestable(), findsOneWidget);
+          expect(tester.takeException(), isNull);
+        });
+      }
+    }
+  }
+  for (final reduced in [false, true]) {
+    testWidgets('date motion press, cancel and reduced $reduced', (
+      tester,
+    ) async {
+      device(tester, const Size(390, 844));
+      await tester.pumpWidget(frame(reduced: reduced));
+      await tester.pumpAndSettle();
+      final surface = find.byType(DateMotionSurface).first;
+      final scale = find.descendant(
+        of: surface,
+        matching: find.byType(AnimatedScale),
+      );
+      final opacity = find.descendant(
+        of: surface,
+        matching: find.byType(Opacity),
+      );
+      expect(tester.widget<Opacity>(opacity.first).opacity, 1);
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.text('Ver planes')),
+      );
+      await tester.pump(const Duration(milliseconds: 160));
+      expect(tester.widget<AnimatedScale>(scale).scale, reduced ? 1 : .985);
+      expect(
+        tester.widget<AnimatedRotation>(find.byType(AnimatedRotation)).turns,
+        reduced ? 0 : -.008,
+      );
+      if (reduced) {
+        expect(tester.widget<AnimatedScale>(scale).duration, Duration.zero);
+      }
+      await gesture.cancel();
+      await tester.pumpAndSettle();
+      expect(tester.widget<AnimatedScale>(scale).scale, 1);
+      expect(tester.takeException(), isNull);
+    });
+  }
+  for (final size in [160.0, 180.0]) {
+    for (final palette in RomanzaPalette.values) {
+      for (final scale in [1.0, 2.0]) {
+        testWidgets('home widget preview $size ${palette.label} scale $scale', (
+          tester,
+        ) async {
+          device(tester, const Size(390, 844), scale: scale);
+          await tester.pumpWidget(
+            MaterialApp(
+              locale: const Locale('es'),
+              supportedLocales: const [Locale('es')],
+              localizationsDelegates: GlobalMaterialLocalizations.delegates,
+              theme: romanzaTheme(palette),
+              home: Scaffold(
+                body: Center(
+                  child: SizedBox(
+                    width: size,
+                    height: size,
+                    child: DateHomeWidgetPreview(entry: occasion(27), now: now),
+                  ),
+                ),
+              ),
+            ),
+          );
+          await tester.pumpAndSettle();
+          expect(find.text('27.11'), findsOneWidget);
+          expect(find.text('NOV'), findsOneWidget);
           expect(tester.takeException(), isNull);
         });
       }
