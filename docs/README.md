@@ -3,6 +3,7 @@
 - [Integración de ramas y entradas de la aplicación](qa/branch-integration-2026-11-21.md)
 - [Base de servicios segura experimental](secure-core.md)
 
+- [Recuerdos — grilla, colecciones y visor](modules/memories-grid.md)
 - [Navegación inferior flotante y animaciones](modules/floating-navigation.md)
 - [Planes — prototipo interactivo](modules/plans-ui.md)
 - [Bienvenida — ondas, Fredoka y tres temas](modules/welcome-waves.md)
