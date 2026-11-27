@@ -1,39 +1,42 @@
-# Índice documental
+# Documentación vigente de Romanza
 
-- [Integración de ramas y entradas de la aplicación](qa/branch-integration-2026-11-21.md)
-- [Base de servicios segura experimental](secure-core.md)
+Consolidada el 27 de noviembre de 2026. Empezar por el [sistema visual](design-system.md).
+Las guías de módulos describen el diseño actual; los informes QA registran pruebas
+fechadas y no sustituyen los contratos visuales. Una propuesta pendiente no equivale
+a funcionalidad implementada. [Registro de limpieza](qa/documentation-cleanup-2026-11-27.md).
 
-- [Recuerdos — grilla, colecciones y visor](modules/memories-grid.md)
-- [Navegación inferior flotante y animaciones](modules/floating-navigation.md)
-- [Planes — prototipo interactivo](modules/plans-ui.md)
-- [Bienvenida — ondas, Fredoka y tres temas](modules/welcome-waves.md)
-- [Onboarding y cuenta — diseño e integración](modules/onboarding-account.md)
-- [Validación de onboarding y cuenta](qa/onboarding-account-2026-11-21.md)
+## Diseño y recursos
+
+- [Sistema visual, paletas, tipografía y medidas](design-system.md)
+- [Hoy](modules/today.md)
+- [Bienvenida con ondas e hilos](modules/welcome-waves.md)
+- [Acceso, perfil y cuenta](modules/onboarding-account.md)
+- [Configuración](modules/settings.md)
+- [Temas y Custom Duo](modules/preferences.md)
+- [Cámara 1:1 y flash](modules/camera-v4.md)
+- [Planes](modules/plans-ui.md)
+- [Recuerdos, colecciones y visor](modules/memories-grid.md)
+- [Fechas importantes y propuesta de widget](modules/important-dates.md)
+- [Navegación flotante](modules/floating-navigation.md)
+- [Iconografía y licencias](modules/iconography.md)
+
+Capturas vigentes en `qa/evidence/`: bienvenida en `welcome-waves/`; dashboard y
+widget en `important-date/`; navegación en `navigation/`; planes en `plans/`;
+recuerdos en `memories/`; formularios y cuenta en `onboarding-v1/` (el nombre de la
+carpeta no convierte su antigua bienvenida en vigente: esa captura se retiró).
+Las fotos y ocasiones de pruebas no son datos de cuentas reales.
+
+## Ingeniería y validación
+
 - [Arquitectura](architecture.md)
-- [Plan y reglas de contenido](roadmap.md)
-- [Sistema visual](design-system.md)
-- [Hoy y navegación](modules/today.md)
-- [Preferencias](modules/preferences.md)
-- [Configuración v2](modules/settings.md)
-- [Cámara y borrador local v2](modules/camera.md)
-- [Cámara 1:1 v4 — diseño vigente](modules/camera-v4.md)
-- [Pruebas de cámara y flash v4](qa/camera-v4-2026-11-10.md)
-- [Recuerdos v2 y límites de publicación](modules/memories.md)
-- [Validación de módulos v2](qa/modules-v2-2026-11-08.md)
+- [Integración de ramas y entradas](qa/branch-integration-2026-11-21.md)
+- [Base segura experimental](secure-core.md)
+- [Estado y pendientes](roadmap.md)
 - [Arranque](startup-ui.md)
-- [Plantilla de módulo visual](templates/module-ui.md)
-- [Validación](validation.md)
-- [Auditoría visual en Pixel 9](qa/visual-audit-2026-11-08.md)
+- [Validación actual y límites](validation.md)
+- [Plantilla de módulo](templates/module-ui.md)
 
-Índice manual reconstruido para esta entrega. tools/knowledge.py no existe en
-esta base; no se reconstruye un índice vectorial ni se indexan archivos personales,
-configuración Firebase, conversaciones, credenciales o datos de usuarios.
-
-- [Iconografía v2.3 y navegación adaptable](modules/iconography.md)
-- [Validación de iconografía en Pixel 9](qa/iconography-2026-11-12.md)
-
-- [Encabezado v1: implementación, antes/después y entrega](qa/header-v1-2026-11-14.md)
-
-- [Icono y nombre de instalación: validación en Pixel 9](qa/launcher-pixel-2026-11-15.md)
-
-- [Fechas importantes — dashboard y widget propuesto](modules/important-dates.md)
+Las capturas de instalación del launcher y los informes QA históricos se conservan
+como evidencias técnicas fechadas. No se usan para extraer radios, paletas o
+composiciones actuales. Las referencias sustituidas se recuperan mediante Git;
+no hay una segunda especificación visual antigua dentro del índice activo.

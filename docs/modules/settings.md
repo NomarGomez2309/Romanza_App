@@ -1,40 +1,37 @@
-# Configuración v2
+# Configuración
 
-## Objetivo y fuente
-Panel inferior desde avatares, según ESPECIFICACION.md v2.1 y 01_Pantalla.svg.
-Exactamente seis filas: Cuenta, Preferencias, Administración de pareja, Idioma,
-Términos y condiciones, Cerrar sesión. Solo icono y nombre, sin tarjetas/subtítulos.
+Panel inferior desde los perfiles unidos del dashboard. Título y X, resumen de
+cuenta pulsable y cinco opciones: Temas, Mi Pareja, Idioma, Términos y condiciones,
+Cerrar sesión. Las claves internas Preferencias/Administración de pareja se
+conservan para las rutas; no son los nombres visibles.
 
-## Componentes y adaptación
-SettingsSheet y SettingsDetail. Radio24, filas mínimo64, iconos24, Nunito17/24;
-Fredoka25/32 en título. Scroll limitado al espacio seguro. Tinte del tema80%,
-blur18 y borde blanco22%; superficie opaca con alto contraste o navegación
-accesible. Animación250ms o sin animación si el sistema reduce movimiento.
-Modal bloquea el fondo; X, atrás, arrastre y barrera cierran el panel.
+## Medidas y vidrio
 
-## Acciones y estados
-Preferencias abre su página. Cuenta y pareja explican honestamente la ausencia de
-identidad y vínculo; no simulan invitaciones ni cierre de sesión. Términos ofrece
-los dos destinos previstos, con aviso de contenido pendiente, sin textos legales
-inventados. Idioma permite dispositivo o español: único idioma traducido y fallback.
-Preferencia de idioma confirmada al persistir, con progreso y error/reintento.
-Localizaciones Material/Cupertino/Widgets en español: Atrás, barrera y diálogos.
+Radio superior 24; título Fredoka26/32 peso600. Cuenta: alto mínimo104, radio20,
+padding16 horizontal/12 vertical, avatar46 y pareja27.6. Texto de cuenta Nunito
+13.8/18; nombre19.55/24 peso600; vínculo14.95/20. Nombres largos pueden crecer.
 
-## Pruebas y límites
-Seis filas verificadas, navegación y layouts con texto200%, estrecho y horizontal.
-No son flujos de autenticación ni administración de pareja implementados.
-Sin certificación de lector de pantalla. El sistema no expone una señal Flutter
-universal de reducción de transparencia; alto contraste y navegación accesible
-activan el fallback sólido.
+Filas con icono24, Nunito17/24, padding lateral27, gap icono/texto19 y padding
+vertical17; ListTile tiene mínimo58, y su alto efectivo crece con contenido/padding.
+La cabecera y el contenido se desplazan cuando hace falta. No fijar alto del panel
+ni posiciones Y por teléfono.
 
-## Ajuste de vidrio — 12/11/2026
-Desenfoque 32 (antes 18), degradado de superficie con opacidades 76/58/72 %, borde blanco al 46 % y sombreado exterior al 24 %. Se conserva la geometría, las seis acciones y el fallback opaco de accesibilidad. Validación: 14 pruebas de módulos aprobadas, flutter analyze sin incidencias e instalación/revisión visual en Pixel 9. Evidencias locales: build/glass-*.log y build/visual-audit/glass-settings*.png.
+Blur20.52; superficie note al77%; borde blanco25.3%; sombra negra8%, blur16,
+desplazamiento vertical-2. Alto contraste o navegación accesible: superficie sólida
+sin blur. Texto, imágenes y controles permanecen nítidos. Estos valores sustituyen
+las variantes18/32 y sus porcentajes intermedios.
 
-## Cuenta — integración sobre 53b9743f
+## Comportamiento
 
-El bloque de cuenta abre `AccountScreen`, enlazado al controlador de sesión
-existente. Permite editar el nombre visible, consultar el correo propio y su
-verificación y solicitar recuperación para el proveedor contraseña. No hay
-edición de correo, subida de foto ni vinculación de proveedores nueva. El panel,
-sus cotas, blur, paletas y las otras rutas se conservan. Ver
-[Onboarding y cuenta](onboarding-account.md) para el contrato actual.
+Cuenta abre `AccountScreen`: nombre editable, correo propio, estado de verificación
+y recuperación para contraseña. Foto del proveedor o fallback; sin editor/subida
+nuevo. Mi Pareja conserva sus estados de carga/sin vínculo/error; no se simulan
+invitaciones. Temas abre la página de paletas. Idioma: dispositivo o español.
+Los textos legales están identificados como borradores.
+
+Cerrar sesión usa la sesión real cuando existe, deshabilita repetición y muestra
+error si falla. Cerrar con X, atrás, barrera o arrastre devuelve el foco al origen;
+el fondo no recibe interacción. Durante cierre de sesión se bloquea el retorno.
+Transición250ms o instantánea con reducir movimiento.
+
+[Cuenta y autenticación](onboarding-account.md) · [Temas](preferences.md).

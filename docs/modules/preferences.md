@@ -1,33 +1,44 @@
-# Preferencias v2
+# Temas y personalización
 
-## Objetivo y fuentes
-Página independiente desde Configuración. ESPECIFICACION.md v2.1, tokens y
-02_Pantalla.svg aportados por el usuario. Flutter confirmado expresamente;
-sin migración nativa ni cambios de estructura de Hoy o Planes.
+## Presets
 
-## Componentes y adaptación
-Default, Forest y Neo mantienen sus bases. ChoiceChip redondeado y selección
-accesible; Wrap si el texto no cabe. Rueda de radio exterior94/interior57 con dos
-identificadores; Color1/2 permite seleccionar la semilla e introducir hexadecimal
-validado. Arrastre en la rueda modifica la semilla activa. Espectro sin tematizar.
-Fredoka/Nunito locales, márgenes16, controles48, scroll y áreas seguras.
-Tres propuestas, cuatro muestras por propuesta; selección con borde y check.
-Guardar permanece deshabilitado sin selección. Cambiar semillas invalida propuestas.
+Desde Configuración → Temas. Cuatro opciones en grilla de dos columnas: Default,
+Forest, Neo y Custom con brocha Lucide. Margen16, gap12; ancho=(W−44)/2, radio20,
+padding14. Cuatro franjas horizontales apiladas por preset, radio6, gap5 y pesos
+16/16/30/38. Sin códigos hexadecimales en las tarjetas. Etiqueta Nunito17/24 y check22.
+La altura puede crecer con el texto; no forzar un cuadrado que recorte la etiqueta.
 
-## Generación y persistencia
-Recetas HSL deterministas para tres propuestas distintas, incluyendo semillas
-iguales. Dos variantes claras y una oscura; roles derivados con texto blanco/negro
-según luminancia. Pruebas de contraste sobre todas las superficies utilizadas.
-Es una decisión técnica de esta entrega, no un algoritmo de marca definitivo.
+Aplicar un preset persiste su selección. Custom abre su editor sin modificar el
+tema hasta guardar. Las paletas guardadas se añaden al banco; no reemplazan los
+presets ni el acceso Custom. [Colores exactos](../design-system.md).
 
-PaletteController → PreferencesStore → SharedPreferencesAsync; documento v2
-atómico para base, banco, selección activa e idioma. Primera carga conserva la
-paleta v1 existente. Escritura confirmada antes de aplicar; progreso y error;
-fallo conserva el estado confirmado. Identidad por cuatro colores evita duplicados.
-Banco local sin nombres editables, eliminación ni sincronización en esta entrega.
-Las entradas de desarrollo sin repositorio persistente usan estado de sesión.
+## Custom personal
 
-## Pruebas y límites
-Restauración, elección fija tras Custom, deduplicación, errores de escritura,
-validación hexadecimal, invalidación y contraste. Matriz390/412/320 y horizontal,
-texto100/200%. Ver informe QA v2 para resultados finales de dispositivo.
+Dos semillas; editor de color con rueda y entrada hexadecimal accesible.
+Cambiar semillas invalida las propuestas. Generar exactamente tres combinaciones,
+seleccionar una y Guardar. El generador vigente usa recetas HSL deterministas en
+`custom_palette.dart`, no una dependencia ColorScheme.fromSeed. Los roles derivados
+se comprueban por contraste. La rueda es un editor de color, no la composición
+antigua que reunía todos los controles en la página principal de Temas.
+
+## Custom Duo
+
+Acceso Duo en Temas. Dos cuadros Tú/Tu pareja, diez muestras y botón compacto
+Generar combinaciones con wand-sparkles. Tocar el cuadro propio confirma solo
+cuando el padre suministra una acción autorizada; el cuadro ajeno es informativo.
+La vista controlada exige dos aportes confirmados para habilitar generación.
+
+La pantalla actual únicamente permite explorar un borrador local. No inventa un
+color, confirmación o consentimiento de la pareja. La sincronización y aplicación
+bilateral siguen pendientes. No confundir Custom personal guardado localmente
+con una paleta compartida ya operativa.
+
+## Persistencia y estados
+
+PaletteController → PreferencesStore → SharedPreferencesAsync. Documento atómico
+para base, banco, selección e idioma; migración de paleta anterior y deduplicación
+por colores. Guardar se confirma antes de aplicar; error conserva el estado
+confirmado y permite reintentar. Las previews sin repositorio usan estado de sesión.
+
+Pruebas de selección, restauración, invalidación, guardado/error, contraste,
+layouts y escalado. Sin sincronización remota del banco ni monetización implementada.

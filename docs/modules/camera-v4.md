@@ -11,7 +11,7 @@ CameraComposition comparte geometría entre captura y confirmación. Base390×84
 margen16, cuadrado358×358, radio20, comienzo y158 con inset47. Pixel412: lado380.
 Encabezado56, espacio55 en vertical; SafeArea real. Disparador74 con centro al
 ancho/2; giro a la derecha y lado izquierdo vacío. X/flash arriba, sin título en
-captura. Iconos vectoriales trazados desde los SVG proporcionados; colores del
+captura. Iconos Lucide/Romanza del catálogo vigente; colores del
 tema Romanza, Fredoka/Nunito. Sin marcos de teléfono ni líneas de construcción.
 Confirmación: Tu instantánea, misma foto/cuadrado, texto opcional, duración y dos
 acciones Repetir/Publicar. Aviso breve de borrador local y publicación bloqueada.

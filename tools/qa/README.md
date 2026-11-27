@@ -1,8 +1,5 @@
-# Ensayos de auditoría visual
+# Ensayos exploratorios de auditoría
 
-`flutter test tools/qa/visual_audit_test.dart` ejecuta una revisión explícita con
-fuentes reales, 12 combinaciones de tamaño/escala y contraste de diálogos.
-Actualmente reproduce dos fallos de contraste conocidos (Default y Forest).
-No modifica la app ni configura un teléfono. La suite habitual permanece en test/.
-
-Resultados y reproducción manual: docs/qa/visual-audit-2026-11-08.md.
+`visual_audit_test.dart` es un ensayo histórico fuera de la suite normal; no es
+un contrato de diseño vigente ni un bloqueo de publicación. Para los controles
+actuales, consultar [validación](../../docs/validation.md) y ejecutar `flutter test`.

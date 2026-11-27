@@ -1,62 +1,99 @@
-# Sistema visual Romanza
+# Sistema visual vigente de Romanza
 
-## Cámara v4 — 10 noviembre 2026
+Consolidado el 27 de noviembre de 2026 contra `Romanza/Dart`, base `846c096a`.
+Esta guía y los contratos enlazados sustituyen las medidas antiguas de documentos
+v1/v2. El código de los componentes citados es la referencia de implementación.
+No se deducen medidas de un mockup generado ni se aplican de nuevo porcentajes
+históricos de ajuste.
 
-La grilla cámara1:1 y sus SVG sustituyen la sección cámara v2: visor y foto cuadrados,
-radio20, flash superior derecho, X superior izquierda, disparador centrado y giro
-a la derecha; sin galería. Confirmación comparte geometría y muestra texto opcional
-y Repetir/Publicar. Iconos de trazos de los SVG, coloreados con RomanzaColors.
-Ver contrato [cámara v4](modules/camera-v4.md). Los otros módulos no cambian.
+## Identidad
 
-## Ampliación v2
+Romanza combina conexión emocional y herramientas cotidianas para parejas.
+El diseño es cálido, juvenil, suave y funcional. Sin neobrutalismo, sombras negras
+desplazadas, contornos de construcción ni adornos que compitan con las fotos.
+Se mantienen Fredoka y Nunito locales con sus licencias, Lucide y las variantes
+Romanza. La paleta Neo no cambia ese lenguaje.
 
-ESPECIFICACION.md v2.1 y tokens.json aportados el8noviembre2026 gobiernan los cuatro
-módulos nuevos. Grillas v2 para geometría; mockups solo color/material, sin extraer
-fotografías. Inicio conserva su estructura. Títulos nuevos Fredoka25/32; filas de
-configuración Nunito17/24, min64; cámara radio20 y controles48/74; recuerdos ratio
-175/243 distinto de0.86 de inicio. Panel vidrio radio24, blur18/tinte80% y fallback
-opaco de accesibilidad. Custom añade opciones al banco y reutiliza RomanzaColors;
-roles de texto derivados verificados por contraste, no cambia bases fijas.
-TextButton usa tinta del tema para corregir contraste insuficiente. Localización
-del framework en español. Módulos v2 documentan estados y límites actuales.
+## Paletas vigentes
 
-## Especificación y estado de la entrega inicial
+| Paleta | Colores base |
+| --- | --- |
+| Default, inicial | #9FA0FF · #D5E8E6 · #FFF3E3 · #FF7171 |
+| Forest | #F3F6F4 · #7D8D39 · #5B6E2C · #FF5A22 |
+| Neo | #08CB00 · #253900 · #000000 · #EEEEEE |
 
-Fuente: Romanza_Diseno_Recursos_Medidas_v1.docx y grillas Pixel 9/iPhone 14,
-aportados por el usuario. Dirección cálida, suave y juvenil; sin neobrutalismo.
-Este documento distingue la especificación de la entrega y sus límites.
+`RomanzaColors` asigna los roles y sus variantes legibles. En Forest, secundario
+#4D5E26 y sobre primario #111A08; no usar blanco pequeño sobre #7D8D39.
+Las fotos conservan sus colores. Custom personal es local; Custom Duo todavía
+no sincroniza acuerdos de pareja. Ver [Temas](modules/preferences.md).
 
-## Contrato para la implementación
+## Tipografía
 
-Fredoka local: marca 700 30/36, saludo 600 34/40, sección 600 25/32,
-tarjetas 500 16/20 y recuerdo 500 15/20. Nunito local: contador 15/20,
-cuerpo 14/20, descripción 12/20, tiempo 12/16 y navegación 14/18.
-Conservar escalado de texto y permitir crecimiento, sin reducir texto para encajar.
+| Uso | Fuente | Tamaño / línea | Peso |
+| --- | --- | --- | --- |
+| Romanza en bienvenida | Fredoka | 26 / 32 | 650 |
+| Titular de bienvenida | Fredoka | 40 / 44 | 600 |
+| Saludo y título principal | Fredoka | 34 / 40 | 600 |
+| Sección | Fredoka | 25 / 32 | 600 |
+| Tarjeta | Fredoka | 16 / 20 | 500 |
+| Contador | Nunito | 15 / 20 | 400 |
+| Cuerpo | Nunito | 14 / 20 | 400 |
+| Tiempo | Nunito | 12 / 16 | 400 |
+| Navegación flotante | Nunito | 12 / 16 | 700 |
 
-Default es la paleta inicial. Bases: #9FA0FF #D5E8E6 #FFF3E3 #FF7171.
-Forest: #F3F6F4 #7D8D39 #5B6E2C #FF5A22.
-Neo: #08CB00 #253900 #000000 #EEEEEE.
-Roles derivados centralizados en RomanzaColors. Forest usa texto #111A08
-sobre primario en vez de blanco: la combinación blanca original da 3,66:1. El texto secundario Forest usa #4D5E26 para cumplir 4,5:1 también sobre tarjetas; los cuatro colores base se conservan.
-Custom no forma parte de esta entrega. Paleta y luminosidad no son ajustes separados.
+Las variantes de formulario, panel, mes y widget se detallan en sus contratos.
+Respetar el texto del sistema; crecer, reorganizar o desplazar el contenido.
 
-Márgenes 16, separación entre fotos 8, ratio ancho/alto 0,86, radios 16.
-Avatar 64, solapamiento 10, grupo 118×64. Botón + visual 52×44, hitbox 52×48.
-Nota/plan mínimo 64; recuerdo mínimo 68. Miniatura 80×52, radio 12.
-Icono 26, fondo expresivo 44. Navegación mínimo 72, pastilla 80×56.
-SafeArea real, navegación fuera del scroll y ancho máximo de contenido 520
-para evitar estirar fotos en ventanas grandes (decisión de esta implementación).
-Las alturas crecen con accesibilidad. Ningún inset ni coordenada Y se fija por teléfono.
+## Medidas comunes
 
-## Estados y recursos
+Unidades lógicas. Referencias: iPhone 14 390×844 y Android/Pixel 9 412×924;
+no son resoluciones físicas obligatorias ni insets fijos.
 
-El dashboard muestra ausencia real de contenido; sin fotos, días ni pareja inventados.
-El selector de paleta es una preferencia local, no sincronizada. Las acciones de
-contenido explican que el acceso/vínculo llegará después; no simulan guardar.
-Iconos Material delineados y formas vectoriales propias como base; ilustraciones
-finales pendientes. Fuentes y licencias se empaquetan, sin descarga en ejecución.
-Decoraciones excluidas de semántica y gestos. Estados compartidos para carga,
-error, vacío y avisos. Foco visible, controles táctiles de al menos 48.
+| Elemento | Medida vigente |
+| --- | --- |
+| Margen del dashboard y biblioteca | 16 |
+| Ancho máximo de páginas | 552 |
+| Acceso/cuenta | Margen 24, ancho máximo 480 |
+| Encabezado de Inicio | Fila 72; símbolo 41.6×29.25 |
+| Perfiles unidos de Inicio | Diámetro 41.6; grupo 76.7; unión 15.6; corazón 11.05 |
+| Instantáneas de Inicio | Dos columnas; gap 8; ratio ancho/alto 0.86; radio 16 |
+| Añadir instantánea | Visual 52×44; radio 14; toque 52×48 |
+| Nota / plan de Inicio | Radio 16; fondos trébol / hexágono solo en insignias |
+| Miniatura de recuerdo en Inicio | 80×52; radio 12 |
+| Cámara y confirmación | Ratio 1:1; radio 20; disparador 74 |
+| Biblioteca de Recuerdos | Foto 1:1, radio 16, gap 6; 3 o 2 columnas |
+| Meses, años y colecciones | Radio 24 |
+| Barra flotante | Radio 36, inset 6, selector radio 30; cápsula normal 76 |
+| Configuración | Radio superior 24; blur 20.52; tinte .77; borde blanco .253 |
+| Cuenta dentro de Configuración | Mínimo 104; radio 20; avatares 46 / 27.6 |
+| Tarjeta de fecha próxima | Radio 24; padding 16; bloque 84×84, radio 20 |
+| Widget de fecha, propuesta | Cuadrado de referencia 180×180; radio 28 |
 
-## Iconografía vigente v2.3
-La iconografía v2.3 sustituye los glifos anteriores, incluidos los de cámara v4; mantiene su composición y disparador. Ver [especificación de integración](modules/iconography.md) para tamaños, roles y navegación adaptable.
+La barra y las tarjetas crecen con texto grande. SafeArea y MediaQuery proporcionan
+las áreas seguras reales. Los controles de acción tienen área táctil mínima 48;
+los azulejos de fotos se adaptan a la densidad documentada en Recuerdos.
+No usar el antiguo avatar 64/grupo118, ancho máximo520, barra72/pastilla80×56
+ni fotos de biblioteca 175/243 como contrato del diseño actual.
+
+## Contratos por pantalla
+
+- [Hoy](modules/today.md): estructura y estados del dashboard.
+- [Bienvenida](modules/welcome-waves.md): ondas al 15%, hilos, wordmark y Google monocromo.
+- [Acceso y cuenta](modules/onboarding-account.md): formularios, verificación y perfil.
+- [Configuración](modules/settings.md): resumen de cuenta, Temas y Mi Pareja.
+- [Temas](modules/preferences.md): cuatro opciones visuales y Custom Duo.
+- [Cámara](modules/camera-v4.md): captura directa 1:1, flash, sin galería.
+- [Planes](modules/plans-ui.md): Día y Calendario, borradores de sesión.
+- [Recuerdos](modules/memories-grid.md): biblioteca, meses, años, colecciones y visor.
+- [Fechas importantes](modules/important-dates.md): ventana de siete días y propuesta de widget.
+- [Navegación](modules/floating-navigation.md): selector, relleno y movimiento.
+- [Iconografía](modules/iconography.md): catálogo y licencias.
+
+## Alcance real
+
+Las capturas de prueba no representan datos predeterminados de usuarios.
+La autenticación y edición del nombre tienen su propio contrato. Invitaciones,
+publicación privada, expiración remota, borrado por autor, widgets nativos y
+consentimientos versionados requieren sus integraciones; el aspecto no certifica
+su seguridad. Las propuestas de Espejo y onboarding futuro no reemplazan
+automáticamente el flujo implementado.
