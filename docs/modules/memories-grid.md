@@ -115,3 +115,12 @@ flutter analyze --no-pub
 flutter test --no-pub
 flutter test --no-pub --dart-define=CAPTURE_MEMORIES=true test/memories_grid_test.dart
 ```
+
+## Contrato de privacidad y conservación
+
+Recuerdos es privado y compartido entre ambos; solo el autor puede eliminar sus
+publicaciones. Guardar conservará la instantánea hasta completar sus24h y la
+entrada permanente de Recuerdos. Eliminar una publicación propia deberá borrar
+ambas entradas y su archivo con confirmación explícita; expirar no borra un archivo
+guardado. Son requisitos para el servicio futuro, no autorización ni transacciones
+implementadas por esta interfaz.

@@ -1,42 +1,40 @@
-# Hoy y navegación
+# Hoy
 
-## Objetivo y alcance
+## Estructura vigente
 
-Primera entrega visual basada en Romanza_Diseno_Recursos_Medidas_v1.docx y las
-grillas Pixel 9/iPhone 14 del usuario. Implementa Hoy, navegación fija a Planes
-y Recuerdos, y acceso a preferencias. No consume ni inventa datos compartidos.
+`TodayScreen` usa `RomanzaPage`, ancho máximo 552 y margen 16. Orden:
+símbolo y perfiles unidos; saludo «Hoy, contigo» y estado de pareja; tarjeta de
+fecha próxima cuando corresponde; Instantáneas con + y dos momentos; nota;
+próximo plan; recuerdo. La barra flotante se documenta por separado.
 
-## Componentes y adaptación
+`CoupleHeader`: fila 72; símbolo 41.6×29.25, avatares 41.6, grupo 76.7,
+unión 15.6 y corazón 11.05. El dashboard no lleva wordmark. El acceso a cuenta
+mantiene altura táctil 48 y abre Configuración.
 
-CoupleHeader, InstantMomentsSection, MomentCard, RomanzaPreviewCard,
-RomanzaBadge, RomanzaNavigation, RomanzaPage y RomanzaEmptyState. Colores y
-texto centralizados en design_system. Tarjetas regulares, nota con trébol,
-plan con hexágono redondeado y recuerdo con miniatura vacía. Iconos Material
-provisionales; no se incorporan fotografías de muestra ni capturas como UI.
-
-SafeArea real, fotos con ancho/alto 0,86 a escala 100%, scroll independiente
-por pestaña y límite de ancho en ventanas grandes. La fila de + reserva 48
-para el toque y 8 hasta las fotos: conserva el flujo equivalente de 44+12.
-Con texto ampliado aumentan tarjetas y navegación; el encabezado puede fluir
-a otra línea. Solo las decoraciones se reducen cuando falta espacio, no el texto.
+Las instantáneas tienen ratio ancho/alto 0.86, gap 8 y radio 16; crecen con texto.
+Nota y plan conservan tarjetas regulares e insignias de trébol/hexágono; recuerdo
+usa miniatura 80×52, radio 12. Iconos Lucide/Romanza, sin glifos provisionales.
 
 ## Acciones y estados
 
-Hoy muestra ausencia de pareja, instantáneas y contenido. El contador no aparece
-sin fecha real. +, cada instantánea y la nota abren una explicación breve, sin
-prometer una subida o edición actual. Plan y recuerdo navegan a su sección vacía.
-Avatares abren Usuario → Preferencias → Paleta de colores (agrupados en una vista).
-No hay formularios, permisos de cámara ni reproducción en esta entrega.
-Carga y error de Firebase se resuelven en el arranque. Los estados de carga/error
-de contenido remoto se implementarán al incorporar sus repositorios.
+El botón + y Tu momento abren la cámara directa 1:1, sin galería. Su momento
+explica la ausencia de contenido vinculado cuando corresponde. Nota todavía
+informa su estado pendiente. Planes y Recuerdos abren sus vistas actuales.
 
-## Accesibilidad y validación
+No se inventan nombres, fotos, días de relación ni vínculos. Sin fecha de relación
+no aparece un contador ficticio. `importantDates` recibe ocasiones explícitas:
+solo la más cercana entre hoy y siete días aparece sobre Instantáneas. Sin datos
+se omite el bloque y su separación. [Contrato de fechas](important-dates.md).
 
-Texto del sistema sin reducción automática; decoraciones fuera del árbol
-semántico, nombres de controles, selección de navegación y áreas de toque.
-Pruebas de layout para 390×844, 412×924 y 320×640, tres paletas, escala 100% y
-200%, proporción de fotos, navegación, objetivos táctiles y contraste de texto.
-Revisión con TalkBack/VoiceOver y validación en hardware pendientes.
+`HomeShell` conserva las pestañas en IndexedStack. El contenido puede pasar detrás
+de la barra y tiene padding final para subir el último elemento por encima de ella.
+[Barra flotante y movimiento](floating-navigation.md).
 
-## Encabezado vigente — 14/11/2026
-El anexo CAMBIO_APROBADO.md de encabezado v1 sustituye únicamente las medidas antiguas de esta fila. Símbolo SVG 41.6 × 29.25, avatares 41.6 y grupo 76.7; se conserva la altura de fila 72 y el acceso a Configuración. Ya no hay wordmark visible ni Wrap del encabezado. Ver [entrega y validación](../qa/header-v1-2026-11-14.md).
+## Accesibilidad y evidencia
+
+SafeArea real, texto ampliable y scroll. Controles con nombres accesibles;
+decoraciones fuera de semántica. Anchos 320/390/412 y texto 100/200% comprobados
+mediante pruebas Flutter; no sustituye TalkBack/VoiceOver ni hardware.
+
+Capturas vigentes del dashboard: `../qa/evidence/important-date/`. Las ocasiones
+son fixtures de pruebas, no datos creados en una cuenta real.

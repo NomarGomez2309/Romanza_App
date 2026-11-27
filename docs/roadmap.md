@@ -11,16 +11,22 @@ Eliminar publicación propia borrará ambas entradas y su archivo con confirmaci
 Recuerdos se ordenará por publicación descendente, fecha en zona del dispositivo.
 No se implementó aún esta transacción remota, autorización ni expiración de servidor.
 
-## Plan de la base visual anterior
+## Estado y siguiente integración
 
-1. Entrega visual: tema compartido, fuentes locales, Hoy vacío, navegación,
-   preferencias locales y estados vacíos de Planes/Recuerdos implementados.
-2. Validar en Android e iOS reales; revisión con lector de pantalla y recursos
-   vectoriales finales. Custom sigue pendiente.
-3. Identidad y vínculo para dos personas: contratos, flujos, reglas y pruebas.
-4. Nota y planes; después recuerdos y publicación de instantáneas, con estados,
-   permisos y persistencia verificables. Diseñar cada detalle antes de construirlo.
-5. Validar sincronización, desconexión, reintentos y privacidad antes de publicar.
+- Temas, banco Custom local y exploración Custom Duo implementados; sincronización
+  bilateral pendiente.
+- Autenticación, verificación y edición de nombre con sus contratos existentes;
+  vinculación y consentimiento legal versionado pendientes.
+- Planes: prototipo interactivo con borradores de sesión; sin persistencia compartida.
+- Recuerdos: biblioteca, filtros, colecciones y visor preparados; sin fuente remota
+  conectada en HomeShell.
+- Fechas importantes: tarjeta sobre Instantáneas lista para recibir datos; widget
+  del teléfono únicamente visual, sin AppWidget/WidgetKit nativo.
+- Cámara: captura local1:1, revisión y flash; envío privado y expiración de servidor
+  pendientes. Nota todavía no publica contenido.
+
+Validar servicios reales, desconexión, reintentos, privacidad y hardware antes de
+presentar esos prototipos como funciones compartidas operativas.
 
 ## Reglas acordadas con el usuario
 

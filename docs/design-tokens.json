@@ -1,0 +1,99 @@
+{
+  "status": "Vigente contra Romanza/Dart 846c096a; interfaces visuales y limites en ESPECIFICACION.md",
+  "date": "2026-11-27",
+  "units": "logical",
+  "palettes": {
+    "Default": [
+      "#9FA0FF",
+      "#D5E8E6",
+      "#FFF3E3",
+      "#FF7171"
+    ],
+    "Forest": [
+      "#F3F6F4",
+      "#7D8D39",
+      "#5B6E2C",
+      "#FF5A22"
+    ],
+    "Neo": [
+      "#08CB00",
+      "#253900",
+      "#000000",
+      "#EEEEEE"
+    ]
+  },
+  "defaultPalette": "Default",
+  "fonts": {
+    "display": "Fredoka",
+    "body": "Nunito"
+  },
+  "layout": {
+    "horizontalPadding": 16,
+    "maxPageWidth": 552,
+    "photoGap": 8,
+    "homePhotoWidthHeightRatio": 0.86,
+    "cardRadius": 16,
+    "minimumTouchTarget": 48,
+    "avatarDiameter": 41.6,
+    "avatarGroupWidth": 76.7,
+    "avatarUnionDiameter": 15.6
+  },
+  "settings": {
+    "upperRadius": 24,
+    "blur": 20.52,
+    "tintOpacity": 0.77,
+    "borderWhiteOpacity": 0.253,
+    "accountMinHeight": 104,
+    "accountRadius": 20,
+    "avatar": 46,
+    "partnerAvatar": 27.6,
+    "rowMinHeight": 58,
+    "rowVerticalPadding": 17
+  },
+  "navigation": {
+    "maxWidth": 448,
+    "margin": 16,
+    "radius": 36,
+    "selectorInset": 6,
+    "selectorRadius": 30,
+    "capsuleNormalHeight": 76,
+    "labelFontSize": 12,
+    "labelLineHeight": 16
+  },
+  "memories": {
+    "columns": 3,
+    "expandedColumns": 2,
+    "photoAspectRatio": 1,
+    "gap": 6,
+    "photoRadius": 16,
+    "collectionRadius": 24
+  },
+  "camera": {
+    "aspectRatio": 1,
+    "cornerRadius": 20,
+    "shutterDiameter": 74,
+    "galleryEnabled": false,
+    "flashPosition": "topRight"
+  },
+  "importantDate": {
+    "windowDaysInclusive": 7,
+    "cardRadius": 24,
+    "tileSide": 84,
+    "tileRadius": 20,
+    "homeWidgetPreviewSide": 180,
+    "homeWidgetRadius": 28,
+    "nativeWidgetImplemented": false
+  },
+  "referenceFrames": [
+    {
+      "name": "iPhone 14",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "Android Pixel reference",
+      "width": 412,
+      "height": 924
+    }
+  ]
+}

@@ -1,50 +1,40 @@
-# Validación de la entrega visual
+# Validación de Romanza
 
-## Cierres posteriores
+Esta guía se revisó durante la limpieza documental del 27 de noviembre de 2026.
+La limpieza no cambia la app ni repite pruebas de ejecución sin cambios de código.
 
-[Cierre v2](qa/modules-v2-2026-11-08.md) y [cámara1:1/flash v4](qa/camera-v4-2026-11-10.md)
-recogen resultados posteriores. La descripción que sigue corresponde a la base inicial.
+## Último cierre registrado
 
-## Comprobado
+[Fechas importantes](qa/important-dates-2026-11-22.md): 241 pruebas Flutter
+aprobadas y análisis sin incidencias. Incluye texto 100/200%, layouts 320/390/412,
+tres temas, selección de fechas, movimiento y reducción de movimiento.
+El modo de capturas del módulo aprobó49 pruebas; sus imágenes son renders Flutter.
+Estos resultados corresponden al código de esa entrega, no una instalación nueva.
 
-- Flutter 3.41.9 / Dart 3.11.5 en Windows.
-- flutter analyze: sin incidencias.
-- flutter test --dart-define=CAPTURE_VISUALS=true: 16 pruebas aprobadas.
-- Matriz de nueve layouts: Default/Forest/Neo × 390×844, 412×924 y 320×640.
-- Escalas 100% y 200%, desplazamiento y navegación; fotos con ratio 0,86 a 100%.
-- Inicio pendiente/error/reintento; restauración de paleta con repositorio de
-  prueba; errores de lectura y escritura sin mostrar un guardado ficticio.
-- Guías automáticas de áreas táctiles Android y nombres accesibles aprobadas.
-- Contraste mínimo 4,5:1 para texto principal/secundario sobre fondo y tarjetas,
-  y texto sobre primario en las tres paletas.
-- Capturas revisadas en build/visual-review: nueve variantes de Hoy,
-  preferencias, Recuerdos vacío y pantalla pequeña con texto al 200%.
-- Android: :app:testDebugUnitTest :app:lintDebug :app:assembleDebug.
-  La tarea nativa de pruebas es NO-SOURCE; las 16 pruebas son Flutter.
+## Informes por área
 
-## Ajustes encontrados por las pruebas
+- [Autenticación](qa/authentication-2026-11-21.md)
+- [Formularios y cuenta](qa/onboarding-account-2026-11-21.md)
+- [Bienvenida](qa/welcome-waves-2026-11-21.md)
+- [Cámara y flash](qa/camera-v4-2026-11-10.md)
+- [Iconografía](qa/iconography-2026-11-12.md)
+- [Navegación](qa/floating-navigation-2026-11-22.md)
+- [Planes](qa/plans-ui-2026-11-22.md)
+- [Recuerdos](qa/memories-grid-2026-11-22.md)
+- [Icono y nombre de instalación](qa/launcher-pixel-2026-11-15.md)
 
-Las decoraciones de instantáneas se adaptan al espacio libre en 320 de ancho,
-sin reducir texto. Se corrigió la altura de navegación para mantener contenido
-visible. Forest conserva sus cuatro colores base y ajusta únicamente roles de
-texto derivados: #111A08 sobre primario y #4D5E26 para texto secundario.
+Cada informe conserva su fecha, dispositivo o entorno y límites. Los resultados
+antiguos no certifican funcionalidades añadidas después. Las comparativas visuales
+sustituidas se retiraron del catálogo; no se borran licencias ni pruebas de seguridad.
 
-## Límites
+## Comandos de referencia
 
-En la entrega inicial no había un dispositivo Android conectado. La auditoría posterior del Pixel 9 está enlazada al final. No se ha probado Firebase real,
-persistencia nativa tras cierre del proceso, TalkBack/VoiceOver, iOS ni macOS.
-El texto al 200% produce varias líneas en pantallas estrechas; se mantiene legible
-sin desbordamiento y permite desplazamiento. Las capturas son del renderizador
-Flutter de pruebas con fuentes reales, no capturas de un teléfono físico.
+```
+flutter analyze --no-pub
+flutter test --no-pub
+```
 
-Web necesita configuración Firebase propia para el punto de entrada normal;
-la vista visual_preview omite Firebase expresamente y no persiste la paleta.
-Los Podfile.lock de Apple requieren regeneración con CocoaPods en macOS.
-Lint mantiene una advertencia anterior de drawable-v21 redundante; no hay errores.
-Las reglas de 24 horas y autoría están documentadas, sin implementación remota.
-
-## Auditoría posterior en Pixel 9
-
-El 8 de noviembre se validaron las pantallas en un Pixel 9 físico, incluido el guardado de paleta tras cerrar el proceso. Se registraron cuatro incidencias pendientes: contraste de Entendido, objetivo táctil de Hoy, etiquetas de navegación con texto grande y localización de accesibilidad. Las 16 pruebas anteriores pasan; el ensayo adicional reproduce dos fallos de contraste.
-
-[Informe y pasos de reproducción](qa/visual-audit-2026-11-08.md).
+La app normal requiere su configuración Firebase. Las vistas visual_preview y los
+tests no prueban operaciones de cuentas reales. TalkBack/VoiceOver, ejecución iOS,
+servicios entre dos cuentas, publicación, expiración y widgets nativos requieren
+validación específica. Ver [estado y pendientes](roadmap.md).

@@ -1,0 +1,304 @@
+{
+  "date": "2026-11-27",
+  "basis": "846c096a42040fc9cc99f47574fcd946c7197e0c",
+  "library": [
+    {
+      "id": "libfile_ae4cae76eb088191bb2877b17b2a9b06",
+      "name": "Romanza welcome screens: default, forest, neo(1).png",
+      "path": "/Romanza App/Romanza welcome screens: default, forest, neo(1).png"
+    },
+    {
+      "id": "libfile_822d12d028848191a74f758e45d185c1",
+      "name": "Romanza welcome screens in three themes.png",
+      "path": "/Romanza App/Romanza welcome screens in three themes.png"
+    },
+    {
+      "id": "libfile_fd2068791fdc8191a3606837dc65b936",
+      "name": "Romanza welcome screens: default, forest, neo.png",
+      "path": "/Romanza App/Romanza welcome screens: default, forest, neo.png"
+    },
+    {
+      "id": "libfile_9999d1df8fac8191b19a02351c12be15",
+      "name": "Romanza welcome typography comparison board.png",
+      "path": "/Romanza App/Romanza welcome typography comparison board.png"
+    },
+    {
+      "id": "libfile_3ad8b37a5e9c81919fa4ee01fd592bbf",
+      "name": "Romanza welcome screen, refined spacing.png",
+      "path": "/Romanza App/Romanza welcome screen, refined spacing.png"
+    },
+    {
+      "id": "libfile_2194ef4bbb108191bf0c31aeb2785daf",
+      "name": "Romanza pastel welcome screen.png",
+      "path": "/Romanza App/Romanza pastel welcome screen.png"
+    },
+    {
+      "id": "libfile_babe6b0d92988191be353a372062e7e4",
+      "name": "Romanza Welcome Screen Themes.png",
+      "path": "/Romanza App/Romanza Welcome Screen Themes.png"
+    },
+    {
+      "id": "libfile_57c5ab01e7ec81919d6452646005129f",
+      "name": "Romanza Login Themes: Pastel, Forest, Neo.png",
+      "path": "/Romanza App/Romanza Login Themes: Pastel, Forest, Neo.png"
+    },
+    {
+      "id": "libfile_d90076e54f488191955824621f920d3b",
+      "name": "Refined sage glass settings panel.png",
+      "path": "/Romanza App/Refined sage glass settings panel.png"
+    },
+    {
+      "id": "libfile_bdec4bfe05e481919f4cc2dab5164e5c",
+      "name": "Romanza Forest frosted settings sheet.png",
+      "path": "/Romanza App/Romanza Forest frosted settings sheet.png"
+    },
+    {
+      "id": "libfile_5a6cb762f8fc8191ae8f8875e23a6f44",
+      "name": "Frosted forest account settings.png",
+      "path": "/Romanza App/Frosted forest account settings.png"
+    },
+    {
+      "id": "libfile_b2323f62ce80819199884ab78354ee9f",
+      "name": "Compact forest settings with smaller avatars.png",
+      "path": "/Romanza App/Compact forest settings with smaller avatars.png"
+    },
+    {
+      "id": "libfile_507a50b36c288191b2e6018f979754d4",
+      "name": "Airy Forest Settings Sheet.png",
+      "path": "/Romanza App/Airy Forest Settings Sheet.png"
+    },
+    {
+      "id": "libfile_4b611c67c83c8191b7ade1b07453d0a6",
+      "name": "Romanza settings with joined avatars.png",
+      "path": "/Romanza App/Romanza settings with joined avatars.png"
+    },
+    {
+      "id": "libfile_85442ead558481918bbd835dd99e0f4e",
+      "name": "Romanza_Preferencias_Custom_Grillas_v1.zip",
+      "path": "/Romanza App/Romanza_Preferencias_Custom_Grillas_v1.zip"
+    },
+    {
+      "id": "libfile_9115b53b36ac8191954d3e5752c19f21",
+      "name": "Romanza color palette preferences.png",
+      "path": "/Romanza App/Romanza color palette preferences.png"
+    },
+    {
+      "id": "libfile_7285c428bc5881919de1f0aca16175b7",
+      "name": "Romanza_Iconos_Lucide_Propuesta_01.zip",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Iconos_Lucide_Propuesta_01.zip"
+    },
+    {
+      "id": "libfile_8900d13e97a88191b08cc5636df36920",
+      "name": "Recuerdos gallery loading states.png",
+      "path": "/Romanza App/Recuerdos gallery loading states.png"
+    },
+    {
+      "id": "libfile_9e8a0782601c8191bafc2448c796b828",
+      "name": "Romanza home loading states.png",
+      "path": "/Romanza App/Romanza home loading states.png"
+    },
+    {
+      "id": "libfile_e5114a04b01881918c8ed7ceecd3bad9",
+      "name": "Romanza_Skeleton_Grillas.zip",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Skeleton_Grillas.zip"
+    },
+    {
+      "id": "libfile_f407c0f0b7e08191ad0348473b3bce91",
+      "name": "Romanza_Paquete_Desarrollo_v2_3.zip",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Paquete_Desarrollo_v2_3.zip"
+    },
+    {
+      "id": "libfile_689e81d3786c8191866d0609f4ebe4f5",
+      "name": "Romanza Neo four-screen mobile UI.png",
+      "path": "/Romanza App/Romanza Neo four-screen mobile UI.png"
+    },
+    {
+      "id": "libfile_f18ca8741af4819196ebfd24dc1ecf5d",
+      "name": "Romanza pastel four-screen UI board.png",
+      "path": "/Romanza App/Romanza pastel four-screen UI board.png"
+    },
+    {
+      "id": "libfile_e8766a485c308191a1cc82d09f0f6619",
+      "name": "Romanza Forest couples app screens.png",
+      "path": "/Romanza App/Romanza Forest couples app screens.png"
+    },
+    {
+      "id": "libfile_0e30a493d48c8191888f79a13ca6e4dc",
+      "name": "Romanza_Grillas_Simplificadas_v2.zip",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Grillas_Simplificadas_v2.zip"
+    },
+    {
+      "id": "libfile_426e545599888191b088308e7a6e32c1",
+      "name": "Romanza_Configuracion_Camara_Grillas.zip",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Configuracion_Camara_Grillas.zip"
+    },
+    {
+      "id": "libfile_637b41c6168081918b171847f70064d0",
+      "name": "Romanza_Grillas_Editables.zip",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Grillas_Editables.zip"
+    },
+    {
+      "id": "libfile_956be415ede48191a22c2ea51195aac2",
+      "name": "Romanza_Diseno_Recursos_Medidas_v1.docx",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Diseno_Recursos_Medidas_v1.docx"
+    },
+    {
+      "id": "libfile_882db36fc98c8191bf598a7ab0c22228",
+      "name": "Romanza Forest dual-phone comparison.png",
+      "path": "/Romanza App/Romanza Forest dual-phone comparison.png"
+    },
+    {
+      "id": "libfile_3dfe399ce8c88191bc0df43dc20a8ffa",
+      "name": "Romanza_Forest_Guias_v2.md",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Forest_Guias_v2.md"
+    },
+    {
+      "id": "libfile_6b5f9c685c848191a6a24abde8c1731a",
+      "name": "Romanza forest home with shared moments(1).png",
+      "path": "/Romanza App/Romanza forest home with shared moments(1).png"
+    },
+    {
+      "id": "libfile_30c184e76aa881918518362e7dfb1046",
+      "name": "Romanza_Forest_Pixel9_iPhone14.pdf",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Forest_Pixel9_iPhone14.pdf"
+    },
+    {
+      "id": "libfile_78ee6cb90e788191b082003f3f59d947",
+      "name": "Romanza_Forest_Comparacion.png",
+      "path": "/Romanza App/Disenos/Adaptacion dispositivos/Romanza_Forest_Comparacion.png"
+    },
+    {
+      "id": "libfile_f0ed60442fd881918a215c9a00046b19",
+      "name": "Romanza forest home with shared moments.png",
+      "path": "/Romanza App/Romanza forest home with shared moments.png"
+    },
+    {
+      "id": "libfile_501dfef853fc8191aab869d4a1715604",
+      "name": "Romanza Neo: Two shared moments.png",
+      "path": "/Romanza App/Romanza Neo: Two shared moments.png"
+    },
+    {
+      "id": "libfile_0c06405a17708191a934d98f3cfa1440",
+      "name": "Romanza home screen with shared moments.png",
+      "path": "/Romanza App/Romanza home screen with shared moments.png"
+    },
+    {
+      "id": "libfile_7ce21ee352e08191aea4f34205143396",
+      "name": "Romanza_Inicio_Default.png",
+      "path": "/Romanza App/Disenos/Inicio con fotos/Romanza_Inicio_Default.png"
+    },
+    {
+      "id": "libfile_705e59cfb5788191a7e112b3288f25a3",
+      "name": "Romanza_Inicio_Neo.png",
+      "path": "/Romanza App/Disenos/Inicio con fotos/Romanza_Inicio_Neo.png"
+    },
+    {
+      "id": "libfile_5c61fe247dd881919f7c1521a03fc2d0",
+      "name": "Romanza_Inicio_Forest.png",
+      "path": "/Romanza App/Disenos/Inicio con fotos/Romanza_Inicio_Forest.png"
+    },
+    {
+      "id": "libfile_337740ff07748191937e627220c72393",
+      "name": "Romanza: Three cozy couple home screens.png",
+      "path": "/Romanza App/Romanza: Three cozy couple home screens.png"
+    },
+    {
+      "id": "libfile_876462c48e348191978b59a0e1e1c3b1",
+      "name": "Romanza_Checklist_Decisiones.md",
+      "path": "/Romanza App/Romanza_Checklist_Decisiones.md"
+    },
+    {
+      "id": "libfile_b240c3ad7d948191b3be69d9a2331ff6",
+      "name": "Romanza: Lavender Couple App Preview.png",
+      "path": "/Romanza App/Romanza: Lavender Couple App Preview.png"
+    },
+    {
+      "id": "libfile_4607688df7148191bdcfca739eb55d19",
+      "name": "Romance, captured between two phones.png",
+      "path": "/Romanza App/Romance, captured between two phones.png"
+    },
+    {
+      "id": "libfile_025551d82fa88191b6c856b71bbc527e",
+      "name": "Romanza couples moments app mockup.png",
+      "path": "/Romanza App/Romanza couples moments app mockup.png"
+    },
+    {
+      "id": "libfile_9a20b40f7064819189983d5e2f6c5c7e",
+      "name": "ROMANZA: Everyday plans, closer hearts.png",
+      "path": "/Romanza App/ROMANZA: Everyday plans, closer hearts.png"
+    }
+  ],
+  "drive": [
+    {
+      "id": "1ol1lMPv0OYE9RzH28EgmnO9xuBFEkjVa",
+      "name": "Romanza_Paquete_Desarrollo_v2_3.zip",
+      "url": "https://drive.google.com/file/d/1ol1lMPv0OYE9RzH28EgmnO9xuBFEkjVa/view?usp=drivesdk"
+    },
+    {
+      "id": "1GZXsSnGi9G_7Uzr1Y7GaoU8b2zAqEj46",
+      "name": "Romanza_Forest_Guias_v2.md",
+      "url": "https://docs.google.com/document/d/1GZXsSnGi9G_7Uzr1Y7GaoU8b2zAqEj46/edit?usp=drivesdk&ouid=102349347751075444957&rtpof=true&sd=true"
+    },
+    {
+      "id": "1Ye2aLqi16ZeueASxAgZdY8MU6trU1hL7",
+      "name": "Romanza_Diseno_Recursos_Medidas_v1.docx",
+      "url": "https://docs.google.com/document/d/1Ye2aLqi16ZeueASxAgZdY8MU6trU1hL7/edit?usp=drivesdk&ouid=102349347751075444957&rtpof=true&sd=true"
+    },
+    {
+      "id": "1JPOzHUnCqLGudz2lYaDC-P1g-_YDcA1u",
+      "name": "Romanza_Checklist_Decisiones.md",
+      "url": "https://docs.google.com/document/d/1JPOzHUnCqLGudz2lYaDC-P1g-_YDcA1u/edit?usp=drivesdk&ouid=102349347751075444957&rtpof=true&sd=true"
+    },
+    {
+      "id": "15RiiMNuyMFHZ4WRrqTZ7mScivPeD3jgn",
+      "name": "Romanza_Inicio_Forest.png",
+      "url": "https://drive.google.com/file/d/15RiiMNuyMFHZ4WRrqTZ7mScivPeD3jgn/view?usp=drivesdk"
+    },
+    {
+      "id": "1xboGK-SJUTbns7ndz8KLXb2dh7FeffRq",
+      "name": "Romanza_Inicio_Default.png",
+      "url": "https://drive.google.com/file/d/1xboGK-SJUTbns7ndz8KLXb2dh7FeffRq/view?usp=drivesdk"
+    },
+    {
+      "id": "1zbXSc3h7N6wkpfwkDb67rneKbw8InOWG",
+      "name": "Romanza_Inicio_Neo.png",
+      "url": "https://drive.google.com/file/d/1zbXSc3h7N6wkpfwkDb67rneKbw8InOWG/view?usp=drivesdk"
+    },
+    {
+      "id": "13g2jcuFIrT2xDlR3Rlfe9fl4f0xMAVOg",
+      "name": "Romanza_Grillas_Editables.zip",
+      "url": "https://drive.google.com/file/d/13g2jcuFIrT2xDlR3Rlfe9fl4f0xMAVOg/view?usp=drivesdk"
+    },
+    {
+      "id": "1D7VAm4EdHglmQp3P_iRUsYVwyourc95X",
+      "name": "Romanza Neo four-screen mobile UI.png",
+      "url": "https://drive.google.com/file/d/1D7VAm4EdHglmQp3P_iRUsYVwyourc95X/view?usp=drivesdk"
+    },
+    {
+      "id": "1P0lFNnSqv8ikhycMoIulrHMABK219mj1",
+      "name": "Romanza Forest couples app screens.png",
+      "url": "https://drive.google.com/file/d/1P0lFNnSqv8ikhycMoIulrHMABK219mj1/view?usp=drivesdk"
+    },
+    {
+      "id": "1nUtP5XrIgjzyGbNwJG5_jXdUQGrelxz9",
+      "name": "Romanza pastel four-screen UI board.png",
+      "url": "https://drive.google.com/file/d/1nUtP5XrIgjzyGbNwJG5_jXdUQGrelxz9/view?usp=drivesdk"
+    },
+    {
+      "id": "1hAvDRqqeC4WraGJGKh-V2GyscMqF46Ph",
+      "name": "Romanza_Preferencias_Custom_Grillas_v1.zip",
+      "url": "https://drive.google.com/file/d/1hAvDRqqeC4WraGJGKh-V2GyscMqF46Ph/view?usp=drivesdk"
+    },
+    {
+      "id": "1v_VOqlXVStio-lTVwYJjP7bQU8Qm--af",
+      "name": "Romanza_Skeleton_Grillas.zip",
+      "url": "https://drive.google.com/file/d/1v_VOqlXVStio-lTVwYJjP7bQU8Qm--af/view?usp=drivesdk"
+    },
+    {
+      "id": "1n8uZKiZ1qKtrY9N8l3eu_JN8nLooEC1r",
+      "name": "Romanza home loading states.png",
+      "url": "https://drive.google.com/file/d/1n8uZKiZ1qKtrY9N8l3eu_JN8nLooEC1r/view?usp=drivesdk"
+    }
+  ],
+  "policy": "Recoverable Trash only. Git-tracked obsolete references removed on documentation branch. No application behavior or assets used at runtime removed."
+}

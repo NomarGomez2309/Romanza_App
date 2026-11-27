@@ -1,8 +1,7 @@
 # Onboarding y cuenta — propuesta implementada v1
 
-> La bienvenida fue sustituida por [ondas y tres temas](welcome-waves.md).
-> Las tarjetas y cotas de bienvenida descritas aquí son el histórico v1;
-> formularios, perfil y cuenta siguen vigentes.
+Bienvenida vigente: [ondas e hilos](welcome-waves.md). Este contrato cubre
+formularios, perfil y cuenta.
 
 Base exacta: `53b9743f122890ebfac1a7968741560af06431a5`, rama `Romanza/Dart`.
 Se reutilizan el repositorio de autenticación, controlador de sesión, logo SVG,
@@ -11,9 +10,6 @@ No se incorpora la arquitectura diferente de `main` ni se reemplaza el dashboard
 
 ## Experiencia visual
 
-- Bienvenida: marca existente, «A su ritmo», ilustración de dos tarjetas unidas
-  por un corazón y mensaje «Más cotidiano. Más Romanza.». La ilustración es
-  decorativa, construida con widgets e iconos; no representa usuarios reales.
 - Acceso/registro/recuperación: título breve, símbolo en superficie suave,
   explicación y campos separados. Se conservan Google, correo, confirmación de
   contraseña, validaciones, mensajes y recuperación oficiales de la base.
@@ -40,10 +36,8 @@ Unidades lógicas; referencias de prueba: 390×844 y 412×924.
 | --- | --- |
 | Contenido de acceso/cuenta | Ancho máximo 480; margen lateral 24; vertical 16; áreas seguras reales |
 | Marca | Logo existente + Fredoka 24/32, peso variable 600 |
-| Bienvenida | Fredoka 40/44, peso variable 600 |
 | Títulos de paso/cuenta | `RomanzaType.greeting`: Fredoka 34/40, peso 600 |
 | Explicaciones | Nunito 16/24, color secundario del tema |
-| Ilustración de bienvenida | Contenedor 202 de alto; composición interna 302×190; se adapta al ancho |
 | Símbolo de paso | Superficie 72×72, radio 24, icono 30 |
 | Campos | Radio 18; padding 18; línea de foco 2; errores de hasta 3 líneas |
 | Acción principal | Alto mínimo 56, radio 20, Nunito 16/700; crece con texto |
@@ -114,7 +108,6 @@ persona. Configuración sigue diferenciando carga, sin vínculo y error.
 Capturas generadas por los widgets Flutter con datos de prueba, no imágenes
 aplanadas usadas como interfaz ni evidencia de instalación:
 
-- [Bienvenida Forest 390](../qa/evidence/onboarding-v1/welcome-forest-390.png)
 - [Registro Default 412](../qa/evidence/onboarding-v1/register-default-412.png)
 - [Nombre Forest 390](../qa/evidence/onboarding-v1/profile-forest-390.png)
 - [Cuenta Forest 390](../qa/evidence/onboarding-v1/account-forest-390.png)
